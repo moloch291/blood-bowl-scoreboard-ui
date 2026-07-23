@@ -1,6 +1,8 @@
 @import "./styles/theme.css";
 @import "./styles/buttons.css";
+@import "./styles/layout.css";
 @import "./styles/scoreboard.css";
+@import "./styles/control-panel.css";
 
 * {
   margin: 0;
