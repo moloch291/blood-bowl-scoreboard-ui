@@ -10,6 +10,11 @@ import reapersIcon from "../assets/blackwood-reapers/icon.png";
 import reapersWordmark from "../assets/blackwood-reapers/wordmark.png";
 import reapersTouchdown from "../assets/blackwood-reapers/touchdown.png";
 
+import victimsLogo from "../assets/victims/logo.png";
+import victimsIcon from "../assets/victims/icon.png";
+import victimsWordmark from "../assets/victims/wordmark.png";
+import victimsTouchdown from "../assets/victims/touchdown.png";
+
 export const templeSerpents: Team = {
     id: "temple-serpents",
     name: "Temple Serpents",
@@ -49,3 +54,29 @@ export const blackwoodReapers: Team = {
         touchdownImage: reapersTouchdown,
     },
 };
+
+export const victims: Team = { // random away team for guests
+    id: "victims",
+    name: "Victims",
+    shortName: "Victims",
+
+    colors: {
+        primary: "#241A18",
+        secondary: "#7A1716",
+        accent: "#E7D9BF",
+        text: "#F6F1E7",
+    },
+
+    assets: {
+        logo: victimsLogo,
+        icon: victimsIcon,
+        wordmark: victimsWordmark,
+        touchdownImage: victimsTouchdown,
+    },
+};
+
+export const teams: Team[] = [
+    templeSerpents,
+    blackwoodReapers,
+    victims
+];

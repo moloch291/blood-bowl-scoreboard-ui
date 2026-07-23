@@ -1,0 +1,299 @@
+.match-setup {
+    width: 100%;
+    height: 100dvh;
+
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr) auto;
+    gap: clamp(0.75rem, 2vh, 1.5rem);
+
+    padding: clamp(0.75rem, 2vw, 1.5rem);
+
+    overflow: hidden;
+
+    color: #fff;
+
+    background:
+        radial-gradient(circle at 50% 0%,
+            rgba(255, 255, 255, 0.08),
+            transparent 35%),
+        linear-gradient(145deg,
+            #18181d,
+            #09090c);
+}
+
+.match-setup__header {
+    text-align: center;
+}
+
+.match-setup__eyebrow {
+    margin: 0 0 0.25rem;
+
+    font-size: clamp(0.7rem, 1.4vw, 0.9rem);
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+
+    color: rgba(255, 255, 255, 0.58);
+}
+
+.match-setup__title {
+    margin: 0;
+
+    font-size: clamp(2rem, 5vh, 4rem);
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.match-setup__subtitle {
+    margin: 0.4rem 0 0;
+    color: rgba(255, 255, 255, 0.68);
+}
+
+.match-setup__matchup {
+    min-width: 0;
+    min-height: 0;
+
+    display: grid;
+    grid-template-columns:
+        minmax(0, 1fr) minmax(100px, 0.22fr) minmax(0, 1fr);
+
+    align-items: stretch;
+    gap: clamp(0.75rem, 2vw, 1.5rem);
+}
+
+.match-setup__team-card {
+    min-width: 0;
+    min-height: 0;
+
+    display: grid;
+    grid-template-rows:
+        auto minmax(0, 1fr) auto auto auto;
+
+    align-items: center;
+    gap: clamp(0.4rem, 1vh, 0.8rem);
+
+    padding: clamp(0.75rem, 1.8vw, 1.4rem);
+
+    overflow: hidden;
+
+    color: var(--setup-team-text);
+
+    border: 3px solid var(--setup-team-accent);
+    border-radius: clamp(0.8rem, 2vw, 1.4rem);
+
+    background:
+        radial-gradient(circle at 50% 30%,
+            var(--setup-team-secondary),
+            transparent 58%),
+        linear-gradient(145deg,
+            var(--setup-team-primary),
+            #101014 80%);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.14),
+        0 14px 35px rgba(0, 0, 0, 0.4);
+}
+
+.match-setup__side-label {
+    margin: 0;
+
+    font-size: clamp(0.72rem, 1.5vw, 0.95rem);
+    font-weight: 900;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+
+    color: var(--setup-team-accent);
+}
+
+.match-setup__logo-area {
+    min-height: 0;
+
+    display: grid;
+    place-items: center;
+
+    overflow: hidden;
+}
+
+.match-setup__team-logo {
+    width: min(100%, 320px);
+    height: 100%;
+    max-height: min(32vh, 310px);
+
+    object-fit: contain;
+
+    filter:
+        drop-shadow(0 8px 0 rgba(0, 0, 0, 0.3)) drop-shadow(0 10px 18px rgba(0, 0, 0, 0.42));
+}
+
+.match-setup__team-name {
+    margin: 0;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    font-size: clamp(1.2rem, 2.8vw, 2rem);
+    line-height: 1;
+    text-align: center;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.match-setup__field {
+    width: min(100%, 360px);
+
+    display: grid;
+    gap: 0.3rem;
+
+    font-size: 0.85rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.match-setup__field select {
+    width: 100%;
+    min-width: 0;
+
+    padding: 0.65rem 0.75rem;
+
+    color: #fff;
+
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    border-radius: 0.55rem;
+
+    background: rgba(0, 0, 0, 0.48);
+}
+
+.match-setup__field option {
+    color: #111;
+    background: #fff;
+}
+
+.match-setup__rerolls {
+    display: grid;
+    justify-items: center;
+    gap: 0.35rem;
+}
+
+.match-setup__rerolls-label {
+    font-size: 0.82rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.match-setup__reroll-controls {
+    display: grid;
+    grid-template-columns: auto minmax(54px, auto) auto;
+    align-items: center;
+    gap: 0.55rem;
+}
+
+.match-setup__reroll-controls .button {
+    min-width: 44px;
+}
+
+.match-setup__reroll-value {
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    line-height: 1;
+    text-align: center;
+}
+
+.match-setup__center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(0.75rem, 2vh, 1.5rem);
+}
+
+.match-setup__versus {
+    font-size: clamp(2rem, 5vw, 4.5rem);
+    font-weight: 1000;
+    font-style: italic;
+
+    color: rgba(255, 255, 255, 0.8);
+
+    text-shadow:
+        0 5px 0 rgba(0, 0, 0, 0.5);
+}
+
+.match-setup__footer {
+    display: grid;
+    justify-items: center;
+    gap: 0.5rem;
+}
+
+.match-setup__start {
+    min-width: min(320px, 100%);
+    min-height: 54px;
+
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    font-weight: 1000;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.match-setup__error {
+    margin: 0;
+    color: #ffb4b4;
+}
+
+.match-setup--empty {
+    place-items: center;
+}
+
+.match-setup__empty-message {
+    max-width: 600px;
+    text-align: center;
+}
+
+@media (max-height: 760px) {
+    .match-setup {
+        gap: 0.55rem;
+        padding: 0.6rem;
+    }
+
+    .match-setup__subtitle {
+        display: none;
+    }
+
+    .match-setup__team-card {
+        gap: 0.3rem;
+        padding: 0.6rem;
+    }
+
+    .match-setup__team-logo {
+        max-height: 24vh;
+    }
+
+    .match-setup__field select {
+        padding-block: 0.45rem;
+    }
+
+    .match-setup__start {
+        min-height: 42px;
+    }
+}
+
+@media (max-width: 760px) {
+    .match-setup {
+        height: auto;
+        min-height: 100dvh;
+        overflow: auto;
+    }
+
+    .match-setup__matchup {
+        grid-template-columns: 1fr;
+    }
+
+    .match-setup__team-card {
+        min-height: 520px;
+    }
+
+    .match-setup__center {
+        flex-direction: row;
+    }
+
+    .match-setup__team-logo {
+        max-height: 240px;
+    }
+}

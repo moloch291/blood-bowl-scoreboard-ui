@@ -7,47 +7,47 @@ import {
 
 import { ControlPanel } from "../components/ControlPanel/ControlPanel";
 import { HalfTimeOverlay } from "../components/HalfTimeOverlay/HalfTimeOverlay";
+import {
+    MatchSetup,
+    type MatchSetupSelection,
+} from "../components/MatchSetup/MatchSetup";
 import { Scoreboard } from "../components/ScoreBoard/Scoreboard";
 import { TouchdownOverlay } from "../components/TouchdownOverlay/TouchdownOverlay";
 
 import {
     blackwoodReapers,
+    teams,
     templeSerpents,
 } from "../data/teams";
 
 import { matchReducer } from "../reducers/matchReducer";
+import { createInitialMatchState } from "../utils/createInitialMatchState";
 
+import type { MatchState, TeamSide } from "../types/match";
 import type { Team } from "../types/team";
-import type {
-    MatchState,
-    TeamSide,
-} from "../types/match";
 
 import "../styles/layout.css";
 
-const initialState: MatchState = {
-    home: {
-        team: templeSerpents,
-        score: 0,
-        turn: 0,
-        rerolls: 3,
-    },
+type AppScreen = "setup" | "match";
 
-    away: {
-        team: blackwoodReapers,
-        score: 0,
-        turn: 0,
-        rerolls: 3,
-    },
-
-    half: 1,
-};
+const defaultInitialState = createInitialMatchState(
+    templeSerpents,
+    blackwoodReapers,
+    3,
+    3,
+);
 
 export function MatchLayout() {
+    const [screen, setScreen] =
+        useState<AppScreen>("setup");
+
     const [state, dispatch] = useReducer(
         matchReducer,
-        initialState,
+        defaultInitialState,
     );
+
+    const matchInitialStateRef =
+        useRef<MatchState>(defaultInitialState);
 
     const [touchdownTeam, setTouchdownTeam] =
         useState<Team | null>(null);
@@ -75,6 +75,16 @@ export function MatchLayout() {
         }
     }
 
+    function clearOverlays() {
+        clearTouchdownTimer();
+
+        setTouchdownTeam(null);
+        setIsTouchdownVisible(false);
+        setIsHalfTimeVisible(false);
+
+        hasShownHalfTimeRef.current = false;
+    }
+
     useEffect(() => {
         return () => {
             clearTouchdownTimer();
@@ -83,6 +93,7 @@ export function MatchLayout() {
 
     useEffect(() => {
         if (
+            screen === "match" &&
             canStartSecondHalf &&
             !hasShownHalfTimeRef.current
         ) {
@@ -94,7 +105,32 @@ export function MatchLayout() {
             hasShownHalfTimeRef.current = false;
             setIsHalfTimeVisible(false);
         }
-    }, [canStartSecondHalf]);
+    }, [canStartSecondHalf, screen]);
+
+    function handleStartMatch({
+        homeTeam,
+        awayTeam,
+        homeRerolls,
+        awayRerolls,
+    }: MatchSetupSelection) {
+        const newMatchState = createInitialMatchState(
+            homeTeam,
+            awayTeam,
+            homeRerolls,
+            awayRerolls,
+        );
+
+        clearOverlays();
+
+        matchInitialStateRef.current = newMatchState;
+
+        dispatch({
+            type: "RESET_MATCH",
+            state: newMatchState,
+        });
+
+        setScreen("match");
+    }
 
     function handleTouchdown(side: TeamSide) {
         const scoringTeam =
@@ -123,39 +159,47 @@ export function MatchLayout() {
             return;
         }
 
+        const startingState =
+            matchInitialStateRef.current;
+
         setIsHalfTimeVisible(false);
         hasShownHalfTimeRef.current = false;
 
         dispatch({
             type: "START_SECOND_HALF",
             rerolls: {
-                home: initialState.home.rerolls,
-                away: initialState.away.rerolls,
+                home: startingState.home.rerolls,
+                away: startingState.away.rerolls,
             },
         });
     }
 
     function handleResetMatch() {
         const shouldReset = window.confirm(
-            "Reset the entire match? Scores, turns, rerolls, and the current half will be lost.",
+            "End this match and return to team selection? The current score, turns, rerolls, and half will be lost.",
         );
 
         if (!shouldReset) {
             return;
         }
 
-        clearTouchdownTimer();
-
-        setTouchdownTeam(null);
-        setIsTouchdownVisible(false);
-        setIsHalfTimeVisible(false);
-
-        hasShownHalfTimeRef.current = false;
+        clearOverlays();
 
         dispatch({
             type: "RESET_MATCH",
-            state: initialState,
+            state: matchInitialStateRef.current,
         });
+
+        setScreen("setup");
+    }
+
+    if (screen === "setup") {
+        return (
+            <MatchSetup
+                teams={teams}
+                onStartMatch={handleStartMatch}
+            />
+        );
     }
 
     return (
