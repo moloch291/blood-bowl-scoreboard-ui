@@ -15,6 +15,7 @@ interface ControlPanelProps {
     onTouchdown: (side: TeamSide) => void;
     onResetMatch: () => void;
     onOpenHalfTime: () => void;
+    onOpenFinalScore: () => void;
     canStartSecondHalf: boolean;
 }
 
@@ -24,8 +25,14 @@ export function ControlPanel({
     onTouchdown,
     onResetMatch,
     onOpenHalfTime,
+    onOpenFinalScore,
     canStartSecondHalf,
 }: ControlPanelProps) {
+    const isMatchFinished =
+        state.half === 2 &&
+        state.home.hasFinishedHalf &&
+        state.away.hasFinishedHalf;
+
     function removeScore(side: TeamSide) {
         dispatch({
             type: "REMOVE_SCORE",
@@ -88,7 +95,10 @@ export function ControlPanel({
                             type="button"
                             className="button button--secondary"
                             onClick={() => removeScore("home")}
-                            disabled={state.home.score === 0}
+                            disabled={
+                                isMatchFinished ||
+                                state.home.score === 0
+                            }
                         >
                             − Score
                         </button>
@@ -97,6 +107,7 @@ export function ControlPanel({
                             type="button"
                             className="button button--primary"
                             onClick={() => onTouchdown("home")}
+                            disabled={isMatchFinished}
                         >
                             Touchdown
                         </button>
@@ -113,7 +124,10 @@ export function ControlPanel({
                             type="button"
                             className="button button--secondary"
                             onClick={() => previousTurn("home")}
-                            disabled={state.home.turn === 0}
+                            disabled={
+                                isMatchFinished ||
+                                state.home.turn === 0
+                            }
                         >
                             − Turn
                         </button>
@@ -123,6 +137,7 @@ export function ControlPanel({
                                 type="button"
                                 className="button button--primary"
                                 onClick={() => nextTurn("home")}
+                                disabled={isMatchFinished}
                             >
                                 + Turn
                             </button>
@@ -131,7 +146,10 @@ export function ControlPanel({
                                 type="button"
                                 className="button button--primary"
                                 onClick={() => finishHalf("home")}
-                                disabled={state.home.hasFinishedHalf}
+                                disabled={
+                                    isMatchFinished ||
+                                    state.home.hasFinishedHalf
+                                }
                             >
                                 {state.home.hasFinishedHalf
                                     ? "✓ Half Finished"
@@ -151,7 +169,10 @@ export function ControlPanel({
                             type="button"
                             className="button button--secondary"
                             onClick={() => useReroll("home")}
-                            disabled={state.home.rerolls === 0}
+                            disabled={
+                                isMatchFinished ||
+                                state.home.rerolls === 0
+                            }
                         >
                             Use Reroll
                         </button>
@@ -160,6 +181,7 @@ export function ControlPanel({
                             type="button"
                             className="button button--primary"
                             onClick={() => restoreReroll("home")}
+                            disabled={isMatchFinished}
                         >
                             Restore
                         </button>
@@ -197,16 +219,34 @@ export function ControlPanel({
 
                         {!canStartSecondHalf && (
                             <p>
-                                Both teams must reach Turn 8.
+                                Both teams must complete Turn 8.
                             </p>
                         )}
                     </div>
                 )}
 
                 {state.half === 2 && (
-                    <p>
-                        Second half in progress
-                    </p>
+                    <div className="control-panel__group">
+                        {isMatchFinished ? (
+                            <>
+                                <strong>
+                                    Match Complete
+                                </strong>
+
+                                <button
+                                    type="button"
+                                    className="button button--primary"
+                                    onClick={onOpenFinalScore}
+                                >
+                                    Review Final Result
+                                </button>
+                            </>
+                        ) : (
+                            <p>
+                                Second half in progress
+                            </p>
+                        )}
+                    </div>
                 )}
 
                 <button
@@ -233,6 +273,7 @@ export function ControlPanel({
                             type="button"
                             className="button button--primary"
                             onClick={() => onTouchdown("away")}
+                            disabled={isMatchFinished}
                         >
                             Touchdown
                         </button>
@@ -241,7 +282,10 @@ export function ControlPanel({
                             type="button"
                             className="button button--secondary"
                             onClick={() => removeScore("away")}
-                            disabled={state.away.score === 0}
+                            disabled={
+                                isMatchFinished ||
+                                state.away.score === 0
+                            }
                         >
                             − Score
                         </button>
@@ -259,6 +303,7 @@ export function ControlPanel({
                                 type="button"
                                 className="button button--primary"
                                 onClick={() => nextTurn("away")}
+                                disabled={isMatchFinished}
                             >
                                 + Turn
                             </button>
@@ -267,7 +312,10 @@ export function ControlPanel({
                                 type="button"
                                 className="button button--primary"
                                 onClick={() => finishHalf("away")}
-                                disabled={state.away.hasFinishedHalf}
+                                disabled={
+                                    isMatchFinished ||
+                                    state.away.hasFinishedHalf
+                                }
                             >
                                 {state.away.hasFinishedHalf
                                     ? "✓ Half Finished"
@@ -279,7 +327,10 @@ export function ControlPanel({
                             type="button"
                             className="button button--secondary"
                             onClick={() => previousTurn("away")}
-                            disabled={state.away.turn === 0}
+                            disabled={
+                                isMatchFinished ||
+                                state.away.turn === 0
+                            }
                         >
                             − Turn
                         </button>
@@ -296,6 +347,7 @@ export function ControlPanel({
                             type="button"
                             className="button button--primary"
                             onClick={() => restoreReroll("away")}
+                            disabled={isMatchFinished}
                         >
                             Restore
                         </button>
@@ -304,7 +356,10 @@ export function ControlPanel({
                             type="button"
                             className="button button--secondary"
                             onClick={() => useReroll("away")}
-                            disabled={state.away.rerolls === 0}
+                            disabled={
+                                isMatchFinished ||
+                                state.away.rerolls === 0
+                            }
                         >
                             Use Reroll
                         </button>

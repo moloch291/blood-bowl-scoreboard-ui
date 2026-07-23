@@ -7,6 +7,7 @@ export interface TeamMatchState {
     score: number;
     turn: number;
     rerolls: number;
+    hasFinishedHalf: boolean;
 }
 
 export interface MatchState {

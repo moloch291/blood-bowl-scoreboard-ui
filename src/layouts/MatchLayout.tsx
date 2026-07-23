@@ -6,6 +6,7 @@ import {
 } from "react";
 
 import { ControlPanel } from "../components/ControlPanel/ControlPanel";
+import { FinalScoreOverlay } from "../components/FinalsScoreOverlay/FinalScoreOverlay";
 import { HalfTimeOverlay } from "../components/HalfTimeOverlay/HalfTimeOverlay";
 import {
     MatchSetup,
@@ -13,6 +14,7 @@ import {
 } from "../components/MatchSetup/MatchSetup";
 import { Scoreboard } from "../components/ScoreBoard/Scoreboard";
 import { TouchdownOverlay } from "../components/TouchdownOverlay/TouchdownOverlay";
+import { WinnerOverlay } from "../components/WinnerOverlay/WinnerOverlay";
 
 import {
     blackwoodReapers,
@@ -29,6 +31,11 @@ import type { Team } from "../types/team";
 import "../styles/layout.css";
 
 type AppScreen = "setup" | "match";
+
+type MatchEndStage =
+    | "none"
+    | "final-score"
+    | "winner";
 
 const defaultInitialState = createInitialMatchState(
     templeSerpents,
@@ -58,13 +65,22 @@ export function MatchLayout() {
     const [isHalfTimeVisible, setIsHalfTimeVisible] =
         useState(false);
 
+    const [matchEndStage, setMatchEndStage] =
+        useState<MatchEndStage>("none");
+
     const touchdownTimerRef =
         useRef<ReturnType<typeof setTimeout> | null>(null);
 
     const hasShownHalfTimeRef = useRef(false);
+    const hasShownFullTimeRef = useRef(false);
 
     const canStartSecondHalf =
         state.half === 1 &&
+        state.home.hasFinishedHalf &&
+        state.away.hasFinishedHalf;
+
+    const isMatchFinished =
+        state.half === 2 &&
         state.home.hasFinishedHalf &&
         state.away.hasFinishedHalf;
 
@@ -81,8 +97,10 @@ export function MatchLayout() {
         setTouchdownTeam(null);
         setIsTouchdownVisible(false);
         setIsHalfTimeVisible(false);
+        setMatchEndStage("none");
 
         hasShownHalfTimeRef.current = false;
+        hasShownFullTimeRef.current = false;
     }
 
     useEffect(() => {
@@ -106,6 +124,28 @@ export function MatchLayout() {
             setIsHalfTimeVisible(false);
         }
     }, [canStartSecondHalf, screen]);
+
+    useEffect(() => {
+        if (
+            screen === "match" &&
+            isMatchFinished &&
+            !hasShownFullTimeRef.current
+        ) {
+            clearTouchdownTimer();
+
+            setTouchdownTeam(null);
+            setIsTouchdownVisible(false);
+            setIsHalfTimeVisible(false);
+            setMatchEndStage("final-score");
+
+            hasShownFullTimeRef.current = true;
+        }
+
+        if (!isMatchFinished) {
+            hasShownFullTimeRef.current = false;
+            setMatchEndStage("none");
+        }
+    }, [isMatchFinished, screen]);
 
     function handleStartMatch({
         homeTeam,
@@ -133,6 +173,10 @@ export function MatchLayout() {
     }
 
     function handleTouchdown(side: TeamSide) {
+        if (isMatchFinished) {
+            return;
+        }
+
         const scoringTeam =
             side === "home"
                 ? state.home.team
@@ -174,6 +218,34 @@ export function MatchLayout() {
         });
     }
 
+    function handleReviewScoreboard() {
+        setIsHalfTimeVisible(false);
+        setMatchEndStage("none");
+    }
+
+    function handleOpenFinalScore() {
+        if (!isMatchFinished) {
+            return;
+        }
+
+        setMatchEndStage("final-score");
+    }
+
+    function handleAnnounceResult() {
+        setMatchEndStage("winner");
+    }
+
+    function handleNewMatch() {
+        clearOverlays();
+
+        dispatch({
+            type: "RESET_MATCH",
+            state: matchInitialStateRef.current,
+        });
+
+        setScreen("setup");
+    }
+
     function handleResetMatch() {
         const shouldReset = window.confirm(
             "End this match and return to team selection? The current score, turns, rerolls, and half will be lost.",
@@ -183,14 +255,7 @@ export function MatchLayout() {
             return;
         }
 
-        clearOverlays();
-
-        dispatch({
-            type: "RESET_MATCH",
-            state: matchInitialStateRef.current,
-        });
-
-        setScreen("setup");
+        handleNewMatch();
     }
 
     if (screen === "setup") {
@@ -218,6 +283,7 @@ export function MatchLayout() {
                 onOpenHalfTime={() =>
                     setIsHalfTimeVisible(true)
                 }
+                onOpenFinalScore={handleOpenFinalScore}
                 canStartSecondHalf={canStartSecondHalf}
             />
 
@@ -234,6 +300,24 @@ export function MatchLayout() {
                 onClose={() =>
                     setIsHalfTimeVisible(false)
                 }
+            />
+
+            <FinalScoreOverlay
+                home={state.home}
+                away={state.away}
+                isVisible={
+                    matchEndStage === "final-score"
+                }
+                onAnnounceResult={handleAnnounceResult}
+                onReviewScoreboard={handleReviewScoreboard}
+            />
+
+            <WinnerOverlay
+                home={state.home}
+                away={state.away}
+                isVisible={matchEndStage === "winner"}
+                onReviewScoreboard={handleReviewScoreboard}
+                onNewMatch={handleNewMatch}
             />
         </main>
     );
