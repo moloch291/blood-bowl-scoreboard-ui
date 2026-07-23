@@ -3,28 +3,27 @@ import type { Team } from "../types/team";
 export const templeSerpents: Team = {
     id: "temple-serpents",
     name: "Temple Serpents",
-    shortName: "TS",
-    logo: "/assets/temple-serpents/logo.png",
-    touchdownImage: "/assets/temple-serpents/touchdown.png",
-
+    shortName: "SERPENTS",
+    logo: "",
+    touchdownImage: "",
     colors: {
-        primary: "#007C6C",
-        secondary: "#E2B52F",
-        accent: "#28C7B5"
-    }
+        primary: "#0b6b57",
+        secondary: "#149b8b",
+        accent: "#d4aa45",
+        text: "#ffffff",
+    },
 };
 
 export const blackwoodReapers: Team = {
     id: "blackwood-reapers",
     name: "Blackwood Reapers",
-    shortName: "BR",
-    logo: "/assets/blackwood-reapers/logo.png",
-    touchdownImage: "/assets/blackwood-reapers/touchdown.png",
-
+    shortName: "REAPERS",
+    logo: "",
+    touchdownImage: "",
     colors: {
-        primary: "#1C1B22",
-        secondary: "#6A2C91",
-        accent: "#C5A04A"
-
-    }
+        primary: "#25143f",
+        secondary: "#5a2f85",
+        accent: "#9f75d5",
+        text: "#ffffff",
+    },
 };

@@ -1,5 +1,30 @@
 .match-layout {
     width: 100%;
     min-height: 100vh;
-    padding: 1px 0;
+    padding: 2rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 2rem;
+}
+
+.match-layout>.scoreboard,
+.match-layout>.control-panel {
+    flex: 0 0 auto;
+}
+
+@media (max-width: 850px) {
+    .match-layout {
+        padding: 1rem;
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 560px) {
+    .match-layout {
+        padding: 0.5rem;
+        gap: 1rem;
+    }
 }

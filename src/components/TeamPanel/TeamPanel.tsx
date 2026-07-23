@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import type { TeamMatchState } from "../../types/match";
 
 interface TeamPanelProps {
@@ -5,13 +6,28 @@ interface TeamPanelProps {
     side: "home" | "away";
 }
 
+interface TeamPanelStyles extends CSSProperties {
+    "--team-primary": string;
+    "--team-secondary": string;
+    "--team-accent": string;
+    "--team-text": string;
+}
+
 export function TeamPanel({
     team,
     side,
 }: TeamPanelProps) {
+    const teamStyles: TeamPanelStyles = {
+        "--team-primary": team.team.colors.primary,
+        "--team-secondary": team.team.colors.secondary,
+        "--team-accent": team.team.colors.accent,
+        "--team-text": team.team.colors.text,
+    };
+
     return (
         <section
             className={`scoreboard__team scoreboard__team--${side}`}
+            style={teamStyles}
         >
             <div className="scoreboard__team-info">
                 <div className="scoreboard__team-name">
