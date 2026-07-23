@@ -105,6 +105,30 @@
 }
 
 /* Team information */
+.scoreboard__branding {
+    min-width: 0;
+
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.scoreboard__team--away .scoreboard__branding {
+    flex-direction: row-reverse;
+}
+
+.scoreboard__team-icon {
+    width: clamp(84px, 8vw, 120px);
+    height: clamp(84px, 8vw, 120px);
+
+    flex: 0 0 auto;
+
+    object-fit: contain;
+    object-position: center;
+
+    filter:
+        drop-shadow(0 6px 0 rgba(0, 0, 0, 0.35)) drop-shadow(0 0 18px rgba(255, 255, 255, 0.12));
+}
 
 .scoreboard__team-info {
     min-width: 0;
@@ -271,6 +295,15 @@
         order: 3;
         border-left: 0;
         border-top: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .scoreboard__branding {
+        gap: 0.65rem;
+    }
+
+    .scoreboard__team-icon {
+        width: 72px;
+        height: 72px;
     }
 }
 

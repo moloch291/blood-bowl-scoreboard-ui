@@ -5,11 +5,17 @@ export interface TeamColors {
     text: string;
 }
 
+export interface TeamAssets {
+    logo: string;
+    icon: string;
+    wordmark: string;
+    touchdownImage: string;
+}
+
 export interface Team {
     id: string;
     name: string;
     shortName: string;
-    logo: string;
-    touchdownImage: string;
     colors: TeamColors;
+    assets: TeamAssets;
 }

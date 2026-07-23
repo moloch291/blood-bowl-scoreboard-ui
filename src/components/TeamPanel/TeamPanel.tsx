@@ -29,18 +29,30 @@ export function TeamPanel({
             className={`scoreboard__team scoreboard__team--${side}`}
             style={teamStyles}
         >
-            <div className="scoreboard__team-info">
-                <div className="scoreboard__team-name">
-                    {team.team.shortName}
-                </div>
+            <div className="scoreboard__branding">
+                <img
+                    className="scoreboard__team-icon"
+                    src={team.team.assets.icon}
+                    alt=""
+                    aria-hidden="true"
+                />
 
-                <div className="scoreboard__details">
-                    <span>Turn {team.turn}</span>
-                    <span>Rerolls {team.rerolls}</span>
+                <div className="scoreboard__team-info">
+                    <div className="scoreboard__team-name">
+                        {team.team.shortName}
+                    </div>
+
+                    <div className="scoreboard__details">
+                        <span>Turn {team.turn}</span>
+                        <span>Rerolls {team.rerolls}</span>
+                    </div>
                 </div>
             </div>
 
-            <div className="scoreboard__score">
+            <div
+                className="scoreboard__score"
+                aria-label={`${team.team.name} score ${team.score}`}
+            >
                 {team.score}
             </div>
         </section>
