@@ -7,7 +7,6 @@
     gap: clamp(0.75rem, 2vh, 1.5rem);
 
     padding: clamp(0.75rem, 2vw, 1.5rem);
-
     overflow: hidden;
 
     color: #fff;
@@ -21,6 +20,8 @@
             #09090c);
 }
 
+/* Header */
+
 .match-setup__header {
     text-align: center;
 }
@@ -28,12 +29,12 @@
 .match-setup__eyebrow {
     margin: 0 0 0.25rem;
 
+    color: rgba(255, 255, 255, 0.58);
+
     font-size: clamp(0.7rem, 1.4vw, 0.9rem);
     font-weight: 800;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-
-    color: rgba(255, 255, 255, 0.58);
 }
 
 .match-setup__title {
@@ -46,8 +47,11 @@
 
 .match-setup__subtitle {
     margin: 0.4rem 0 0;
+
     color: rgba(255, 255, 255, 0.68);
 }
+
+/* Matchup layout */
 
 .match-setup__matchup {
     min-width: 0;
@@ -56,10 +60,11 @@
     display: grid;
     grid-template-columns:
         minmax(0, 1fr) minmax(100px, 0.22fr) minmax(0, 1fr);
-
     align-items: stretch;
     gap: clamp(0.75rem, 2vw, 1.5rem);
 }
+
+/* Team cards */
 
 .match-setup__team-card {
     min-width: 0;
@@ -68,12 +73,11 @@
     display: grid;
     grid-template-rows:
         auto minmax(0, 1fr) auto auto auto;
-
     align-items: center;
+    justify-items: center;
     gap: clamp(0.4rem, 1vh, 0.8rem);
 
     padding: clamp(0.75rem, 1.8vw, 1.4rem);
-
     overflow: hidden;
 
     color: var(--setup-team-text);
@@ -97,15 +101,16 @@
 .match-setup__side-label {
     margin: 0;
 
+    color: var(--setup-team-accent);
+
     font-size: clamp(0.72rem, 1.5vw, 0.95rem);
     font-weight: 900;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-
-    color: var(--setup-team-accent);
 }
 
 .match-setup__logo-area {
+    width: 100%;
     min-height: 0;
 
     display: grid;
@@ -126,41 +131,62 @@
 }
 
 .match-setup__team-name {
+    width: 100%;
     margin: 0;
 
     overflow: hidden;
-    text-overflow: ellipsis;
 
     font-size: clamp(1.2rem, 2.8vw, 2rem);
     line-height: 1;
     text-align: center;
+    text-overflow: ellipsis;
     text-transform: uppercase;
     white-space: nowrap;
 }
 
+/* Dropdown fields */
+
 .match-setup__field {
     width: min(100%, 360px);
+    margin-inline: auto;
 
     display: grid;
+    justify-items: center;
     gap: 0.3rem;
 
     font-size: 0.85rem;
     font-weight: 800;
+    text-align: center;
     text-transform: uppercase;
+}
+
+.match-setup__field label {
+    width: 100%;
+
+    text-align: center;
 }
 
 .match-setup__field select {
     width: 100%;
     min-width: 0;
 
-    padding: 0.65rem 0.75rem;
+    padding: 0.65rem 2rem 0.65rem 0.75rem;
 
     color: #fff;
+
+    font: inherit;
+    text-align: center;
+    text-align-last: center;
 
     border: 1px solid rgba(255, 255, 255, 0.24);
     border-radius: 0.55rem;
 
-    background: rgba(0, 0, 0, 0.48);
+    background-color: rgba(0, 0, 0, 0.48);
+}
+
+.match-setup__field select:focus-visible {
+    outline: 3px solid var(--setup-team-accent);
+    outline-offset: 2px;
 }
 
 .match-setup__field option {
@@ -168,7 +194,11 @@
     background: #fff;
 }
 
+/* Rerolls */
+
 .match-setup__rerolls {
+    width: 100%;
+
     display: grid;
     justify-items: center;
     gap: 0.35rem;
@@ -177,12 +207,14 @@
 .match-setup__rerolls-label {
     font-size: 0.82rem;
     font-weight: 800;
+    text-align: center;
     text-transform: uppercase;
 }
 
 .match-setup__reroll-controls {
     display: grid;
-    grid-template-columns: auto minmax(54px, auto) auto;
+    grid-template-columns:
+        auto minmax(54px, auto) auto;
     align-items: center;
     gap: 0.55rem;
 }
@@ -197,6 +229,8 @@
     text-align: center;
 }
 
+/* Center column */
+
 .match-setup__center {
     display: flex;
     flex-direction: column;
@@ -206,15 +240,16 @@
 }
 
 .match-setup__versus {
-    font-size: clamp(2rem, 5vw, 4.5rem);
-    font-weight: 1000;
-    font-style: italic;
-
     color: rgba(255, 255, 255, 0.8);
 
-    text-shadow:
-        0 5px 0 rgba(0, 0, 0, 0.5);
+    font-size: clamp(2rem, 5vw, 4.5rem);
+    font-style: italic;
+    font-weight: 1000;
+
+    text-shadow: 0 5px 0 rgba(0, 0, 0, 0.5);
 }
+
+/* Footer */
 
 .match-setup__footer {
     display: grid;
@@ -234,8 +269,12 @@
 
 .match-setup__error {
     margin: 0;
+
     color: #ffb4b4;
+    text-align: center;
 }
+
+/* Empty state */
 
 .match-setup--empty {
     place-items: center;
@@ -243,8 +282,11 @@
 
 .match-setup__empty-message {
     max-width: 600px;
+
     text-align: center;
 }
+
+/* Short screens */
 
 @media (max-height: 760px) {
     .match-setup {
@@ -274,10 +316,13 @@
     }
 }
 
+/* Mobile layout */
+
 @media (max-width: 760px) {
     .match-setup {
         height: auto;
         min-height: 100dvh;
+
         overflow: auto;
     }
 
@@ -295,5 +340,9 @@
 
     .match-setup__team-logo {
         max-height: 240px;
+    }
+
+    .match-setup__field {
+        width: min(100%, 420px);
     }
 }
