@@ -61,6 +61,13 @@ export function ControlPanel({
         });
     }
 
+    function finishHalf(side: TeamSide) {
+        dispatch({
+            type: "FINISH_HALF",
+            side,
+        });
+    }
+
     return (
         <section
             className="control-panel"
@@ -111,14 +118,26 @@ export function ControlPanel({
                             − Turn
                         </button>
 
-                        <button
-                            type="button"
-                            className="button button--primary"
-                            onClick={() => nextTurn("home")}
-                            disabled={state.home.turn === 8}
-                        >
-                            + Turn
-                        </button>
+                        {state.home.turn < 8 ? (
+                            <button
+                                type="button"
+                                className="button button--primary"
+                                onClick={() => nextTurn("home")}
+                            >
+                                + Turn
+                            </button>
+                        ) : (
+                            <button
+                                type="button"
+                                className="button button--primary"
+                                onClick={() => finishHalf("home")}
+                                disabled={state.home.hasFinishedHalf}
+                            >
+                                {state.home.hasFinishedHalf
+                                    ? "✓ Half Finished"
+                                    : "End Turn 8"}
+                            </button>
+                        )}
                     </div>
                 </div>
 
@@ -235,14 +254,26 @@ export function ControlPanel({
                     </h3>
 
                     <div className="control-panel__buttons">
-                        <button
-                            type="button"
-                            className="button button--primary"
-                            onClick={() => nextTurn("away")}
-                            disabled={state.away.turn === 8}
-                        >
-                            + Turn
-                        </button>
+                        {state.away.turn < 8 ? (
+                            <button
+                                type="button"
+                                className="button button--primary"
+                                onClick={() => nextTurn("away")}
+                            >
+                                + Turn
+                            </button>
+                        ) : (
+                            <button
+                                type="button"
+                                className="button button--primary"
+                                onClick={() => finishHalf("away")}
+                                disabled={state.away.hasFinishedHalf}
+                            >
+                                {state.away.hasFinishedHalf
+                                    ? "✓ Half Finished"
+                                    : "End Turn 8"}
+                            </button>
+                        )}
 
                         <button
                             type="button"

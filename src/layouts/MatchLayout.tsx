@@ -65,8 +65,8 @@ export function MatchLayout() {
 
     const canStartSecondHalf =
         state.half === 1 &&
-        state.home.turn === 8 &&
-        state.away.turn === 8;
+        state.home.hasFinishedHalf &&
+        state.away.hasFinishedHalf;
 
     function clearTouchdownTimer() {
         if (touchdownTimerRef.current) {

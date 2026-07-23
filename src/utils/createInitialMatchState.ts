@@ -13,6 +13,7 @@ export function createInitialMatchState(
             score: 0,
             turn: 0,
             rerolls: Math.max(0, homeRerolls),
+            hasFinishedHalf: false,
         },
 
         away: {
@@ -20,6 +21,7 @@ export function createInitialMatchState(
             score: 0,
             turn: 0,
             rerolls: Math.max(0, awayRerolls),
+            hasFinishedHalf: false,
         },
 
         half: 1,

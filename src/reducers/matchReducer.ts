@@ -38,6 +38,10 @@ export type MatchAction =
     | {
         type: "RESET_MATCH";
         state: MatchState;
+    }
+    | {
+        type: "FINISH_HALF";
+        side: TeamSide;
     };
 
 export function matchReducer(
@@ -87,6 +91,7 @@ export function matchReducer(
                         0,
                         state[action.side].turn - 1,
                     ),
+                    hasFinishedHalf: false,
                 },
             };
 
@@ -121,12 +126,27 @@ export function matchReducer(
                     ...state.home,
                     turn: 0,
                     rerolls: action.rerolls.home,
+                    hasFinishedHalf: false,
                 },
 
                 away: {
                     ...state.away,
                     turn: 0,
                     rerolls: action.rerolls.away,
+                    hasFinishedHalf: false,
+                },
+            };
+
+        case "FINISH_HALF":
+            if (state[action.side].turn !== 8) {
+                return state;
+            }
+
+            return {
+                ...state,
+                [action.side]: {
+                    ...state[action.side],
+                    hasFinishedHalf: true,
                 },
             };
 
