@@ -1,0 +1,141 @@
+.touchdown-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+
+    display: grid;
+    place-items: center;
+
+    overflow: hidden;
+    pointer-events: none;
+
+    opacity: 0;
+    visibility: hidden;
+
+    background: #000;
+
+    transition:
+        opacity 350ms ease,
+        visibility 0s linear 350ms;
+}
+
+.touchdown-overlay--visible {
+    opacity: 1;
+    visibility: visible;
+
+    transition:
+        opacity 350ms ease,
+        visibility 0s linear 0s;
+}
+
+.touchdown-overlay__artwork {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-position: center;
+
+    transform: scale(1.06);
+
+    transition: transform 5s ease-out;
+}
+
+.touchdown-overlay--visible .touchdown-overlay__artwork {
+    transform: scale(1);
+}
+
+.touchdown-overlay__shade {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.08) 0%,
+            rgba(0, 0, 0, 0.2) 45%,
+            rgba(0, 0, 0, 0.7) 100%);
+}
+
+.touchdown-overlay__content {
+    position: relative;
+    z-index: 1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+
+    max-width: 90vw;
+    padding: 2rem;
+
+    color: #fff;
+    text-align: center;
+
+    opacity: 0;
+    transform: translateY(24px) scale(0.96);
+
+    transition:
+        opacity 300ms ease 150ms,
+        transform 500ms cubic-bezier(0.16, 1, 0.3, 1) 150ms;
+}
+
+.touchdown-overlay--visible .touchdown-overlay__content {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.touchdown-overlay__logo {
+    width: clamp(120px, 18vw, 260px);
+    max-width: 70vw;
+    max-height: 30vh;
+
+    object-fit: contain;
+
+    filter:
+        drop-shadow(0 8px 0 rgba(0, 0, 0, 0.4)) drop-shadow(0 0 24px rgba(255, 255, 255, 0.15));
+}
+
+.touchdown-overlay__title {
+    font-size: clamp(3rem, 9vw, 8rem);
+    font-weight: 1000;
+    line-height: 0.9;
+    letter-spacing: 0.03em;
+
+    text-transform: uppercase;
+
+    text-shadow:
+        0 6px 0 rgba(0, 0, 0, 0.45),
+        0 0 28px rgba(0, 0, 0, 0.55);
+}
+
+.touchdown-overlay__team-name {
+    font-size: clamp(1.4rem, 3vw, 2.6rem);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: 0.12em;
+
+    text-transform: uppercase;
+
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.65);
+}
+
+@media (max-width: 560px) {
+    .touchdown-overlay__content {
+        gap: 0.6rem;
+        padding: 1rem;
+    }
+
+    .touchdown-overlay__logo {
+        max-height: 24vh;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .touchdown-overlay,
+    .touchdown-overlay__artwork,
+    .touchdown-overlay__content {
+        transition: none;
+    }
+}
