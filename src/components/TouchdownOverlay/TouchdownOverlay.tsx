@@ -28,11 +28,6 @@ export function TouchdownOverlay({
                 alt=""
                 aria-hidden="true"
             />
-
-            <div
-                className="touchdown-overlay__shade"
-                aria-hidden="true"
-            />
         </div>
     );
 }
