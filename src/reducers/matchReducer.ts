@@ -1,4 +1,7 @@
-import type { MatchState, TeamSide } from "../types/match";
+import type {
+    MatchState,
+    TeamSide,
+} from "../types/match";
 
 export type MatchAction =
     | {
@@ -26,8 +29,11 @@ export type MatchAction =
         side: TeamSide;
     }
     | {
-        type: "SET_HALF";
-        half: 1 | 2;
+        type: "START_SECOND_HALF";
+        rerolls: {
+            home: number;
+            away: number;
+        };
     }
     | {
         type: "RESET_MATCH";
@@ -53,7 +59,10 @@ export function matchReducer(
                 ...state,
                 [action.side]: {
                     ...state[action.side],
-                    score: Math.max(0, state[action.side].score - 1),
+                    score: Math.max(
+                        0,
+                        state[action.side].score - 1,
+                    ),
                 },
             };
 
@@ -62,7 +71,10 @@ export function matchReducer(
                 ...state,
                 [action.side]: {
                     ...state[action.side],
-                    turn: Math.min(8, state[action.side].turn + 1),
+                    turn: Math.min(
+                        8,
+                        state[action.side].turn + 1,
+                    ),
                 },
             };
 
@@ -71,7 +83,10 @@ export function matchReducer(
                 ...state,
                 [action.side]: {
                     ...state[action.side],
-                    turn: Math.max(0, state[action.side].turn - 1),
+                    turn: Math.max(
+                        0,
+                        state[action.side].turn - 1,
+                    ),
                 },
             };
 
@@ -92,14 +107,27 @@ export function matchReducer(
                 ...state,
                 [action.side]: {
                     ...state[action.side],
-                    rerolls: state[action.side].rerolls + 1,
+                    rerolls:
+                        state[action.side].rerolls + 1,
                 },
             };
 
-        case "SET_HALF":
+        case "START_SECOND_HALF":
             return {
                 ...state,
-                half: action.half,
+                half: 2,
+
+                home: {
+                    ...state.home,
+                    turn: 0,
+                    rerolls: action.rerolls.home,
+                },
+
+                away: {
+                    ...state.away,
+                    turn: 0,
+                    rerolls: action.rerolls.away,
+                },
             };
 
         case "RESET_MATCH":

@@ -6,6 +6,7 @@ import {
 } from "react";
 
 import { ControlPanel } from "../components/ControlPanel/ControlPanel";
+import { HalfTimeOverlay } from "../components/HalfTimeOverlay/HalfTimeOverlay";
 import { Scoreboard } from "../components/ScoreBoard/Scoreboard";
 import { TouchdownOverlay } from "../components/TouchdownOverlay/TouchdownOverlay";
 
@@ -54,8 +55,18 @@ export function MatchLayout() {
     const [isTouchdownVisible, setIsTouchdownVisible] =
         useState(false);
 
+    const [isHalfTimeVisible, setIsHalfTimeVisible] =
+        useState(false);
+
     const touchdownTimerRef =
         useRef<ReturnType<typeof setTimeout> | null>(null);
+
+    const hasShownHalfTimeRef = useRef(false);
+
+    const canStartSecondHalf =
+        state.half === 1 &&
+        state.home.turn === 8 &&
+        state.away.turn === 8;
 
     function clearTouchdownTimer() {
         if (touchdownTimerRef.current) {
@@ -69,6 +80,21 @@ export function MatchLayout() {
             clearTouchdownTimer();
         };
     }, []);
+
+    useEffect(() => {
+        if (
+            canStartSecondHalf &&
+            !hasShownHalfTimeRef.current
+        ) {
+            setIsHalfTimeVisible(true);
+            hasShownHalfTimeRef.current = true;
+        }
+
+        if (!canStartSecondHalf) {
+            hasShownHalfTimeRef.current = false;
+            setIsHalfTimeVisible(false);
+        }
+    }, [canStartSecondHalf]);
 
     function handleTouchdown(side: TeamSide) {
         const scoringTeam =
@@ -92,11 +118,39 @@ export function MatchLayout() {
         }, 5000);
     }
 
+    function handleStartSecondHalf() {
+        if (!canStartSecondHalf) {
+            return;
+        }
+
+        setIsHalfTimeVisible(false);
+        hasShownHalfTimeRef.current = false;
+
+        dispatch({
+            type: "START_SECOND_HALF",
+            rerolls: {
+                home: initialState.home.rerolls,
+                away: initialState.away.rerolls,
+            },
+        });
+    }
+
     function handleResetMatch() {
+        const shouldReset = window.confirm(
+            "Reset the entire match? Scores, turns, rerolls, and the current half will be lost.",
+        );
+
+        if (!shouldReset) {
+            return;
+        }
+
         clearTouchdownTimer();
 
-        setIsTouchdownVisible(false);
         setTouchdownTeam(null);
+        setIsTouchdownVisible(false);
+        setIsHalfTimeVisible(false);
+
+        hasShownHalfTimeRef.current = false;
 
         dispatch({
             type: "RESET_MATCH",
@@ -117,11 +171,25 @@ export function MatchLayout() {
                 dispatch={dispatch}
                 onTouchdown={handleTouchdown}
                 onResetMatch={handleResetMatch}
+                onOpenHalfTime={() =>
+                    setIsHalfTimeVisible(true)
+                }
+                canStartSecondHalf={canStartSecondHalf}
             />
 
             <TouchdownOverlay
                 team={touchdownTeam}
                 isVisible={isTouchdownVisible}
+            />
+
+            <HalfTimeOverlay
+                home={state.home}
+                away={state.away}
+                isVisible={isHalfTimeVisible}
+                onStartSecondHalf={handleStartSecondHalf}
+                onClose={() =>
+                    setIsHalfTimeVisible(false)
+                }
             />
         </main>
     );

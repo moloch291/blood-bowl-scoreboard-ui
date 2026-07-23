@@ -5,17 +5,17 @@ import type {
     TeamSide,
 } from "../../types/match";
 
-import type { matchReducer } from "../../reducers/matchReducer";
+import type { MatchAction } from "../../reducers/matchReducer";
 
 import "../../styles/control-panel.css";
-
-type MatchAction = Parameters<typeof matchReducer>[1];
 
 interface ControlPanelProps {
     state: MatchState;
     dispatch: Dispatch<MatchAction>;
     onTouchdown: (side: TeamSide) => void;
     onResetMatch: () => void;
+    onOpenHalfTime: () => void;
+    canStartSecondHalf: boolean;
 }
 
 export function ControlPanel({
@@ -23,6 +23,8 @@ export function ControlPanel({
     dispatch,
     onTouchdown,
     onResetMatch,
+    onOpenHalfTime,
+    canStartSecondHalf,
 }: ControlPanelProps) {
     function removeScore(side: TeamSide) {
         dispatch({
@@ -56,13 +58,6 @@ export function ControlPanel({
         dispatch({
             type: "RESTORE_REROLL",
             side,
-        });
-    }
-
-    function setHalf(half: 1 | 2) {
-        dispatch({
-            type: "SET_HALF",
-            half,
         });
     }
 
@@ -120,6 +115,7 @@ export function ControlPanel({
                             type="button"
                             className="button button--primary"
                             onClick={() => nextTurn("home")}
+                            disabled={state.home.turn === 8}
                         >
                             + Turn
                         </button>
@@ -159,33 +155,40 @@ export function ControlPanel({
 
                 <div className="control-panel__group">
                     <h3 className="control-panel__group-title">
-                        Half
+                        Current Half
                     </h3>
 
-                    <div className="control-panel__buttons">
+                    <strong>
+                        {state.half === 1
+                            ? "First Half"
+                            : "Second Half"}
+                    </strong>
+                </div>
+
+                {state.half === 1 && (
+                    <div className="control-panel__group">
                         <button
                             type="button"
-                            className={`button ${state.half === 1
-                                ? "button--primary"
-                                : "button--secondary"
-                                }`}
-                            onClick={() => setHalf(1)}
+                            className="button button--primary"
+                            onClick={onOpenHalfTime}
+                            disabled={!canStartSecondHalf}
                         >
-                            First Half
+                            Review Half Time
                         </button>
 
-                        <button
-                            type="button"
-                            className={`button ${state.half === 2
-                                ? "button--primary"
-                                : "button--secondary"
-                                }`}
-                            onClick={() => setHalf(2)}
-                        >
-                            Second Half
-                        </button>
+                        {!canStartSecondHalf && (
+                            <p>
+                                Both teams must reach Turn 8.
+                            </p>
+                        )}
                     </div>
-                </div>
+                )}
+
+                {state.half === 2 && (
+                    <p>
+                        Second half in progress
+                    </p>
+                )}
 
                 <button
                     type="button"
@@ -236,6 +239,7 @@ export function ControlPanel({
                             type="button"
                             className="button button--primary"
                             onClick={() => nextTurn("away")}
+                            disabled={state.away.turn === 8}
                         >
                             + Turn
                         </button>
