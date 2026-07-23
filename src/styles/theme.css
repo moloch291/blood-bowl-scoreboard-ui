@@ -1,0 +1,77 @@
+:root {
+    /* Neutral palette */
+    --color-black: #050608;
+    --color-background: #0b0d12;
+    --color-surface: #12151c;
+    --color-surface-raised: #191d27;
+    --color-border: rgba(255, 255, 255, 0.14);
+
+    --color-text: #f4efe4;
+    --color-text-muted: #a5a8b2;
+
+    /* Shared broadcast accents */
+    --color-gold: #d4aa45;
+    --color-bone: #e8dfcc;
+    --color-danger: #bd3345;
+
+    /* Temple Serpents */
+    --serpents-primary: #087b69;
+    --serpents-secondary: #dfb43f;
+    --serpents-accent: #21c6b5;
+    --serpents-dark: #061c18;
+
+    /* Blackwood Reapers */
+    --reapers-primary: #17131c;
+    --reapers-secondary: #71339a;
+    --reapers-accent: #aa62db;
+    --reapers-dark: #08070a;
+
+    /* Typography */
+    --font-display:
+        Impact,
+        Haettenschweiler,
+        "Arial Narrow Bold",
+        sans-serif;
+
+    --font-body:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    /* Spacing */
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-5: 1.5rem;
+    --space-6: 2rem;
+    --space-7: 3rem;
+    --space-8: 4rem;
+
+    /* Shape */
+    --radius-small: 0.5rem;
+    --radius-medium: 1rem;
+    --radius-large: 1.5rem;
+    --radius-pill: 999px;
+
+    /* Shadows */
+    --shadow-small:
+        0 8px 20px rgba(0, 0, 0, 0.25);
+
+    --shadow-large:
+        0 30px 80px rgba(0, 0, 0, 0.5);
+
+    --glow-serpents:
+        0 0 30px rgba(33, 198, 181, 0.28);
+
+    --glow-reapers:
+        0 0 30px rgba(113, 51, 154, 0.35);
+
+    /* Animation timing */
+    --transition-fast: 140ms ease;
+    --transition-normal: 240ms ease;
+    --transition-slow: 450ms ease;
+}
