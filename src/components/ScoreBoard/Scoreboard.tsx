@@ -20,7 +20,7 @@ export function Scoreboard({
             />
 
             <div className="scoreboard__center">
-                <div className="scoreboard__vs">VS</div>
+                <div className="scoreboard__versus">VS</div>
 
                 <div className="scoreboard__half">
                     Half {half}
