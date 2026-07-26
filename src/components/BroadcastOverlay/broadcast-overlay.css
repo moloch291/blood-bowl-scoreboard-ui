@@ -217,12 +217,21 @@
     content: "";
 
     position: absolute;
-
     top: -60%;
     left: -120%;
 
     width: 80%;
     height: 220%;
+
+    background:
+        linear-gradient(90deg,
+            transparent 0%,
+            transparent 32%,
+            rgb(255 255 255 / 8%) 42%,
+            rgb(255 255 255 / 65%) 50%,
+            rgb(255 255 255 / 8%) 58%,
+            transparent 68%,
+            transparent 100%);
 
     filter: blur(8px);
 
@@ -230,6 +239,7 @@
         translate3d(0, 0, 0) skewX(-22deg);
 
     opacity: 0;
+    will-change: transform, opacity;
 }
 
 .broadcast-overlay__copy {
@@ -318,7 +328,7 @@
 
 .broadcast-overlay--entering .broadcast-overlay__screen-shine::before {
     animation:
-        broadcast-screen-shine-polished 1250ms var(--broadcast-shine-ease) 480ms both;
+        broadcast-screen-shine-polished 720ms var(--broadcast-shine-ease) 160ms both;
 }
 
 /* Holding */
@@ -532,15 +542,18 @@
             translate3d(0, 0, 0) skewX(-22deg);
     }
 
-    8% {
-        opacity: 1;
+    12% {
+        opacity: 0.85;
+    }
+
+    82% {
+        opacity: 0.85;
     }
 
     100% {
         opacity: 0;
-
         transform:
-            translate3d(340%, 0, 0) skewX(-22deg);
+            translate3d(275%, 0, 0) skewX(-22deg);
     }
 }
 
