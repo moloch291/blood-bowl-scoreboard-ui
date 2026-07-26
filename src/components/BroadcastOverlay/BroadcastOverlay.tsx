@@ -196,7 +196,7 @@ export function BroadcastOverlay({
                     {children}
                 </div>
             </div>
-
+            <div className="broadcast-overlay__screen-shine" />
             <div className="broadcast-overlay__edge" />
         </section>
     );

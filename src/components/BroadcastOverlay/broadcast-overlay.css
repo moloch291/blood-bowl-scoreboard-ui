@@ -207,7 +207,7 @@
 .broadcast-overlay__screen-shine {
     position: absolute;
     inset: 0;
-    z-index: 1;
+    z-index: 3;
 
     overflow: hidden;
     pointer-events: none;
@@ -217,22 +217,17 @@
     content: "";
 
     position: absolute;
-    top: -30%;
-    left: -45%;
 
-    width: 32%;
-    height: 160%;
+    top: -60%;
+    left: -120%;
 
-    background: linear-gradient(90deg,
-            transparent,
-            rgb(255 255 255 / 12%) 20%,
-            rgb(255 255 255 / 72%) 50%,
-            rgb(255 255 255 / 12%) 80%,
-            transparent);
+    width: 80%;
+    height: 220%;
 
-    filter: blur(7px);
+    filter: blur(8px);
 
-    transform: translateX(0) skewX(-22deg);
+    transform:
+        translate3d(0, 0, 0) skewX(-22deg);
 
     opacity: 0;
 }
@@ -319,6 +314,11 @@
 
 .broadcast-overlay--entering .broadcast-overlay__edge {
     animation: broadcast-edge-enter 450ms ease-out 300ms forwards;
+}
+
+.broadcast-overlay--entering .broadcast-overlay__screen-shine::before {
+    animation:
+        broadcast-screen-shine-polished 1250ms var(--broadcast-shine-ease) 480ms both;
 }
 
 /* Holding */
