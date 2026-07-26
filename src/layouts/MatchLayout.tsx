@@ -53,6 +53,9 @@ export function MatchLayout() {
         defaultInitialState,
     );
 
+    const touchdownAnimationFrameRef =
+        useRef<number | null>(null);
+
     const matchInitialStateRef =
         useRef<MatchState>(defaultInitialState);
 
@@ -91,8 +94,19 @@ export function MatchLayout() {
         }
     }
 
+    function clearTouchdownAnimationFrame() {
+        if (touchdownAnimationFrameRef.current !== null) {
+            cancelAnimationFrame(
+                touchdownAnimationFrameRef.current,
+            );
+
+            touchdownAnimationFrameRef.current = null;
+        }
+    }
+
     function clearOverlays() {
         clearTouchdownTimer();
+        clearTouchdownAnimationFrame();
 
         setTouchdownTeam(null);
         setIsTouchdownVisible(false);
@@ -106,6 +120,7 @@ export function MatchLayout() {
     useEffect(() => {
         return () => {
             clearTouchdownTimer();
+            clearTouchdownAnimationFrame();
         };
     }, []);
 
@@ -187,10 +202,22 @@ export function MatchLayout() {
             side,
         });
 
-        setTouchdownTeam(scoringTeam);
-        setIsTouchdownVisible(true);
-
         clearTouchdownTimer();
+        clearTouchdownAnimationFrame();
+
+        // Mount/reset the overlay in its hidden state first.
+        setIsTouchdownVisible(false);
+        setTouchdownTeam(scoringTeam);
+
+        // Wait until the hidden state has been painted.
+        touchdownAnimationFrameRef.current =
+            requestAnimationFrame(() => {
+                touchdownAnimationFrameRef.current =
+                    requestAnimationFrame(() => {
+                        setIsTouchdownVisible(true);
+                        touchdownAnimationFrameRef.current = null;
+                    });
+            });
 
         touchdownTimerRef.current = setTimeout(() => {
             setIsTouchdownVisible(false);
