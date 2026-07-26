@@ -528,30 +528,19 @@
 @keyframes broadcast-screen-shine-polished {
     0% {
         opacity: 0;
-
-        transform: translate3d(0, 0, 0) skewX(-22deg);
+        transform:
+            translate3d(0, 0, 0) skewX(-22deg);
     }
 
-    10% {
-        opacity: 0.3;
-    }
-
-    28% {
-        opacity: 0.9;
-    }
-
-    68% {
-        opacity: 0.75;
-    }
-
-    88% {
-        opacity: 0.2;
+    8% {
+        opacity: 1;
     }
 
     100% {
         opacity: 0;
 
-        transform: translate3d(480%, 0, 0) skewX(-22deg);
+        transform:
+            translate3d(340%, 0, 0) skewX(-22deg);
     }
 }
 
