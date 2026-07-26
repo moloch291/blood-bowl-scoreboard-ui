@@ -53,10 +53,15 @@ export function MatchLayout() {
         defaultInitialState,
     );
 
+    interface TurnAnnouncement {
+        team: Team;
+        turn: number;
+    }
+
     const [
-        isBroadcastPreviewVisible,
-        setIsBroadcastPreviewVisible,
-    ] = useState(false);
+        turnAnnouncement,
+        setTurnAnnouncement,
+    ] = useState<TurnAnnouncement | null>(null);
 
     const touchdownAnimationFrameRef =
         useRef<number | null>(null);
@@ -121,18 +126,6 @@ export function MatchLayout() {
         hasShownHalfTimeRef.current = false;
         hasShownFullTimeRef.current = false;
     }
-
-    useEffect(() => {
-        if (screen !== "match") {
-            return;
-        }
-
-        const timer = setTimeout(() => {
-            setIsBroadcastPreviewVisible(true);
-        }, 500);
-
-        return () => clearTimeout(timer);
-    }, [screen]);
 
     useEffect(() => {
         return () => {
@@ -202,6 +195,36 @@ export function MatchLayout() {
         });
 
         setScreen("match");
+    }
+
+    function handleStartTurn(side: TeamSide) {
+        if (isMatchFinished) {
+            return;
+        }
+
+        const teamState =
+            side === "home"
+                ? state.home
+                : state.away;
+
+        if (
+            teamState.turn >= 8 ||
+            teamState.hasFinishedHalf
+        ) {
+            return;
+        }
+
+        const nextTurn = teamState.turn + 1;
+
+        dispatch({
+            type: "NEXT_TURN",
+            side,
+        });
+
+        setTurnAnnouncement({
+            team: teamState.team,
+            turn: nextTurn,
+        });
     }
 
     function handleTouchdown(side: TeamSide) {
@@ -322,6 +345,7 @@ export function MatchLayout() {
             <ControlPanel
                 state={state}
                 dispatch={dispatch}
+                onStartTurn={handleStartTurn}
                 onTouchdown={handleTouchdown}
                 onResetMatch={handleResetMatch}
                 onOpenHalfTime={() =>
@@ -364,15 +388,17 @@ export function MatchLayout() {
                 onNewMatch={handleNewMatch}
             />
             <BroadcastOverlay
-                team={state.home.team}
-                isOpen={isBroadcastPreviewVisible}
+                team={turnAnnouncement?.team ?? null}
+                isOpen={turnAnnouncement !== null}
                 eyebrow="Possession"
                 title="Your Turn"
-                subtitle={`${state.home.team.name} • Turn ${state.home.turn}`}
-                motionTheme="heavy"
-                onExited={() =>
-                    setIsBroadcastPreviewVisible(false)
+                subtitle={
+                    turnAnnouncement
+                        ? `${turnAnnouncement.team.name} • Turn ${turnAnnouncement.turn}`
+                        : ""
                 }
+                motionTheme="heavy"
+                onExited={() => setTurnAnnouncement(null)}
             />
         </main>
     );

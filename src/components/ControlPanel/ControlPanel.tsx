@@ -12,6 +12,7 @@ import "../../styles/control-panel.css";
 interface ControlPanelProps {
     state: MatchState;
     dispatch: Dispatch<MatchAction>;
+    onStartTurn: (side: TeamSide) => void;
     onTouchdown: (side: TeamSide) => void;
     onResetMatch: () => void;
     onOpenHalfTime: () => void;
@@ -22,6 +23,7 @@ interface ControlPanelProps {
 export function ControlPanel({
     state,
     dispatch,
+    onStartTurn,
     onTouchdown,
     onResetMatch,
     onOpenHalfTime,
@@ -36,13 +38,6 @@ export function ControlPanel({
     function removeScore(side: TeamSide) {
         dispatch({
             type: "REMOVE_SCORE",
-            side,
-        });
-    }
-
-    function nextTurn(side: TeamSide) {
-        dispatch({
-            type: "NEXT_TURN",
             side,
         });
     }
@@ -136,7 +131,7 @@ export function ControlPanel({
                             <button
                                 type="button"
                                 className="button button--primary"
-                                onClick={() => nextTurn("home")}
+                                onClick={() => onStartTurn("home")}
                                 disabled={isMatchFinished}
                             >
                                 + Turn
@@ -302,10 +297,10 @@ export function ControlPanel({
                             <button
                                 type="button"
                                 className="button button--primary"
-                                onClick={() => nextTurn("away")}
+                                onClick={() => onStartTurn("away")}
                                 disabled={isMatchFinished}
                             >
-                                + Turn
+                                Start Turn
                             </button>
                         ) : (
                             <button
