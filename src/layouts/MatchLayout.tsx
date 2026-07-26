@@ -4,7 +4,7 @@ import {
     useRef,
     useState,
 } from "react";
-
+import { BroadcastOverlay } from "../components/BroadcastOverlay/BroadcastOverlay";
 import { ControlPanel } from "../components/ControlPanel/ControlPanel";
 import { FinalScoreOverlay } from "../components/FinalsScoreOverlay/FinalScoreOverlay";
 import { HalfTimeOverlay } from "../components/HalfTimeOverlay/HalfTimeOverlay";
@@ -52,6 +52,11 @@ export function MatchLayout() {
         matchReducer,
         defaultInitialState,
     );
+
+    const [
+        isBroadcastPreviewVisible,
+        setIsBroadcastPreviewVisible,
+    ] = useState(false);
 
     const touchdownAnimationFrameRef =
         useRef<number | null>(null);
@@ -116,6 +121,18 @@ export function MatchLayout() {
         hasShownHalfTimeRef.current = false;
         hasShownFullTimeRef.current = false;
     }
+
+    useEffect(() => {
+        if (screen !== "match") {
+            return;
+        }
+
+        const timer = setTimeout(() => {
+            setIsBroadcastPreviewVisible(true);
+        }, 500);
+
+        return () => clearTimeout(timer);
+    }, [screen]);
 
     useEffect(() => {
         return () => {
@@ -345,6 +362,17 @@ export function MatchLayout() {
                 isVisible={matchEndStage === "winner"}
                 onReviewScoreboard={handleReviewScoreboard}
                 onNewMatch={handleNewMatch}
+            />
+            <BroadcastOverlay
+                team={state.home.team}
+                isOpen={isBroadcastPreviewVisible}
+                eyebrow="Possession"
+                title="Your Turn"
+                subtitle={`${state.home.team.name} • Turn ${state.home.turn}`}
+                motionTheme="heavy"
+                onExited={() =>
+                    setIsBroadcastPreviewVisible(false)
+                }
             />
         </main>
     );
