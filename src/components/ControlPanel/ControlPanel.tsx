@@ -134,7 +134,7 @@ export function ControlPanel({
                                 onClick={() => onStartTurn("home")}
                                 disabled={isMatchFinished}
                             >
-                                + Turn
+                                Start Turn
                             </button>
                         ) : (
                             <button
