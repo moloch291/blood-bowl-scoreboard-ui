@@ -78,6 +78,8 @@
 }
 
 .broadcast-overlay__panel {
+    opacity: 1;
+    will-change: transform;
     position: absolute;
     top: -15%;
     bottom: -15%;
@@ -86,24 +88,22 @@
 
     background:
         linear-gradient(135deg,
-            rgb(255 255 255 / 12%),
-            rgb(0 0 0 / 38%));
+            rgb(255 255 255 / 7%),
+            rgb(0 0 0 / 28%));
 
     border-inline: 1px solid rgb(255 255 255 / 18%);
 }
 
 .broadcast-overlay__panel--left {
+    left: -18%;
+
     transform:
-        translate3d(calc(var(--broadcast-panel-distance) * -1),
-            0,
-            0) skewX(-10deg);
+        translate3d(-115%, 0, 0) skewX(-10deg);
 }
 
 .broadcast-overlay__panel--right {
-    transform:
-        translate3d(var(--broadcast-panel-distance),
-            0,
-            0) skewX(-10deg);
+    width: 42%;
+    right: -12%;
 }
 
 .broadcast-overlay__energy {
@@ -117,8 +117,7 @@
     width: 45%;
     height: 3px;
 
-    background:
-        linear-gradient(90deg,
+    background: linear-gradient(90deg,
             transparent,
             rgb(255 255 255 / 95%),
             transparent);
@@ -149,8 +148,7 @@
     width: min(90vw, 1100px);
 
     display: grid;
-    grid-template-columns:
-        minmax(220px, 0.8fr) minmax(300px, 1.2fr);
+    grid-template-columns: minmax(220px, 0.8fr) minmax(300px, 1.2fr);
     align-items: center;
     gap: clamp(2rem, 6vw, 6rem);
 }
@@ -164,15 +162,13 @@
 
     opacity: 0;
 
-    transform:
-        translate3d(var(--broadcast-logo-start-x),
+    transform: translate3d(var(--broadcast-logo-start-x),
             12px,
             0) scale(var(--broadcast-logo-start-scale)) rotate(var(--broadcast-logo-start-rotate));
 
     filter: blur(5px);
 
-    will-change:
-        transform,
+    will-change: transform,
         opacity,
         filter;
 }
@@ -186,8 +182,7 @@
 
     object-fit: contain;
 
-    filter:
-        drop-shadow(0 20px 28px rgb(0 0 0 / 55%)) drop-shadow(0 0 22px var(--broadcast-accent));
+    filter: drop-shadow(0 20px 28px rgb(0 0 0 / 55%)) drop-shadow(0 0 22px var(--broadcast-accent));
 }
 
 .broadcast-overlay__logo-glow {
@@ -202,8 +197,7 @@
 }
 
 .broadcast-overlay--holding .broadcast-overlay__logo-glow {
-    animation:
-        broadcast-logo-ambient-pulse var(--broadcast-pulse-duration) ease-in-out infinite;
+    animation: broadcast-logo-ambient-pulse var(--broadcast-pulse-duration) ease-in-out infinite;
 }
 
 .broadcast-overlay__shine {
@@ -225,8 +219,7 @@
     width: 32%;
     height: 160%;
 
-    background:
-        linear-gradient(90deg,
+    background: linear-gradient(90deg,
             transparent,
             rgb(255 255 255 / 12%) 20%,
             rgb(255 255 255 / 72%) 50%,
@@ -235,8 +228,7 @@
 
     filter: blur(7px);
 
-    transform:
-        translateX(0) skewX(-22deg);
+    transform: translateX(0) skewX(-22deg);
 
     opacity: 0;
 }
@@ -247,15 +239,13 @@
 
     opacity: 0;
 
-    transform:
-        translate3d(var(--broadcast-copy-start-x),
+    transform: translate3d(var(--broadcast-copy-start-x),
             8px,
             0);
 
     filter: blur(4px);
 
-    will-change:
-        transform,
+    will-change: transform,
         opacity,
         filter;
 }
@@ -277,8 +267,7 @@
     letter-spacing: -0.045em;
     text-transform: uppercase;
 
-    text-shadow:
-        0 6px 0 rgb(0 0 0 / 25%),
+    text-shadow: 0 6px 0 rgb(0 0 0 / 25%),
         0 18px 32px rgb(0 0 0 / 45%);
 }
 
@@ -294,8 +283,7 @@
 .broadcast-overlay__edge {
     z-index: 4;
 
-    border:
-        clamp(5px, 0.8vw, 12px) solid var(--broadcast-accent);
+    border: clamp(5px, 0.8vw, 12px) solid var(--broadcast-accent);
 
     opacity: 0;
     transform: scaleX(1.04);
@@ -308,38 +296,31 @@
 }
 
 .broadcast-overlay--entering .broadcast-overlay__color-wipe {
-    animation:
-        broadcast-wipe-enter 850ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    animation: broadcast-wipe-enter 850ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
 .broadcast-overlay--entering .broadcast-overlay__panel--left {
-    animation:
-        broadcast-panel-left-polished 760ms var(--broadcast-enter-ease) both;
+    animation: broadcast-panel-left-polished 760ms var(--broadcast-enter-ease) both;
 }
 
 .broadcast-overlay--entering .broadcast-overlay__panel--right {
-    animation:
-        broadcast-panel-right-polished 920ms var(--broadcast-enter-ease) 40ms both;
+    animation: broadcast-panel-right-polished 920ms var(--broadcast-enter-ease) 40ms both;
 }
 
 .broadcast-overlay--entering .broadcast-overlay__streak {
-    animation:
-        broadcast-streak 900ms ease-out forwards;
+    animation: broadcast-streak 900ms ease-out forwards;
 }
 
 .broadcast-overlay--entering .broadcast-overlay__edge {
-    animation:
-        broadcast-edge-enter 450ms ease-out 300ms forwards;
+    animation: broadcast-edge-enter 450ms ease-out 300ms forwards;
 }
 
 .broadcast-overlay--entering .broadcast-overlay__copy {
-    animation:
-        broadcast-copy-polished-enter 720ms var(--broadcast-enter-ease) var(--broadcast-copy-delay) both;
+    animation: broadcast-copy-polished-enter 720ms var(--broadcast-enter-ease) var(--broadcast-copy-delay) both;
 }
 
 .broadcast-overlay--entering .broadcast-overlay__logo-shell {
-    animation:
-        broadcast-logo-polished-enter 820ms var(--broadcast-enter-ease) 80ms both;
+    animation: broadcast-logo-polished-enter 820ms var(--broadcast-enter-ease) 80ms both;
 }
 
 /* Holding */
@@ -380,7 +361,7 @@
     --broadcast-logo-start-rotate: 0deg;
 
     --broadcast-copy-start-x: 65px;
-    --broadcast-copy-delay: 190ms;
+    --broadcast-copy-delay: 220ms;
 
     --broadcast-panel-distance: 8%;
     --broadcast-pulse-duration: 3200ms;
@@ -389,18 +370,15 @@
 /* Exiting */
 
 .broadcast-overlay--exiting {
-    animation:
-        broadcast-overlay-exit 650ms cubic-bezier(0.7, 0, 0.84, 0) forwards;
+    animation: broadcast-overlay-exit 650ms cubic-bezier(0.7, 0, 0.84, 0) forwards;
 }
 
 .broadcast-overlay--exiting .broadcast-overlay__logo-shell {
-    animation:
-        broadcast-logo-polished-exit 580ms var(--broadcast-exit-ease) both;
+    animation: broadcast-logo-polished-exit 580ms var(--broadcast-exit-ease) both;
 }
 
 .broadcast-overlay--exiting .broadcast-overlay__copy {
-    animation:
-        broadcast-copy-polished-exit 500ms var(--broadcast-exit-ease) both;
+    animation: broadcast-copy-polished-exit 500ms var(--broadcast-exit-ease) both;
 }
 
 @keyframes broadcast-wipe-enter {
@@ -419,21 +397,28 @@
 
 @keyframes broadcast-panel-left-enter {
     from {
-        left: -65%;
+        transform: translateX(-115%) skewX(-10deg);
     }
 
     to {
-        left: -18%;
+        transform: translateX(-4%) skewX(-10deg);
     }
 }
 
 @keyframes broadcast-panel-right-enter {
-    from {
-        right: -65%;
+    0% {
+        transform:
+            translate3d(45%, 0, 0) skewX(-12deg);
     }
 
-    to {
-        right: -18%;
+    55% {
+        transform:
+            translate3d(8%, 0, 0) skewX(-13deg);
+    }
+
+    100% {
+        transform:
+            translate3d(0, 0, 0) skewX(-14deg);
     }
 }
 
@@ -441,8 +426,7 @@
     from {
         opacity: 0;
 
-        transform:
-            translate3d(calc(var(--broadcast-panel-distance) * -1),
+        transform: translate3d(calc(var(--broadcast-panel-distance) * -1),
                 0,
                 0) skewX(-10deg);
     }
@@ -450,8 +434,7 @@
     to {
         opacity: 1;
 
-        transform:
-            translate3d(-2%, 0, 0) skewX(-10deg);
+        transform: translate3d(-2%, 0, 0) skewX(-10deg);
     }
 }
 
@@ -459,8 +442,7 @@
     from {
         opacity: 0;
 
-        transform:
-            translate3d(var(--broadcast-panel-distance),
+        transform: translate3d(var(--broadcast-panel-distance),
                 0,
                 0) skewX(-10deg);
     }
@@ -468,8 +450,7 @@
     to {
         opacity: 1;
 
-        transform:
-            translate3d(2%, 0, 0) skewX(-10deg);
+        transform: translate3d(2%, 0, 0) skewX(-10deg);
     }
 }
 
@@ -493,8 +474,7 @@
     0% {
         opacity: 0;
 
-        transform:
-            translate3d(var(--broadcast-logo-start-x),
+        transform: translate3d(var(--broadcast-logo-start-x),
                 12px,
                 0) scale(var(--broadcast-logo-start-scale)) rotate(var(--broadcast-logo-start-rotate));
 
@@ -504,8 +484,7 @@
     65% {
         opacity: 1;
 
-        transform:
-            translate3d(8px, -2px, 0) scale(1.025) rotate(0.4deg);
+        transform: translate3d(8px, -2px, 0) scale(1.025) rotate(0.4deg);
 
         filter: blur(0);
     }
@@ -513,8 +492,7 @@
     100% {
         opacity: 1;
 
-        transform:
-            translate3d(0, 0, 0) scale(1) rotate(0);
+        transform: translate3d(0, 0, 0) scale(1) rotate(0);
 
         filter: blur(0);
     }
@@ -540,8 +518,7 @@
     0% {
         opacity: 0;
 
-        transform:
-            translate3d(var(--broadcast-copy-start-x),
+        transform: translate3d(var(--broadcast-copy-start-x),
                 8px,
                 0);
 
@@ -556,8 +533,7 @@
     68% {
         opacity: 1;
 
-        transform:
-            translate3d(-6px, 0, 0);
+        transform: translate3d(-6px, 0, 0);
 
         filter: blur(1px);
     }
@@ -585,8 +561,7 @@
     0% {
         opacity: 0;
 
-        transform:
-            translate3d(0, 0, 0) skewX(-22deg);
+        transform: translate3d(0, 0, 0) skewX(-22deg);
     }
 
     10% {
@@ -608,8 +583,7 @@
     100% {
         opacity: 0;
 
-        transform:
-            translate3d(480%, 0, 0) skewX(-22deg);
+        transform: translate3d(480%, 0, 0) skewX(-22deg);
     }
 }
 
@@ -640,8 +614,7 @@
     to {
         opacity: 0;
 
-        transform:
-            translate3d(-90px, -6px, 0) scale(0.92);
+        transform: translate3d(-90px, -6px, 0) scale(0.92);
 
         filter: blur(4px);
     }
