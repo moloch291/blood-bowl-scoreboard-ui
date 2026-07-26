@@ -8,7 +8,7 @@ import {
 
 import type { Team } from "../../types/team";
 
-import "./broadcast-overlay.css"
+import "./broadcast-overlay.css";
 
 type BroadcastOverlayPhase =
     | "hidden"
@@ -164,8 +164,6 @@ export function BroadcastOverlay({
                 <div className="broadcast-overlay__panel broadcast-overlay__panel--left" />
                 <div className="broadcast-overlay__panel broadcast-overlay__panel--right" />
             </div>
-
-            <div className="broadcast-overlay__screen-shine" />
 
             <div className="broadcast-overlay__content">
                 <div className="broadcast-overlay__logo-shell">
