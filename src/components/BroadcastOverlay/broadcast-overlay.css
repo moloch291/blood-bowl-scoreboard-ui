@@ -331,6 +331,16 @@
         broadcast-screen-shine-polished 720ms var(--broadcast-shine-ease) 160ms both;
 }
 
+.broadcast-overlay--entering .broadcast-overlay__logo-shell {
+    animation:
+        broadcast-logo-polished-enter 820ms var(--broadcast-enter-ease) 60ms both;
+}
+
+.broadcast-overlay--entering .broadcast-overlay__copy {
+    animation:
+        broadcast-copy-polished-enter 720ms var(--broadcast-enter-ease) var(--broadcast-copy-delay) both;
+}
+
 /* Holding */
 
 .broadcast-overlay--holding .broadcast-overlay__backdrop {
