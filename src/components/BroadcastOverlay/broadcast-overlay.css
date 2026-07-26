@@ -78,8 +78,6 @@
 }
 
 .broadcast-overlay__panel {
-    opacity: 1;
-    will-change: transform;
     position: absolute;
     top: -15%;
     bottom: -15%;
@@ -91,19 +89,25 @@
             rgb(255 255 255 / 7%),
             rgb(0 0 0 / 28%));
 
-    border-inline: 1px solid rgb(255 255 255 / 18%);
+    border-inline: 1px solid rgb(255 255 255 / 12%);
+
+    opacity: 1;
+    will-change: transform;
 }
 
 .broadcast-overlay__panel--left {
     left: -18%;
 
     transform:
-        translate3d(-115%, 0, 0) skewX(-10deg);
+        translate3d(0, 0, 0) skewX(-14deg);
 }
 
 .broadcast-overlay__panel--right {
-    width: 42%;
     right: -12%;
+    width: 42%;
+
+    transform:
+        translate3d(0, 0, 0) skewX(-14deg);
 }
 
 .broadcast-overlay__energy {
@@ -200,7 +204,7 @@
     animation: broadcast-logo-ambient-pulse var(--broadcast-pulse-duration) ease-in-out infinite;
 }
 
-.broadcast-overlay__shine {
+.broadcast-overlay__screen-shine {
     position: absolute;
     inset: 0;
     z-index: 1;
@@ -209,7 +213,7 @@
     pointer-events: none;
 }
 
-.broadcast-overlay__shine::before {
+.broadcast-overlay__screen-shine::before {
     content: "";
 
     position: absolute;
@@ -300,11 +304,13 @@
 }
 
 .broadcast-overlay--entering .broadcast-overlay__panel--left {
-    animation: broadcast-panel-left-polished 760ms var(--broadcast-enter-ease) both;
+    animation:
+        broadcast-panel-left-enter 760ms var(--broadcast-enter-ease) both;
 }
 
 .broadcast-overlay--entering .broadcast-overlay__panel--right {
-    animation: broadcast-panel-right-polished 920ms var(--broadcast-enter-ease) 40ms both;
+    animation:
+        broadcast-panel-right-enter 720ms cubic-bezier(0.22, 1, 0.36, 1) 80ms both;
 }
 
 .broadcast-overlay--entering .broadcast-overlay__streak {
@@ -315,14 +321,6 @@
     animation: broadcast-edge-enter 450ms ease-out 300ms forwards;
 }
 
-.broadcast-overlay--entering .broadcast-overlay__copy {
-    animation: broadcast-copy-polished-enter 720ms var(--broadcast-enter-ease) var(--broadcast-copy-delay) both;
-}
-
-.broadcast-overlay--entering .broadcast-overlay__logo-shell {
-    animation: broadcast-logo-polished-enter 820ms var(--broadcast-enter-ease) 80ms both;
-}
-
 /* Holding */
 
 .broadcast-overlay--holding .broadcast-overlay__backdrop {
@@ -331,16 +329,6 @@
 
 .broadcast-overlay--holding .broadcast-overlay__color-wipe {
     transform: translateX(0) skewX(0);
-}
-
-.broadcast-overlay--holding .broadcast-overlay__panel--left {
-    left: -18%;
-    transform: skewX(-14deg);
-}
-
-.broadcast-overlay--holding .broadcast-overlay__panel--right {
-    right: -18%;
-    transform: skewX(-14deg);
 }
 
 .broadcast-overlay--holding .broadcast-overlay__logo-shell,
@@ -396,24 +384,14 @@
 }
 
 @keyframes broadcast-panel-left-enter {
-    from {
-        transform: translateX(-115%) skewX(-10deg);
-    }
-
-    to {
-        transform: translateX(-4%) skewX(-10deg);
-    }
-}
-
-@keyframes broadcast-panel-right-enter {
     0% {
         transform:
-            translate3d(45%, 0, 0) skewX(-12deg);
+            translate3d(-42%, 0, 0) skewX(-11deg);
     }
 
-    55% {
+    70% {
         transform:
-            translate3d(8%, 0, 0) skewX(-13deg);
+            translate3d(-4%, 0, 0) skewX(-13deg);
     }
 
     100% {
@@ -422,35 +400,25 @@
     }
 }
 
-@keyframes broadcast-panel-left-polished {
-    from {
-        opacity: 0;
-
-        transform: translate3d(calc(var(--broadcast-panel-distance) * -1),
-                0,
-                0) skewX(-10deg);
+@keyframes broadcast-panel-right-enter {
+    0% {
+        transform:
+            translate3d(38%, 0, 0) skewX(-12deg);
     }
 
-    to {
-        opacity: 1;
-
-        transform: translate3d(-2%, 0, 0) skewX(-10deg);
-    }
-}
-
-@keyframes broadcast-panel-right-polished {
-    from {
-        opacity: 0;
-
-        transform: translate3d(var(--broadcast-panel-distance),
-                0,
-                0) skewX(-10deg);
+    55% {
+        transform:
+            translate3d(9%, 0, 0) skewX(-13deg);
     }
 
-    to {
-        opacity: 1;
+    82% {
+        transform:
+            translate3d(2%, 0, 0) skewX(-13.7deg);
+    }
 
-        transform: translate3d(2%, 0, 0) skewX(-10deg);
+    100% {
+        transform:
+            translate3d(0, 0, 0) skewX(-14deg);
     }
 }
 
