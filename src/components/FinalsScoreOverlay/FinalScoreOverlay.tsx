@@ -8,7 +8,7 @@ interface FinalScoreOverlayProps {
     home: TeamMatchState;
     away: TeamMatchState;
     isVisible: boolean;
-    onAnnounceResult: () => void;
+    onNewMatch: () => void;
     onReviewScoreboard: () => void;
 }
 
@@ -16,7 +16,7 @@ export function FinalScoreOverlay({
     home,
     away,
     isVisible,
-    onAnnounceResult,
+    onNewMatch,
     onReviewScoreboard,
 }: FinalScoreOverlayProps) {
     if (!isVisible) {
@@ -134,10 +134,10 @@ export function FinalScoreOverlay({
                     <button
                         type="button"
                         className="button button--primary"
-                        onClick={onAnnounceResult}
+                        onClick={onNewMatch}
                         autoFocus
                     >
-                        Announce Result
+                        New Match
                     </button>
                 </div>
             </section>

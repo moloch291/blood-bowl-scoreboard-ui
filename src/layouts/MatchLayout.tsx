@@ -14,7 +14,6 @@ import {
 } from "../components/MatchSetup/MatchSetup";
 import { Scoreboard } from "../components/ScoreBoard/Scoreboard";
 import { TouchdownOverlay } from "../components/TouchdownOverlay/TouchdownOverlay";
-import { WinnerOverlay } from "../components/WinnerOverlay/WinnerOverlay";
 
 import {
     blackwoodReapers,
@@ -34,8 +33,7 @@ type AppScreen = "setup" | "match";
 
 type MatchEndStage =
     | "none"
-    | "final-score"
-    | "winner";
+    | "final-score";
 
 const defaultInitialState = createInitialMatchState(
     templeSerpents,
@@ -307,10 +305,6 @@ export function MatchLayout() {
         setMatchEndStage("final-score");
     }
 
-    function handleAnnounceResult() {
-        setMatchEndStage("winner");
-    }
-
     function handleNewMatch() {
         clearOverlays();
 
@@ -351,7 +345,6 @@ export function MatchLayout() {
                 half={state.half}
                 activeSide={activeTurnSide}
             />
-
             <ControlPanel
                 state={state}
                 dispatch={dispatch}
@@ -364,12 +357,10 @@ export function MatchLayout() {
                 onOpenFinalScore={handleOpenFinalScore}
                 canStartSecondHalf={canStartSecondHalf}
             />
-
             <TouchdownOverlay
                 team={touchdownTeam}
                 isVisible={isTouchdownVisible}
             />
-
             <HalfTimeOverlay
                 home={state.home}
                 away={state.away}
@@ -379,23 +370,12 @@ export function MatchLayout() {
                     setIsHalfTimeVisible(false)
                 }
             />
-
             <FinalScoreOverlay
                 home={state.home}
                 away={state.away}
-                isVisible={
-                    matchEndStage === "final-score"
-                }
-                onAnnounceResult={handleAnnounceResult}
-                onReviewScoreboard={handleReviewScoreboard}
-            />
-
-            <WinnerOverlay
-                home={state.home}
-                away={state.away}
-                isVisible={matchEndStage === "winner"}
-                onReviewScoreboard={handleReviewScoreboard}
+                isVisible={matchEndStage === "final-score"}
                 onNewMatch={handleNewMatch}
+                onReviewScoreboard={handleReviewScoreboard}
             />
             <BroadcastOverlay
                 team={turnAnnouncement?.team ?? null}
