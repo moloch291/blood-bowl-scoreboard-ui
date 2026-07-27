@@ -183,6 +183,9 @@ export function BroadcastOverlay({
             </div>
             <div className="broadcast-overlay__screen-shine" />
             <div className="broadcast-overlay__edge" />
+            <div className="broadcast-overlay__transition-wipe">
+                <div className="broadcast-overlay__transition-wipe-core" />
+            </div>
         </section>
     );
 }
