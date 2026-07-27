@@ -23,14 +23,12 @@
     --broadcast-shine-ease:
         cubic-bezier(0.45, 0, 0.18, 1);
 
+    --broadcast-panel-left-start: -42%;
     --broadcast-logo-start-x: -90px;
     --broadcast-logo-start-scale: 0.82;
     --broadcast-logo-start-rotate: -3deg;
-
     --broadcast-copy-start-x: 115px;
     --broadcast-copy-delay: 120ms;
-
-    --broadcast-panel-distance: 14%;
     --broadcast-pulse-duration: 2200ms;
 }
 
@@ -363,15 +361,29 @@
     transform: none;
 }
 
+.broadcast-overlay--theme-heavy {
+    --broadcast-logo-start-x: -105px;
+    --broadcast-logo-start-scale: 0.76;
+    --broadcast-logo-start-rotate: -4deg;
+
+    --broadcast-copy-start-x: 120px;
+    --broadcast-copy-delay: 100ms;
+
+    --broadcast-panel-left-start: -54%;
+    --broadcast-panel-left-mid: -7%;
+
+    --broadcast-panel-right-start: 46%;
+    --broadcast-panel-right-mid: 12%;
+
+    --broadcast-pulse-duration: 1900ms;
+}
+
 .broadcast-overlay--theme-undead {
     --broadcast-logo-start-x: -45px;
     --broadcast-logo-start-scale: 0.86;
     --broadcast-logo-start-rotate: 0deg;
-
     --broadcast-copy-start-x: 65px;
     --broadcast-copy-delay: 220ms;
-
-    --broadcast-panel-distance: 8%;
     --broadcast-pulse-duration: 3200ms;
 }
 
@@ -406,12 +418,16 @@
 @keyframes broadcast-panel-left-enter {
     0% {
         transform:
-            translate3d(-42%, 0, 0) skewX(-11deg);
+            translate3d(var(--broadcast-panel-left-start),
+                0,
+                0)
     }
 
     70% {
         transform:
-            translate3d(-4%, 0, 0) skewX(-13deg);
+            translate3d(var(--broadcast-panel-left-mid),
+                0,
+                0) skewX(-13deg);
     }
 
     100% {
@@ -423,12 +439,16 @@
 @keyframes broadcast-panel-right-enter {
     0% {
         transform:
-            translate3d(38%, 0, 0) skewX(-12deg);
+            translate3d(var(--broadcast-panel-right-start),
+                0,
+                0) skewX(-12deg);
     }
 
     55% {
         transform:
-            translate3d(9%, 0, 0) skewX(-13deg);
+            translate3d(var(--broadcast-panel-right-mid),
+                0,
+                0) skewX(-13deg);
     }
 
     82% {
