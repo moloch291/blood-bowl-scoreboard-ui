@@ -1,22 +1,28 @@
 import { TeamPanel } from "../TeamPanel/TeamPanel";
-import type { TeamMatchState } from "../../types/match";
+import type {
+    TeamMatchState,
+    TeamSide,
+} from "../../types/match";
 
 interface ScoreboardProps {
     home: TeamMatchState;
     away: TeamMatchState;
     half: 1 | 2;
+    activeSide: TeamSide | null;
 }
 
 export function Scoreboard({
     home,
     away,
     half,
+    activeSide,
 }: ScoreboardProps) {
     return (
         <div className="scoreboard">
             <TeamPanel
                 team={home}
                 side="home"
+                isActive={activeSide === "home"}
             />
 
             <div className="scoreboard__center">
@@ -30,6 +36,7 @@ export function Scoreboard({
             <TeamPanel
                 team={away}
                 side="away"
+                isActive={activeSide === "away"}
             />
         </div>
     );

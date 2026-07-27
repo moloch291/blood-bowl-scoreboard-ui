@@ -4,6 +4,7 @@ import type { TeamMatchState } from "../../types/match";
 interface TeamPanelProps {
     team: TeamMatchState;
     side: "home" | "away";
+    isActive: boolean;
 }
 
 interface TeamPanelStyles extends CSSProperties {
@@ -16,6 +17,7 @@ interface TeamPanelStyles extends CSSProperties {
 export function TeamPanel({
     team,
     side,
+    isActive,
 }: TeamPanelProps) {
     const teamStyles: TeamPanelStyles = {
         "--team-primary": team.team.colors.primary,
@@ -26,9 +28,21 @@ export function TeamPanel({
 
     return (
         <section
-            className={`scoreboard__team scoreboard__team--${side}`}
+            className={[
+                "scoreboard__team",
+                `scoreboard__team--${side}`,
+                isActive
+                    ? "scoreboard__team--active"
+                    : "",
+            ]
+                .filter(Boolean)
+                .join(" ")}
             style={teamStyles}
         >
+            <span
+                className="scoreboard__active-edge"
+                aria-hidden="true"
+            />
             <div className="scoreboard__branding">
                 <img
                     className="scoreboard__team-icon"

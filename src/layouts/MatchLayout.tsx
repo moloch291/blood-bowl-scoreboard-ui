@@ -84,6 +84,9 @@ export function MatchLayout() {
     const touchdownTimerRef =
         useRef<ReturnType<typeof setTimeout> | null>(null);
 
+    const [activeTurnSide, setActiveTurnSide] =
+        useState<TeamSide | null>(null);
+
     const hasShownHalfTimeRef = useRef(false);
     const hasShownFullTimeRef = useRef(false);
 
@@ -117,7 +120,7 @@ export function MatchLayout() {
     function clearOverlays() {
         clearTouchdownTimer();
         clearTouchdownAnimationFrame();
-
+        setActiveTurnSide(null);
         setTouchdownTeam(null);
         setIsTouchdownVisible(false);
         setIsHalfTimeVisible(false);
@@ -140,6 +143,7 @@ export function MatchLayout() {
             canStartSecondHalf &&
             !hasShownHalfTimeRef.current
         ) {
+            setActiveTurnSide(null);
             setIsHalfTimeVisible(true);
             hasShownHalfTimeRef.current = true;
         }
@@ -185,6 +189,8 @@ export function MatchLayout() {
             awayRerolls,
         );
 
+        setActiveTurnSide(null);
+        setScreen("match");
         clearOverlays();
 
         matchInitialStateRef.current = newMatchState;
@@ -220,6 +226,8 @@ export function MatchLayout() {
             type: "NEXT_TURN",
             side,
         });
+
+        setActiveTurnSide(side);
 
         setTurnAnnouncement({
             team: teamState.team,
@@ -275,6 +283,7 @@ export function MatchLayout() {
 
         setIsHalfTimeVisible(false);
         hasShownHalfTimeRef.current = false;
+        setActiveTurnSide(null);
 
         dispatch({
             type: "START_SECOND_HALF",
@@ -340,6 +349,7 @@ export function MatchLayout() {
                 home={state.home}
                 away={state.away}
                 half={state.half}
+                activeSide={activeTurnSide}
             />
 
             <ControlPanel
