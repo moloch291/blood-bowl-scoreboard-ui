@@ -391,7 +391,7 @@ export function MatchLayout() {
                 team={turnAnnouncement?.team ?? null}
                 isOpen={turnAnnouncement !== null}
                 eyebrow="Possession"
-                title="Your Turn"
+                title="Next Turn"
                 subtitle={
                     turnAnnouncement
                         ? `${turnAnnouncement.team.name} • Turn ${turnAnnouncement.turn}`
