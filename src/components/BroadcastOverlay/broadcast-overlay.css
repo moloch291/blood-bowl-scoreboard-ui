@@ -337,12 +337,13 @@
 }
 
 .broadcast-overlay--entering .broadcast-overlay__color-wipe {
-    animation: broadcast-wipe-enter 850ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    animation:
+        broadcast-wipe-enter 850ms cubic-bezier(0.2, 0.8, 0.2, 1) 120ms both;
 }
 
 .broadcast-overlay--entering .broadcast-overlay__panel--left {
     animation:
-        broadcast-panel-left-enter 760ms var(--broadcast-enter-ease) both;
+        broadcast-panel-left-enter 760ms var(--broadcast-enter-ease) 180ms both;
 }
 
 .broadcast-overlay--entering .broadcast-overlay__panel--right {
@@ -350,8 +351,9 @@
         broadcast-panel-right-enter 720ms cubic-bezier(0.22, 1, 0.36, 1) 80ms both;
 }
 
-.broadcast-overlay--entering .broadcast-overlay__streak {
-    animation: broadcast-streak 900ms ease-out forwards;
+.broadcast-overlay--entering .broadcast-overlay__panel--right {
+    animation:
+        broadcast-panel-right-enter 720ms cubic-bezier(0.22, 1, 0.36, 1) 240ms both;
 }
 
 .broadcast-overlay--entering .broadcast-overlay__edge {
@@ -360,17 +362,17 @@
 
 .broadcast-overlay--entering .broadcast-overlay__screen-shine::before {
     animation:
-        broadcast-screen-shine-polished 720ms var(--broadcast-shine-ease) 160ms both;
+        broadcast-screen-shine-polished 720ms var(--broadcast-shine-ease) 260ms both;
 }
 
 .broadcast-overlay--entering .broadcast-overlay__logo-shell {
     animation:
-        broadcast-logo-polished-enter 820ms var(--broadcast-enter-ease) 60ms both;
+        broadcast-logo-polished-enter 820ms var(--broadcast-enter-ease) 300ms both;
 }
 
 .broadcast-overlay--entering .broadcast-overlay__copy {
     animation:
-        broadcast-copy-polished-enter 720ms var(--broadcast-enter-ease) var(--broadcast-copy-delay) both;
+        broadcast-copy-polished-enter 720ms var(--broadcast-enter-ease) 360ms both;
 }
 
 .broadcast-overlay--entering .broadcast-overlay__transition-wipe-core {
@@ -692,23 +694,11 @@
 
 @keyframes broadcast-transition-wipe-enter {
     0% {
-        transform:
-            translate3d(-115%, 0, 0) skewX(-12deg);
-    }
-
-    46% {
-        transform:
-            translate3d(0, 0, 0) skewX(-8deg);
-    }
-
-    54% {
-        transform:
-            translate3d(0, 0, 0) skewX(-8deg);
+        transform: translate3d(-115%, 0, 0) skewX(-12deg);
     }
 
     100% {
-        transform:
-            translate3d(115%, 0, 0) skewX(-12deg);
+        transform: translate3d(115%, 0, 0) skewX(-12deg);
     }
 }
 
@@ -737,11 +727,11 @@
 @keyframes broadcast-transition-content-hide {
 
     0%,
-    44% {
+    45% {
         opacity: 1;
     }
 
-    52%,
+    46%,
     100% {
         opacity: 0;
     }
