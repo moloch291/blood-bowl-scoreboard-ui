@@ -1,5 +1,14 @@
-.scoreboard {
+.scoreboard-shell {
+    --active-team-accent: transparent;
+
+    position: relative;
+
     width: min(1180px, calc(100% - 2rem));
+    margin: 0 auto;
+}
+
+.scoreboard {
+    width: 100%;
     margin: 0 auto;
 
     display: grid;
@@ -262,14 +271,16 @@
 
 /* Active turn edge */
 
-.scoreboard__active-edge {
+/* Active turn indicator */
+
+.scoreboard__active-indicator {
     position: absolute;
-    top: 0.8rem;
-    bottom: 0.8rem;
+    top: 0.9rem;
+    bottom: 0.9rem;
+    left: -0.85rem;
 
-    width: 5px;
-
-    z-index: 3;
+    width: 6px;
+    z-index: 5;
 
     overflow: hidden;
 
@@ -279,35 +290,31 @@
 
     background:
         color-mix(in srgb,
-            var(--team-accent) 55%,
+            var(--active-team-accent) 55%,
             transparent);
 
     box-shadow:
-        0 0 6px color-mix(in srgb,
-            var(--team-accent) 28%,
+        0 0 8px color-mix(in srgb,
+            var(--active-team-accent) 42%,
+            transparent),
+        0 0 18px color-mix(in srgb,
+            var(--active-team-accent) 24%,
             transparent);
 
     pointer-events: none;
 
     transition:
+        left 240ms ease,
+        right 240ms ease,
         opacity 180ms ease-out;
 }
 
-.scoreboard__team--home .scoreboard__active-edge {
-    left: 0.45rem;
-}
-
-.scoreboard__team--away .scoreboard__active-edge {
-    right: 0.45rem;
-}
-
-.scoreboard__active-edge::after {
+.scoreboard__active-indicator::after {
     content: "";
 
     position: absolute;
-
-    left: 0;
     top: -35%;
+    left: 0;
 
     width: 100%;
     height: 38%;
@@ -317,25 +324,44 @@
     background:
         linear-gradient(180deg,
             transparent,
-            var(--team-accent) 35%,
+            var(--active-team-accent) 35%,
             white 50%,
-            var(--team-accent) 65%,
+            var(--active-team-accent) 65%,
             transparent);
 
     box-shadow:
-        0 0 8px var(--team-accent),
+        0 0 8px var(--active-team-accent),
         0 0 14px color-mix(in srgb,
-            var(--team-accent) 65%,
+            var(--active-team-accent) 65%,
             transparent);
 }
 
-.scoreboard__team--active .scoreboard__active-edge {
+.scoreboard-shell--active-home .scoreboard__active-indicator {
+    left: -0.85rem;
+    right: auto;
     opacity: 1;
 }
 
-.scoreboard__team--active .scoreboard__active-edge::after {
+.scoreboard-shell--active-away .scoreboard__active-indicator {
+    right: -0.85rem;
+    left: auto;
+    opacity: 1;
+}
+
+.scoreboard-shell--active-home .scoreboard__active-indicator::after,
+.scoreboard-shell--active-away .scoreboard__active-indicator::after {
     animation:
-        scoreboard-active-edge-travel 2.8s ease-in-out infinite alternate;
+        scoreboard-active-indicator-travel 2.8s ease-in-out infinite alternate;
+}
+
+@keyframes scoreboard-active-indicator-travel {
+    from {
+        transform: translate3d(0, 0, 0);
+    }
+
+    to {
+        transform: translate3d(0, 255%, 0);
+    }
 }
 
 @keyframes scoreboard-active-edge-travel {
@@ -391,7 +417,7 @@
 }
 
 @media (max-width: 560px) {
-    .scoreboard {
+    .scoreboard-shell {
         width: min(100% - 1rem, 1180px);
         margin-top: 1rem;
     }
@@ -423,8 +449,20 @@
     }
 }
 
+@media (max-width: 560px) {
+    .scoreboard-shell--active-home .scoreboard__active-indicator {
+        left: -0.55rem;
+    }
+
+    .scoreboard-shell--active-away .scoreboard__active-indicator {
+        right: -0.55rem;
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
-    .scoreboard__team--active .scoreboard__active-edge::after {
+
+    .scoreboard-shell--active-home .scoreboard__active-indicator::after,
+    .scoreboard-shell--active-away .scoreboard__active-indicator::after {
         animation: none;
         top: 31%;
     }

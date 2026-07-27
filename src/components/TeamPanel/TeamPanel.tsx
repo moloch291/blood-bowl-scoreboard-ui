@@ -4,7 +4,6 @@ import type { TeamMatchState } from "../../types/match";
 interface TeamPanelProps {
     team: TeamMatchState;
     side: "home" | "away";
-    isActive: boolean;
 }
 
 interface TeamPanelStyles extends CSSProperties {
@@ -17,7 +16,6 @@ interface TeamPanelStyles extends CSSProperties {
 export function TeamPanel({
     team,
     side,
-    isActive,
 }: TeamPanelProps) {
     const teamStyles: TeamPanelStyles = {
         "--team-primary": team.team.colors.primary,
@@ -31,18 +29,9 @@ export function TeamPanel({
             className={[
                 "scoreboard__team",
                 `scoreboard__team--${side}`,
-                isActive
-                    ? "scoreboard__team--active"
-                    : "",
-            ]
-                .filter(Boolean)
-                .join(" ")}
+            ].join(" ")}
             style={teamStyles}
         >
-            <span
-                className="scoreboard__active-edge"
-                aria-hidden="true"
-            />
             <div className="scoreboard__branding">
                 <img
                     className="scoreboard__team-icon"
@@ -50,7 +39,6 @@ export function TeamPanel({
                     alt=""
                     aria-hidden="true"
                 />
-
                 <div className="scoreboard__team-info">
                     <div className="scoreboard__team-name">
                         {team.team.shortName}
@@ -62,7 +50,6 @@ export function TeamPanel({
                     </div>
                 </div>
             </div>
-
             <div
                 className="scoreboard__score"
                 aria-label={`${team.team.name} score ${team.score}`}
