@@ -46,7 +46,7 @@ export function HalfTimeOverlay({
                     <div className="half-time-overlay__team">
                         <img
                             className="half-time-overlay__icon"
-                            src={home.team.assets.logo}
+                            src={home.team.assets.wordmark}
                             alt=""
                             aria-hidden="true"
                         />
@@ -78,7 +78,7 @@ export function HalfTimeOverlay({
 
                         <img
                             className="half-time-overlay__icon"
-                            src={away.team.assets.logo}
+                            src={away.team.assets.wordmark}
                             alt=""
                             aria-hidden="true"
                         />
