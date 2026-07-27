@@ -16,27 +16,14 @@ type BroadcastOverlayPhase =
     | "holding"
     | "exiting";
 
-type BroadcastMotionTheme =
-    | "default"
-    | "heavy"
-    | "elegant"
-    | "metallic"
-    | "chaos"
-    | "undead";
-
 interface BroadcastOverlayProps {
     team: Team | null;
     isOpen: boolean;
-
     eyebrow?: string;
     title: string;
     subtitle?: string;
-
     duration?: number;
     children?: ReactNode;
-
-    motionTheme?: BroadcastMotionTheme;
-
     onExited?: () => void;
 }
 
@@ -59,7 +46,6 @@ export function BroadcastOverlay({
     subtitle,
     duration = DEFAULT_DURATION,
     children,
-    motionTheme = "default",
     onExited,
 }: BroadcastOverlayProps) {
     const [phase, setPhase] =
@@ -145,7 +131,6 @@ export function BroadcastOverlay({
             className={[
                 "broadcast-overlay",
                 `broadcast-overlay--${phase}`,
-                `broadcast-overlay--theme-${motionTheme}`,
             ].join(" ")}
             style={styles}
             aria-hidden={!isOpen}

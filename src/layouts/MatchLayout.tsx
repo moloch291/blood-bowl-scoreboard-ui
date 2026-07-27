@@ -407,7 +407,6 @@ export function MatchLayout() {
                         ? `${turnAnnouncement.team.name} • Turn ${turnAnnouncement.turn}`
                         : ""
                 }
-                motionTheme="heavy"
                 onExited={() => setTurnAnnouncement(null)}
             />
         </main>
