@@ -49,7 +49,7 @@ export function ControlPanel({
         });
     }
 
-    function useReroll(side: TeamSide) {
+    function spendReroll(side: TeamSide) {
         dispatch({
             type: "USE_REROLL",
             side,
@@ -163,7 +163,7 @@ export function ControlPanel({
                         <button
                             type="button"
                             className="button button--secondary"
-                            onClick={() => useReroll("home")}
+                            onClick={() => spendReroll("home")}
                             disabled={
                                 isMatchFinished ||
                                 state.home.rerolls === 0
@@ -350,7 +350,7 @@ export function ControlPanel({
                         <button
                             type="button"
                             className="button button--secondary"
-                            onClick={() => useReroll("away")}
+                            onClick={() => spendReroll("away")}
                             disabled={
                                 isMatchFinished ||
                                 state.away.rerolls === 0
