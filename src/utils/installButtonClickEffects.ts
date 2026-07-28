@@ -1,6 +1,6 @@
 const BUTTON_SELECTOR = ".button";
 const EFFECT_CLASS = "button--click-effect";
-const EFFECT_DURATION = 360;
+const EFFECT_DURATION = 600;
 
 const cleanupTimers = new WeakMap<
     HTMLButtonElement,
@@ -27,19 +27,15 @@ function findButton(
 function playButtonEffect(button: HTMLButtonElement) {
     const existingTimer = cleanupTimers.get(button);
 
-    if (existingTimer) {
+    if (existingTimer !== undefined) {
         clearTimeout(existingTimer);
     }
 
-    /*
-     * Remove the class first so rapidly repeated clicks can restart
-     * the animation from the beginning.
-     */
     button.classList.remove(EFFECT_CLASS);
 
     /*
-     * Reading offsetWidth forces the browser to finish the class
-     * removal before the class is added again.
+     * Force the browser to register the class removal so repeated
+     * presses restart the animation from its first frame.
      */
     void button.offsetWidth;
 
@@ -66,14 +62,11 @@ function handlePointerDown(event: PointerEvent) {
 }
 
 function handleKeyDown(event: KeyboardEvent) {
-    if (
-        event.key !== "Enter" &&
-        event.key !== " "
-    ) {
-        return;
-    }
+    const isActivationKey =
+        event.key === "Enter" ||
+        event.key === " ";
 
-    if (event.repeat) {
+    if (!isActivationKey || event.repeat) {
         return;
     }
 
