@@ -44,25 +44,26 @@ export function TouchdownOverlay({
             aria-live="assertive"
             aria-hidden={!isVisible}
         >
-            <div className="touchdown-overlay__ambient" />
+            <div className="touchdown-overlay__scene">
+                <div className="touchdown-overlay__backdrop" />
+                <div className="touchdown-overlay__ambient" />
 
-            <div className="touchdown-overlay__artwork-reveal">
                 <img
                     className="touchdown-overlay__artwork"
                     src={team.assets.touchdownImage}
                     alt=""
                     aria-hidden="true"
                 />
+
+                <div className="touchdown-overlay__impact" />
+                <div className="touchdown-overlay__scanlines" />
+                <div className="touchdown-overlay__vignette" />
             </div>
 
             <div className="touchdown-overlay__swipe">
                 <div className="touchdown-overlay__swipe-glow" />
                 <div className="touchdown-overlay__swipe-core" />
             </div>
-
-            <div className="touchdown-overlay__impact" />
-            <div className="touchdown-overlay__scanlines" />
-            <div className="touchdown-overlay__vignette" />
         </div>
     );
 }
