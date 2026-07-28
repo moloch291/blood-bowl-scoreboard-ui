@@ -1,4 +1,10 @@
 .button {
+    --button-effect-color-1: rgba(255, 255, 255, 0.78);
+    --button-effect-color-2: rgba(120, 190, 255, 0.72);
+    --button-effect-color-3: rgba(180, 110, 255, 0.82);
+    --button-effect-color-4: rgba(255, 255, 255, 1);
+    --button-effect-glow: rgba(130, 180, 255, 0.65);
+
     position: relative;
     isolation: isolate;
     overflow: hidden;
@@ -47,9 +53,9 @@
 
     background:
         radial-gradient(circle at 50% 50%,
-            rgba(255, 255, 255, 0.78) 0%,
-            rgba(87, 255, 238, 0.5) 22%,
-            rgba(110, 73, 255, 0.36) 48%,
+            rgba(255, 255, 255, 0.82) 0%,
+            var(--button-effect-color-1) 22%,
+            var(--button-effect-color-2) 48%,
             transparent 75%);
 
     opacity: 0;
@@ -79,15 +85,19 @@
     background:
         linear-gradient(105deg,
             transparent 0%,
-            rgba(0, 229, 255, 0) 10%,
-            rgba(0, 229, 255, 0.75) 27%,
-            rgba(128, 70, 255, 0.92) 39%,
-            rgba(255, 70, 210, 0.95) 48%,
-            rgba(255, 255, 255, 1) 54%,
-            rgba(255, 218, 87, 0.94) 61%,
-            rgba(56, 255, 207, 0.82) 72%,
-            rgba(56, 255, 207, 0) 88%,
+            transparent 10%,
+            var(--button-effect-color-1) 27%,
+            var(--button-effect-color-2) 39%,
+            var(--button-effect-color-3) 48%,
+            var(--button-effect-color-4) 54%,
+            var(--button-effect-color-3) 61%,
+            var(--button-effect-color-2) 72%,
+            transparent 88%,
             transparent 100%);
+
+    box-shadow:
+        0 0 12px var(--button-effect-glow),
+        0 0 22px var(--button-effect-color-2);
 
     opacity: 0;
 
@@ -100,10 +110,6 @@
 
     filter:
         blur(0.5px) saturate(1.45);
-
-    box-shadow:
-        0 0 12px rgba(0, 229, 255, 0.7),
-        0 0 20px rgba(255, 70, 210, 0.5);
 }
 
 .button:hover:not(:disabled) {
@@ -147,7 +153,21 @@
     filter: saturate(0.55);
 }
 
+.button--secondary {
+    --button-effect-color-1: rgba(210, 225, 255, 0.72);
+    --button-effect-color-2: rgba(125, 160, 220, 0.78);
+    --button-effect-color-3: rgba(180, 195, 235, 0.9);
+    --button-effect-color-4: rgba(255, 255, 255, 1);
+    --button-effect-glow: rgba(125, 160, 220, 0.65);
+}
+
 .button--primary {
+    --button-effect-color-1: rgba(56, 255, 222, 0.82);
+    --button-effect-color-2: rgba(33, 198, 181, 0.96);
+    --button-effect-color-3: rgba(223, 180, 63, 0.94);
+    --button-effect-color-4: rgba(255, 255, 225, 1);
+    --button-effect-glow: rgba(33, 198, 181, 0.78);
+
     color: #06110f;
 
     background:
@@ -159,6 +179,12 @@
 }
 
 .button--reapers {
+    --button-effect-color-1: rgba(196, 112, 255, 0.86);
+    --button-effect-color-2: rgba(170, 98, 219, 0.98);
+    --button-effect-color-3: rgba(255, 82, 210, 0.94);
+    --button-effect-color-4: rgba(255, 235, 255, 1);
+    --button-effect-glow: rgba(170, 98, 219, 0.8);
+
     background:
         linear-gradient(180deg,
             var(--reapers-secondary),
@@ -168,6 +194,12 @@
 }
 
 .button--danger {
+    --button-effect-color-1: rgba(255, 115, 130, 0.88);
+    --button-effect-color-2: rgba(219, 75, 93, 0.98);
+    --button-effect-color-3: rgba(255, 177, 76, 0.92);
+    --button-effect-color-4: rgba(255, 245, 220, 1);
+    --button-effect-glow: rgba(219, 75, 93, 0.8);
+
     background:
         linear-gradient(180deg,
             #db4b5d,
