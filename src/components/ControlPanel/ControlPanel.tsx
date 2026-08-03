@@ -196,8 +196,8 @@ export function ControlPanel({
 
                     <strong>
                         {state.half === 1
-                            ? "First Half"
-                            : "Second Half"}
+                            ? "1st"
+                            : "2nd"}
                     </strong>
                 </div>
 
