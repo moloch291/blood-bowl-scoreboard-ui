@@ -8,7 +8,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    gap: 2rem;
+    gap: 1.5rem;
 }
 
 .match-layout>.scoreboard,
