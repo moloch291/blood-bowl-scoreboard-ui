@@ -10,6 +10,12 @@ import reapersIcon from "../assets/blackwood-reapers/icon.png";
 import reapersWordmark from "../assets/blackwood-reapers/wordmark.png";
 import reapersTouchdown from "../assets/blackwood-reapers/touchdown.png";
 
+import misfitsLogo from "../assets/mordheim-misfits/logo.png";
+import misfitsIcon from "../assets/mordheim-misfits/icon.png";
+import misfitsWordmark from "../assets/mordheim-misfits/wordmark.png";
+import misfitsTouchdown from "../assets/mordheim-misfits/touchdown.png";
+
+
 import victimsLogo from "../assets/victims/logo.png";
 import victimsIcon from "../assets/victims/icon.png";
 import victimsWordmark from "../assets/victims/wordmark.png";
@@ -55,6 +61,27 @@ export const blackwoodReapers: Team = {
     },
 };
 
+export const mordheimMisfits: Team = {
+    id: "mordheim-misfits",
+    name: "Mordheim Misfits",
+    shortName: "MISFITS",
+
+    colors: {
+        primary: "#8A2743",
+        secondary: "#5a2f85",
+        accent: "#AD742C",
+        text: "#ffffff",
+    },
+
+    assets: {
+        logo: misfitsLogo,
+        icon: misfitsIcon,
+        wordmark: misfitsWordmark,
+        touchdownImage: misfitsTouchdown,
+    },
+};
+
+
 export const victims: Team = { // random away team for guests
     id: "victims",
     name: "Victims",
@@ -78,5 +105,6 @@ export const victims: Team = { // random away team for guests
 export const teams: Team[] = [
     templeSerpents,
     blackwoodReapers,
+    mordheimMisfits,
     victims
 ];
