@@ -15,6 +15,10 @@ import misfitsIcon from "../assets/mordheim-misfits/icon.png";
 import misfitsWordmark from "../assets/mordheim-misfits/wordmark.png";
 import misfitsTouchdown from "../assets/mordheim-misfits/touchdown.png";
 
+import owlsLogo from "../assets/oakenbrow-owls/logo.png";
+import owlsIcon from "../assets/oakenbrow-owls/icon.png";
+import owlsWordmark from "../assets/oakenbrow-owls/wordmark.png";
+import owlsTouchdown from "../assets/oakenbrow-owls/touchdown.png";
 
 import victimsLogo from "../assets/victims/logo.png";
 import victimsIcon from "../assets/victims/icon.png";
@@ -81,6 +85,26 @@ export const mordheimMisfits: Team = {
     },
 };
 
+export const oakenbrowOwls: Team = {
+    id: "oakenbrow-owls",
+    name: "Oakenbrow Owls",
+    shortName: "OWLS",
+
+    colors: {
+        primary: "#0F5C4A",
+        secondary: "#6F9A61",
+        accent: "#E8E0CC",
+        text: "#C6A34A",
+    },
+
+    assets: {
+        logo: owlsLogo,
+        icon: owlsIcon,
+        wordmark: owlsWordmark,
+        touchdownImage: owlsTouchdown,
+    },
+};
+
 
 export const victims: Team = { // random away team for guests
     id: "victims",
@@ -106,5 +130,6 @@ export const teams: Team[] = [
     templeSerpents,
     blackwoodReapers,
     mordheimMisfits,
+    oakenbrowOwls,
     victims
 ];

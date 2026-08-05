@@ -51,10 +51,6 @@ export function HalfTimeOverlay({
                             aria-hidden="true"
                         />
 
-                        <span className="half-time-overlay__team-name">
-                            {home.team.shortName}
-                        </span>
-
                         <strong className="half-time-overlay__team-score">
                             {home.score}
                         </strong>
@@ -71,10 +67,6 @@ export function HalfTimeOverlay({
                         <strong className="half-time-overlay__team-score">
                             {away.score}
                         </strong>
-
-                        <span className="half-time-overlay__team-name">
-                            {away.team.shortName}
-                        </span>
 
                         <img
                             className="half-time-overlay__icon"

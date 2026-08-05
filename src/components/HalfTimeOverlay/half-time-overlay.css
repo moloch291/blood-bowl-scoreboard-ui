@@ -102,8 +102,8 @@
 }
 
 .half-time-overlay__icon {
-    width: clamp(58px, 9vw, 110px);
-    height: clamp(58px, 9vw, 110px);
+    width: clamp(120px, 9vw, 110px);
+    height: clamp(120px, 9vw, 110px);
 
     flex: 0 0 auto;
     object-fit: contain;
