@@ -93,8 +93,8 @@ export const oakenbrowOwls: Team = {
     colors: {
         primary: "#0F5C4A",
         secondary: "#6F9A61",
-        accent: "#E8E0CC",
-        text: "#C6A34A",
+        accent: "#C6A34A",
+        text: "#E8E0CC",
     },
 
     assets: {
