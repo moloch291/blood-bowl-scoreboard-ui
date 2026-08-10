@@ -10,10 +10,10 @@ import reapersIcon from "../assets/blackwood-reapers/icon.png";
 import reapersWordmark from "../assets/blackwood-reapers/wordmark.png";
 import reapersTouchdown from "../assets/blackwood-reapers/touchdown.png";
 
-import misfitsLogo from "../assets/mordheim-misfits/logo.png";
-import misfitsIcon from "../assets/mordheim-misfits/icon.png";
-import misfitsWordmark from "../assets/mordheim-misfits/wordmark.png";
-import misfitsTouchdown from "../assets/mordheim-misfits/touchdown.png";
+import neonpunksLogo from "../assets/mordheim-neonpunks/logo.png";
+import neonpunksIcon from "../assets/mordheim-neonpunks/icon.png";
+import neonpunksWordmark from "../assets/mordheim-neonpunks/wordmark.png";
+import neonpunksTouchdown from "../assets/mordheim-neonpunks/touchdown.png";
 
 import owlsLogo from "../assets/oakenbrow-owls/logo.png";
 import owlsIcon from "../assets/oakenbrow-owls/icon.png";
@@ -65,23 +65,23 @@ export const blackwoodReapers: Team = {
     },
 };
 
-export const mordheimMisfits: Team = {
-    id: "mordheim-misfits",
-    name: "Mordheim Misfits",
-    shortName: "MISFITS",
+export const mordheimNeonpunks: Team = {
+    id: "mordheim-neonpukns",
+    name: "Mordheim NeonPunks",
+    shortName: "Punks",
 
     colors: {
-        primary: "#8A2743",
-        secondary: "#5a2f85",
-        accent: "#AD742C",
-        text: "#ffffff",
+        primary: "#190B2E",
+        secondary: "#F20A9B",
+        accent: "#BFFF00",
+        text: "#F5E7C6",
     },
 
     assets: {
-        logo: misfitsLogo,
-        icon: misfitsIcon,
-        wordmark: misfitsWordmark,
-        touchdownImage: misfitsTouchdown,
+        logo: neonpunksLogo,
+        icon: neonpunksIcon,
+        wordmark: neonpunksWordmark,
+        touchdownImage: neonpunksTouchdown,
     },
 };
 
@@ -129,7 +129,7 @@ export const victims: Team = { // random away team for guests
 export const teams: Team[] = [
     templeSerpents,
     blackwoodReapers,
-    mordheimMisfits,
+    mordheimNeonpunks,
     oakenbrowOwls,
     victims
 ];
