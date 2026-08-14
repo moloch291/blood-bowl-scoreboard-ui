@@ -20,6 +20,11 @@ import owlsIcon from "../assets/oakenbrow-owls/icon.png";
 import owlsWordmark from "../assets/oakenbrow-owls/wordmark.png";
 import owlsTouchdown from "../assets/oakenbrow-owls/touchdown.png";
 
+import cometsLogo from "../assets/lothern-comets/logo.png"
+import cometsIcon from "../assets/lothern-comets/icon.png"
+import cometsWordmark from "../assets/lothern-comets/wordmark.png"
+import cometsTouchdown from "../assets/lothern-comets/touchdown.png"
+
 import victimsLogo from "../assets/victims/logo.png";
 import victimsIcon from "../assets/victims/icon.png";
 import victimsWordmark from "../assets/victims/wordmark.png";
@@ -105,6 +110,26 @@ export const oakenbrowOwls: Team = {
     },
 };
 
+export const lothernComets: Team = {
+    id: "lothern-comets",
+    name: "Lothern Comets",
+    shortName: "Comets",
+
+    colors: {
+        primary: "#4B1D7A",
+        secondary: "#F8F1DC",
+        accent: "#D4A635",
+        text: "#FFFFFF",
+    },
+
+    assets: {
+        logo: cometsLogo,
+        icon: cometsIcon,
+        wordmark: cometsWordmark,
+        touchdownImage: cometsTouchdown,
+    },
+};
+
 
 export const victims: Team = { // random away team for guests
     id: "victims",
@@ -131,5 +156,6 @@ export const teams: Team[] = [
     blackwoodReapers,
     mordheimNeonpunks,
     oakenbrowOwls,
+    lothernComets,
     victims
 ];
