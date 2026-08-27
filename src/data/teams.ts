@@ -25,6 +25,16 @@ import cometsIcon from "../assets/lothern-comets/icon.png"
 import cometsWordmark from "../assets/lothern-comets/wordmark.png"
 import cometsTouchdown from "../assets/lothern-comets/touchdown.png"
 
+import scarabsLogo from "../assets/khemri-scarabs/logo.png"
+import scarabsIcon from "../assets/khemri-scarabs/icon.png"
+import scarabsWordmark from "../assets/khemri-scarabs/wordmark.png"
+import scarabsTouchdown from "../assets/khemri-scarabs/touchdown.png"
+
+import saursLogo from "../assets/meghbah-saurs/logo.png"
+import saursIcon from "../assets/meghbah-saurs/icon.png"
+import saursWordmark from "../assets/meghbah-saurs/wordmark.png"
+import saursTouchdown from "../assets/meghbah-saurs/touchdown.png"
+
 import victimsLogo from "../assets/victims/logo.png";
 import victimsIcon from "../assets/victims/icon.png";
 import victimsWordmark from "../assets/victims/wordmark.png";
@@ -130,6 +140,45 @@ export const lothernComets: Team = {
     },
 };
 
+export const khemriScarabs: Team = {
+    id: "khemri-scarabs",
+    name: "Khemri Scarabs",
+    shortName: "Scarabs",
+
+    colors: {
+        primary: "#D6A62E",
+        secondary: "#0E9C91",
+        accent: "#075A59",
+        text: "#F0DFC0",
+    },
+
+    assets: {
+        logo: scarabsLogo,
+        icon: scarabsIcon,
+        wordmark: scarabsWordmark,
+        touchdownImage: scarabsTouchdown,
+    },
+};
+
+export const meghbahSaurs: Team = {
+    id: "megh'bah-saurs",
+    name: "Megh'bah' Saurs",
+    shortName: "Saurs",
+
+    colors: {
+        primary: "#1256A0",
+        secondary: "#168FC4",
+        accent: "#071B35",
+        text: "#E8DFC6",
+    },
+
+    assets: {
+        logo: saursLogo,
+        icon: saursIcon,
+        wordmark: saursWordmark,
+        touchdownImage: saursTouchdown,
+    },
+};
 
 export const victims: Team = { // random away team for guests
     id: "victims",
@@ -157,5 +206,7 @@ export const teams: Team[] = [
     mordheimNeonpunks,
     oakenbrowOwls,
     lothernComets,
+    khemriScarabs,
+    meghbahSaurs,
     victims
 ];
