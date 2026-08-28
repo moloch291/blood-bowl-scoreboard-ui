@@ -35,6 +35,11 @@ import saursIcon from "../assets/meghbah-saurs/icon.png"
 import saursWordmark from "../assets/meghbah-saurs/wordmark.png"
 import saursTouchdown from "../assets/meghbah-saurs/touchdown.png"
 
+import templarsLogo from "../assets/parravon-templars/logo.png"
+import templarsIcon from "../assets/parravon-templars/icon.png"
+import templarsWordmark from "../assets/parravon-templars/wordmark.png"
+import templarsTouchdown from "../assets/parravon-templars/touchdown.png"
+
 import victimsLogo from "../assets/victims/logo.png";
 import victimsIcon from "../assets/victims/icon.png";
 import victimsWordmark from "../assets/victims/wordmark.png";
@@ -180,6 +185,26 @@ export const meghbahSaurs: Team = {
     },
 };
 
+export const parravonTemplars: Team = {
+    id: "parravon-templars",
+    name: "Parravon Templars",
+    shortName: "Templars",
+
+    colors: {
+        primary: "#A51F32",
+        secondary: "#171A1F",
+        accent: "#AEB7C2",
+        text: "#E2E5E8",
+    },
+
+    assets: {
+        logo: templarsLogo,
+        icon: templarsIcon,
+        wordmark: templarsWordmark,
+        touchdownImage: templarsTouchdown,
+    },
+};
+
 export const victims: Team = { // random away team for guests
     id: "victims",
     name: "Victims",
@@ -208,5 +233,6 @@ export const teams: Team[] = [
     lothernComets,
     khemriScarabs,
     meghbahSaurs,
+    parravonTemplars,
     victims
 ];
