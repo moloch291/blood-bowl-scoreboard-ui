@@ -40,6 +40,16 @@ import templarsIcon from "../assets/parravon-templars/icon.png"
 import templarsWordmark from "../assets/parravon-templars/wordmark.png"
 import templarsTouchdown from "../assets/parravon-templars/touchdown.png"
 
+import reaversLogo from "../assets/skeggi-reavers/logo.png"
+import reaversIcon from "../assets/skeggi-reavers/icon.png"
+import reaversWordmark from "../assets/skeggi-reavers/wordmark.png"
+import reaversTouchdown from "../assets/skeggi-reavers/touchdown.png"
+
+import astralsLogo from "../assets/xlanhuapec-astrals/logo.png"
+import astralsIcon from "../assets/xlanhuapec-astrals/icon.png"
+import astralsWordmark from "../assets/xlanhuapec-astrals/wordmark.png"
+import astralsTouchdown from "../assets/xlanhuapec-astrals/touchdown.png"
+
 import victimsLogo from "../assets/victims/logo.png";
 import victimsIcon from "../assets/victims/icon.png";
 import victimsWordmark from "../assets/victims/wordmark.png";
@@ -205,6 +215,46 @@ export const parravonTemplars: Team = {
     },
 };
 
+export const skeggiReavers: Team = {
+    id: "skeggi-reavers",
+    name: "Skeggi Reavers",
+    shortName: "Reavers",
+
+    colors: {
+        primary: "#075A63",
+        secondary: "#11181A",
+        accent: "#58C7D8",
+        text: "#F1E5C8",
+    },
+
+    assets: {
+        logo: reaversLogo,
+        icon: reaversIcon,
+        wordmark: reaversWordmark,
+        touchdownImage: reaversTouchdown,
+    },
+};
+
+export const xlanhuapecAstrals: Team = {
+    id: "xlanhuapec-astrals",
+    name: "Xlanhuapec Astrals",
+    shortName: "Astrals",
+
+    colors: {
+        primary: "#29245C",
+        secondary: "#20A58A",
+        accent: "#F2C84B",
+        text: "#F3E9CE",
+    },
+
+    assets: {
+        logo: astralsLogo,
+        icon: astralsIcon,
+        wordmark: astralsWordmark,
+        touchdownImage: astralsTouchdown,
+    },
+};
+
 export const victims: Team = { // random away team for guests
     id: "victims",
     name: "Victims",
@@ -234,5 +284,7 @@ export const teams: Team[] = [
     khemriScarabs,
     meghbahSaurs,
     parravonTemplars,
+    skeggiReavers,
+    xlanhuapecAstrals,
     victims
 ];
