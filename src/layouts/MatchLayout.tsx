@@ -16,7 +16,7 @@ import { Scoreboard } from "../components/ScoreBoard/Scoreboard";
 import { TouchdownOverlay } from "../components/TouchdownOverlay/TouchdownOverlay";
 
 import {
-    blackwoodReapers,
+    sylvaniaNightmares,
     teams,
     templeSerpents,
 } from "../data/teams";
@@ -37,7 +37,7 @@ type MatchEndStage =
 
 const defaultInitialState = createInitialMatchState(
     templeSerpents,
-    blackwoodReapers,
+    sylvaniaNightmares,
     3,
     3,
 );

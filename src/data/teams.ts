@@ -5,10 +5,10 @@ import templeIcon from "../assets/temple-serpents/icon.png";
 import templeWordmark from "../assets/temple-serpents/wordmark.png";
 import templeTouchdown from "../assets/temple-serpents/touchdown.png";
 
-import reapersLogo from "../assets/blackwood-reapers/logo.png";
-import reapersIcon from "../assets/blackwood-reapers/icon.png";
-import reapersWordmark from "../assets/blackwood-reapers/wordmark.png";
-import reapersTouchdown from "../assets/blackwood-reapers/touchdown.png";
+import nightmaresLogo from "../assets/sylvania-nightmares/logo.png";
+import nightmresIcon from "../assets/sylvania-nightmares/icon.png";
+import nightmresWordmark from "../assets/sylvania-nightmares/wordmark.png";
+import nightmresTouchdown from "../assets/sylvania-nightmares/touchdown.png";
 
 import neonpunksLogo from "../assets/mordheim-neonpunks/logo.png";
 import neonpunksIcon from "../assets/mordheim-neonpunks/icon.png";
@@ -50,6 +50,11 @@ import astralsIcon from "../assets/xlanhuapec-astrals/icon.png"
 import astralsWordmark from "../assets/xlanhuapec-astrals/wordmark.png"
 import astralsTouchdown from "../assets/xlanhuapec-astrals/touchdown.png"
 
+import hellcatsLogo from "../assets/har-ganeth-hell-cats/logo.png"
+import hellcatsIcon from "../assets/har-ganeth-hell-cats/icon.png"
+import hellcatsWordmark from "../assets/har-ganeth-hell-cats/wordmark.png"
+import hellcatsTouchdown from "../assets/har-ganeth-hell-cats/touchdown.png"
+
 import victimsLogo from "../assets/victims/logo.png";
 import victimsIcon from "../assets/victims/icon.png";
 import victimsWordmark from "../assets/victims/wordmark.png";
@@ -61,9 +66,9 @@ export const templeSerpents: Team = {
     shortName: "SERPENTS",
 
     colors: {
-        primary: "#0b6b57",
-        secondary: "#149b8b",
-        accent: "#d4aa45",
+        primary: "#F1E8D2",
+        secondary: "#D9A514",
+        accent: "#08734F",
         text: "#ffffff",
     },
 
@@ -75,30 +80,30 @@ export const templeSerpents: Team = {
     },
 };
 
-export const blackwoodReapers: Team = {
-    id: "blackwood-reapers",
-    name: "Blackwood Reapers",
-    shortName: "REAPERS",
+export const sylvaniaNightmares: Team = {
+    id: "sylvania-nightmares",
+    name: "Sylvania Nightmares",
+    shortName: "NGHTMRS",
 
     colors: {
-        primary: "#25143f",
-        secondary: "#5a2f85",
-        accent: "#9f75d5",
-        text: "#ffffff",
+        primary: "#39735B",
+        secondary: "#17171C",
+        accent: "#8B78A8",
+        text: "#72D69A",
     },
 
     assets: {
-        logo: reapersLogo,
-        icon: reapersIcon,
-        wordmark: reapersWordmark,
-        touchdownImage: reapersTouchdown,
+        logo: nightmaresLogo,
+        icon: nightmresIcon,
+        wordmark: nightmresWordmark,
+        touchdownImage: nightmresTouchdown,
     },
 };
 
 export const mordheimNeonpunks: Team = {
     id: "mordheim-neonpukns",
     name: "Mordheim NeonPunks",
-    shortName: "Punks",
+    shortName: "NEONPUNKS",
 
     colors: {
         primary: "#190B2E",
@@ -138,7 +143,7 @@ export const oakenbrowOwls: Team = {
 export const lothernComets: Team = {
     id: "lothern-comets",
     name: "Lothern Comets",
-    shortName: "Comets",
+    shortName: "COMETS",
 
     colors: {
         primary: "#4B1D7A",
@@ -158,7 +163,7 @@ export const lothernComets: Team = {
 export const khemriScarabs: Team = {
     id: "khemri-scarabs",
     name: "Khemri Scarabs",
-    shortName: "Scarabs",
+    shortName: "SCARABS",
 
     colors: {
         primary: "#D6A62E",
@@ -178,7 +183,7 @@ export const khemriScarabs: Team = {
 export const meghbahSaurs: Team = {
     id: "megh'bah-saurs",
     name: "Megh'bah' Saurs",
-    shortName: "Saurs",
+    shortName: "SAURS",
 
     colors: {
         primary: "#1256A0",
@@ -198,7 +203,7 @@ export const meghbahSaurs: Team = {
 export const parravonTemplars: Team = {
     id: "parravon-templars",
     name: "Parravon Templars",
-    shortName: "Templars",
+    shortName: "TEMPLARS",
 
     colors: {
         primary: "#A51F32",
@@ -218,7 +223,7 @@ export const parravonTemplars: Team = {
 export const skeggiReavers: Team = {
     id: "skeggi-reavers",
     name: "Skeggi Reavers",
-    shortName: "Reavers",
+    shortName: "REAVERS",
 
     colors: {
         primary: "#075A63",
@@ -238,7 +243,7 @@ export const skeggiReavers: Team = {
 export const xlanhuapecAstrals: Team = {
     id: "xlanhuapec-astrals",
     name: "Xlanhuapec Astrals",
-    shortName: "Astrals",
+    shortName: "ASTRALS",
 
     colors: {
         primary: "#29245C",
@@ -255,10 +260,30 @@ export const xlanhuapecAstrals: Team = {
     },
 };
 
+export const harganethHellcats: Team = {
+    id: "har-ganeth-hell-cats",
+    name: "Har Ganeth Hell-Cats",
+    shortName: "HELL-CATS",
+
+    colors: {
+        primary: "#54205F",
+        secondary: "#15171D",
+        accent: "#C42D4A",
+        text: "#E0E2DF"
+    },
+
+    assets: {
+        logo: hellcatsLogo,
+        icon: hellcatsIcon,
+        wordmark: hellcatsWordmark,
+        touchdownImage: hellcatsTouchdown,
+    },
+};
+
 export const victims: Team = { // random away team for guests
     id: "victims",
     name: "Victims",
-    shortName: "Victims",
+    shortName: "VICTIMS",
 
     colors: {
         primary: "#241A18",
@@ -277,7 +302,7 @@ export const victims: Team = { // random away team for guests
 
 export const teams: Team[] = [
     templeSerpents,
-    blackwoodReapers,
+    sylvaniaNightmares,
     mordheimNeonpunks,
     oakenbrowOwls,
     lothernComets,
@@ -286,5 +311,6 @@ export const teams: Team[] = [
     parravonTemplars,
     skeggiReavers,
     xlanhuapecAstrals,
+    harganethHellcats,
     victims
 ];
