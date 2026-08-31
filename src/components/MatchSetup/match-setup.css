@@ -116,7 +116,7 @@
     display: grid;
     place-items: center;
 
-    overflow: hidden;
+    overflow: visible;
 }
 
 .match-setup__team-logo {
