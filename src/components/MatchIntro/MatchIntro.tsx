@@ -42,7 +42,7 @@ export function MatchIntro({
 
         const completeTimer = window.setTimeout(() => {
             onComplete();
-        }, 3100);
+        }, 2800);
 
         return () => {
             window.clearTimeout(exitTimer);
