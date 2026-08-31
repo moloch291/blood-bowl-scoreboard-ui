@@ -27,30 +27,33 @@
     overflow: hidden;
 }
 
+.match-intro__team--home,
+.match-intro__team--away {
+    background-image:
+        linear-gradient(115deg,
+            #070809 0%,
+            #090a0c 25%,
+            #111216 48%,
+            #18191d 58%,
+            #0d0e11 78%,
+            #070809 100%);
+
+    background-size: 200% 100%;
+    background-repeat: no-repeat;
+}
+
 .match-intro__team--home {
     grid-column: 1;
     grid-row: 1;
 
-    background:
-        radial-gradient(circle at 65% 50%,
-            var(--intro-home-accent) 0%,
-            transparent 55%),
-        linear-gradient(135deg,
-            var(--intro-home-primary),
-            var(--intro-home-secondary));
+    background-position: left center;
 }
 
 .match-intro__team--away {
     grid-column: 2;
     grid-row: 1;
 
-    background:
-        radial-gradient(circle at 35% 50%,
-            var(--intro-away-accent) 0%,
-            transparent 55%),
-        linear-gradient(225deg,
-            var(--intro-away-primary),
-            var(--intro-away-secondary));
+    background-position: right center;
 }
 
 .match-intro__team-logo {
@@ -65,8 +68,7 @@
 
     opacity: 0;
 
-    filter:
-        drop-shadow(0 18px 22px rgb(0 0 0 / 50%)) drop-shadow(0 0 18px rgb(255 255 255 / 12%));
+    filter: drop-shadow(0 18px 22px rgb(0 0 0 / 50%)) drop-shadow(0 0 18px rgb(255 255 255 / 12%));
 }
 
 .match-intro__center {
@@ -84,8 +86,7 @@
 
     opacity: 0;
 
-    transform:
-        translate(-50%, -50%) scale(1.35);
+    transform: translate(-50%, -50%) scale(1.35);
 
     filter: blur(6px);
 }
@@ -96,8 +97,7 @@
 
     object-fit: contain;
 
-    filter:
-        drop-shadow(0 8px 12px rgb(0 0 0 / 55%));
+    filter: drop-shadow(0 8px 12px rgb(0 0 0 / 55%));
 }
 
 .match-intro__versus {
@@ -109,58 +109,16 @@
     line-height: 1;
     letter-spacing: 0.12em;
 
-    text-shadow:
-        0 3px 0 rgb(0 0 0 / 42%),
+    text-shadow: 0 3px 0 rgb(0 0 0 / 42%),
         0 0 24px rgb(212 170 69 / 40%);
 }
 
-.match-intro__team {
-    position: relative;
-
-    min-width: 0;
-    min-height: 0;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    overflow: hidden;
-}
-
 .match-intro__team--home {
-    grid-column: 1;
-    grid-row: 1;
-
-    background:
-        radial-gradient(circle at 65% 50%,
-            var(--intro-home-accent) 0%,
-            transparent 55%),
-        linear-gradient(135deg,
-            var(--intro-home-primary),
-            var(--intro-home-secondary));
+    animation: match-intro-home-panel-enter 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .match-intro__team--away {
-    grid-column: 2;
-    grid-row: 1;
-
-    background:
-        radial-gradient(circle at 35% 50%,
-            var(--intro-away-accent) 0%,
-            transparent 55%),
-        linear-gradient(225deg,
-            var(--intro-away-primary),
-            var(--intro-away-secondary));
-}
-
-.match-intro__team--home {
-    animation:
-        match-intro-home-panel-enter 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-.match-intro__team--away {
-    animation:
-        match-intro-away-panel-enter 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation: match-intro-away-panel-enter 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 @keyframes match-intro-home-panel-enter {
@@ -195,18 +153,15 @@
 
     opacity: 0;
 
-    filter:
-        drop-shadow(0 18px 22px rgb(0 0 0 / 50%)) drop-shadow(0 0 18px rgb(255 255 255 / 12%));
+    filter: drop-shadow(0 18px 22px rgb(0 0 0 / 50%)) drop-shadow(0 0 18px rgb(255 255 255 / 12%));
 }
 
 .match-intro__team--home .match-intro__team-logo {
-    animation:
-        match-intro-home-logo-enter 650ms cubic-bezier(0.16, 1, 0.3, 1) 280ms forwards;
+    animation: match-intro-home-logo-enter 650ms cubic-bezier(0.16, 1, 0.3, 1) 280ms forwards;
 }
 
 .match-intro__team--away .match-intro__team-logo {
-    animation:
-        match-intro-away-logo-enter 650ms cubic-bezier(0.16, 1, 0.3, 1) 280ms forwards;
+    animation: match-intro-away-logo-enter 650ms cubic-bezier(0.16, 1, 0.3, 1) 280ms forwards;
 }
 
 @keyframes match-intro-home-logo-enter {
@@ -253,8 +208,7 @@
     from {
         opacity: 0;
 
-        transform:
-            translate(-50%, -50%) scale(1.35);
+        transform: translate(-50%, -50%) scale(1.35);
 
         filter: blur(6px);
     }
@@ -262,8 +216,7 @@
     to {
         opacity: 1;
 
-        transform:
-            translate(-50%, -50%) scale(1);
+        transform: translate(-50%, -50%) scale(1);
 
         filter: blur(0);
     }
@@ -284,15 +237,13 @@
 
     opacity: 0;
 
-    transform:
-        translate(-50%, -50%) scale(1.35);
+    transform: translate(-50%, -50%) scale(1.35);
 
     filter: blur(6px);
 }
 
 .match-intro__center {
-    animation:
-        match-intro-center-enter 480ms cubic-bezier(0.16, 1, 0.3, 1) 850ms forwards;
+    animation: match-intro-center-enter 480ms cubic-bezier(0.16, 1, 0.3, 1) 850ms forwards;
 }
 
 .match-intro__league-icon {
@@ -301,16 +252,14 @@
 
     object-fit: contain;
 
-    filter:
-        drop-shadow(0 8px 12px rgb(0 0 0 / 55%));
+    filter: drop-shadow(0 8px 12px rgb(0 0 0 / 55%));
 }
 
 @keyframes match-intro-center-enter {
     from {
         opacity: 0;
 
-        transform:
-            translate(-50%, -50%) scale(1.35);
+        transform: translate(-50%, -50%) scale(1.35);
 
         filter: blur(6px);
     }
@@ -318,26 +267,22 @@
     to {
         opacity: 1;
 
-        transform:
-            translate(-50%, -50%) scale(1);
+        transform: translate(-50%, -50%) scale(1);
 
         filter: blur(0);
     }
 }
 
 .match-intro--exiting .match-intro__team--home {
-    animation:
-        match-intro-home-panel-exit 700ms cubic-bezier(0.76, 0, 0.24, 1) forwards;
+    animation: match-intro-home-panel-exit 700ms cubic-bezier(0.76, 0, 0.24, 1) forwards;
 }
 
 .match-intro--exiting .match-intro__team--away {
-    animation:
-        match-intro-away-panel-exit 700ms cubic-bezier(0.76, 0, 0.24, 1) forwards;
+    animation: match-intro-away-panel-exit 700ms cubic-bezier(0.76, 0, 0.24, 1) forwards;
 }
 
 .match-intro--exiting .match-intro__center {
-    animation:
-        match-intro-center-exit 300ms ease-in forwards;
+    animation: match-intro-center-exit 300ms ease-in forwards;
 }
 
 @keyframes match-intro-home-panel-exit {
@@ -364,8 +309,7 @@
     from {
         opacity: 1;
 
-        transform:
-            translate(-50%, -50%) scale(1);
+        transform: translate(-50%, -50%) scale(1);
 
         filter: blur(0);
     }
@@ -373,16 +317,14 @@
     to {
         opacity: 0;
 
-        transform:
-            translate(-50%, -50%) scale(1.25);
+        transform: translate(-50%, -50%) scale(1.25);
 
         filter: blur(5px);
     }
 }
 
 .match-intro--exiting {
-    animation:
-        match-intro-background-exit 500ms ease-out forwards;
+    animation: match-intro-background-exit 500ms ease-out forwards;
 }
 
 .match-layout--locked {

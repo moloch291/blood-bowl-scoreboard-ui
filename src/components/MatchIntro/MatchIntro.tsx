@@ -1,7 +1,6 @@
 import {
     useEffect,
     useState,
-    type CSSProperties,
 } from "react";
 import type { Team } from "../../types/team";
 import leagueIcon from "../../assets/league-logo.png";
@@ -22,16 +21,6 @@ export function MatchIntro({
     onComplete,
 }: MatchIntroProps) {
 
-    const introStyle = {
-        "--intro-home-primary": homeTeam.colors.primary,
-        "--intro-home-secondary": homeTeam.colors.secondary,
-        "--intro-home-accent": homeTeam.colors.accent,
-
-        "--intro-away-primary": awayTeam.colors.primary,
-        "--intro-away-secondary": awayTeam.colors.secondary,
-        "--intro-away-accent": awayTeam.colors.accent,
-    } as CSSProperties;
-
     const [isExiting, setIsExiting] = useState(false);
 
     useEffect(() => {
@@ -51,10 +40,7 @@ export function MatchIntro({
     }, [onExitStart, onComplete]);
 
     return (
-        <main
-            className={["match-intro", isExiting ? "match-intro--exiting" : "",].filter(Boolean).join(" ")}
-            style={introStyle}
-        >
+        <main className={["match-intro", isExiting ? "match-intro--exiting" : "",].filter(Boolean).join(" ")}>
             <section className="match-intro__team match-intro__team--home">
                 <img
                     className="match-intro__team-logo"
