@@ -6,9 +6,9 @@ import templeWordmark from "../assets/temple-serpents/wordmark.png";
 import templeTouchdown from "../assets/temple-serpents/touchdown.png";
 
 import nightmaresLogo from "../assets/sylvania-nightmares/logo.png";
-import nightmresIcon from "../assets/sylvania-nightmares/icon.png";
-import nightmresWordmark from "../assets/sylvania-nightmares/wordmark.png";
-import nightmresTouchdown from "../assets/sylvania-nightmares/touchdown.png";
+import nightmaresIcon from "../assets/sylvania-nightmares/icon.png";
+import nightmaresWordmark from "../assets/sylvania-nightmares/wordmark.png";
+import nightmaresTouchdown from "../assets/sylvania-nightmares/touchdown.png";
 
 import neonpunksLogo from "../assets/mordheim-neonpunks/logo.png";
 import neonpunksIcon from "../assets/mordheim-neonpunks/icon.png";
@@ -20,40 +20,40 @@ import owlsIcon from "../assets/oakenbrow-owls/icon.png";
 import owlsWordmark from "../assets/oakenbrow-owls/wordmark.png";
 import owlsTouchdown from "../assets/oakenbrow-owls/touchdown.png";
 
-import cometsLogo from "../assets/lothern-comets/logo.png"
-import cometsIcon from "../assets/lothern-comets/icon.png"
-import cometsWordmark from "../assets/lothern-comets/wordmark.png"
-import cometsTouchdown from "../assets/lothern-comets/touchdown.png"
+import cometsLogo from "../assets/lothern-comets/logo.png";
+import cometsIcon from "../assets/lothern-comets/icon.png";
+import cometsWordmark from "../assets/lothern-comets/wordmark.png";
+import cometsTouchdown from "../assets/lothern-comets/touchdown.png";
 
-import scarabsLogo from "../assets/khemri-scarabs/logo.png"
-import scarabsIcon from "../assets/khemri-scarabs/icon.png"
-import scarabsWordmark from "../assets/khemri-scarabs/wordmark.png"
-import scarabsTouchdown from "../assets/khemri-scarabs/touchdown.png"
+import scarabsLogo from "../assets/khemri-scarabs/logo.png";
+import scarabsIcon from "../assets/khemri-scarabs/icon.png";
+import scarabsWordmark from "../assets/khemri-scarabs/wordmark.png";
+import scarabsTouchdown from "../assets/khemri-scarabs/touchdown.png";
 
-import saursLogo from "../assets/meghbah-saurs/logo.png"
-import saursIcon from "../assets/meghbah-saurs/icon.png"
-import saursWordmark from "../assets/meghbah-saurs/wordmark.png"
-import saursTouchdown from "../assets/meghbah-saurs/touchdown.png"
+import saursLogo from "../assets/meghbah-saurs/logo.png";
+import saursIcon from "../assets/meghbah-saurs/icon.png";
+import saursWordmark from "../assets/meghbah-saurs/wordmark.png";
+import saursTouchdown from "../assets/meghbah-saurs/touchdown.png";
 
-import templarsLogo from "../assets/parravon-templars/logo.png"
-import templarsIcon from "../assets/parravon-templars/icon.png"
-import templarsWordmark from "../assets/parravon-templars/wordmark.png"
-import templarsTouchdown from "../assets/parravon-templars/touchdown.png"
+import templarsLogo from "../assets/parravon-templars/logo.png";
+import templarsIcon from "../assets/parravon-templars/icon.png";
+import templarsWordmark from "../assets/parravon-templars/wordmark.png";
+import templarsTouchdown from "../assets/parravon-templars/touchdown.png";
 
-import reaversLogo from "../assets/skeggi-reavers/logo.png"
-import reaversIcon from "../assets/skeggi-reavers/icon.png"
-import reaversWordmark from "../assets/skeggi-reavers/wordmark.png"
-import reaversTouchdown from "../assets/skeggi-reavers/touchdown.png"
+import reaversLogo from "../assets/skeggi-reavers/logo.png";
+import reaversIcon from "../assets/skeggi-reavers/icon.png";
+import reaversWordmark from "../assets/skeggi-reavers/wordmark.png";
+import reaversTouchdown from "../assets/skeggi-reavers/touchdown.png";
 
-import astralsLogo from "../assets/xlanhuapec-astrals/logo.png"
-import astralsIcon from "../assets/xlanhuapec-astrals/icon.png"
-import astralsWordmark from "../assets/xlanhuapec-astrals/wordmark.png"
-import astralsTouchdown from "../assets/xlanhuapec-astrals/touchdown.png"
+import astralsLogo from "../assets/xlanhuapec-astrals/logo.png";
+import astralsIcon from "../assets/xlanhuapec-astrals/icon.png";
+import astralsWordmark from "../assets/xlanhuapec-astrals/wordmark.png";
+import astralsTouchdown from "../assets/xlanhuapec-astrals/touchdown.png";
 
-import hellcatsLogo from "../assets/har-ganeth-hell-cats/logo.png"
-import hellcatsIcon from "../assets/har-ganeth-hell-cats/icon.png"
-import hellcatsWordmark from "../assets/har-ganeth-hell-cats/wordmark.png"
-import hellcatsTouchdown from "../assets/har-ganeth-hell-cats/touchdown.png"
+import hellcatsLogo from "../assets/har-ganeth-hell-cats/logo.png";
+import hellcatsIcon from "../assets/har-ganeth-hell-cats/icon.png";
+import hellcatsWordmark from "../assets/har-ganeth-hell-cats/wordmark.png";
+import hellcatsTouchdown from "../assets/har-ganeth-hell-cats/touchdown.png";
 
 import victimsLogo from "../assets/victims/logo.png";
 import victimsIcon from "../assets/victims/icon.png";
@@ -94,14 +94,14 @@ export const sylvaniaNightmares: Team = {
 
     assets: {
         logo: nightmaresLogo,
-        icon: nightmresIcon,
-        wordmark: nightmresWordmark,
-        touchdownImage: nightmresTouchdown,
+        icon: nightmaresIcon,
+        wordmark: nightmaresWordmark,
+        touchdownImage: nightmaresTouchdown,
     },
 };
 
 export const mordheimNeonpunks: Team = {
-    id: "mordheim-neonpukns",
+    id: "mordheim-neonpunks",
     name: "Mordheim NeonPunks",
     shortName: "NEONPUNKS",
 
@@ -269,7 +269,7 @@ export const harganethHellcats: Team = {
         primary: "#54205F",
         secondary: "#15171D",
         accent: "#C42D4A",
-        text: "#E0E2DF"
+        text: "#E0E2DF",
     },
 
     assets: {
@@ -280,7 +280,7 @@ export const harganethHellcats: Team = {
     },
 };
 
-export const victims: Team = { // random away team for guests
+export const victims: Team = {
     id: "victims",
     name: "Victims",
     shortName: "VICTIMS",
@@ -312,5 +312,5 @@ export const teams: Team[] = [
     skeggiReavers,
     xlanhuapecAstrals,
     harganethHellcats,
-    victims
+    victims,
 ];

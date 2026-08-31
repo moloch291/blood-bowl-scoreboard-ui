@@ -30,11 +30,11 @@ import type { Team } from "../types/team";
 import "../styles/layout.css";
 
 type AppScreen = "setup" | "match";
-
-type MatchEndStage =
-    | "none"
-    | "final-score";
-
+type MatchEndStage = "none" | "final-score";
+interface TurnAnnouncement {
+    team: Team;
+    turn: number;
+}
 const defaultInitialState = createInitialMatchState(
     templeSerpents,
     sylvaniaNightmares,
@@ -50,11 +50,6 @@ export function MatchLayout() {
         matchReducer,
         defaultInitialState,
     );
-
-    interface TurnAnnouncement {
-        team: Team;
-        turn: number;
-    }
 
     const [
         turnAnnouncement,
@@ -186,18 +181,12 @@ export function MatchLayout() {
             homeRerolls,
             awayRerolls,
         );
-
-        setActiveTurnSide(null);
-        setScreen("match");
         clearOverlays();
-
         matchInitialStateRef.current = newMatchState;
-
         dispatch({
             type: "RESET_MATCH",
             state: newMatchState,
         });
-
         setScreen("match");
     }
 

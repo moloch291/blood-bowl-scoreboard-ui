@@ -178,21 +178,6 @@
     border-color: rgba(57, 221, 200, 0.5);
 }
 
-.button--reapers {
-    --button-effect-color-1: rgba(196, 112, 255, 0.86);
-    --button-effect-color-2: rgba(170, 98, 219, 0.98);
-    --button-effect-color-3: rgba(255, 82, 210, 0.94);
-    --button-effect-color-4: rgba(255, 235, 255, 1);
-    --button-effect-glow: rgba(170, 98, 219, 0.8);
-
-    background:
-        linear-gradient(180deg,
-            var(--reapers-secondary),
-            #351345);
-
-    border-color: rgba(170, 98, 219, 0.5);
-}
-
 .button--danger {
     --button-effect-color-1: rgba(255, 115, 130, 0.88);
     --button-effect-color-2: rgba(219, 75, 93, 0.98);
