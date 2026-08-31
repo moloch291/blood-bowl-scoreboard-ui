@@ -4,6 +4,7 @@ import {
     useRef,
     useState,
 } from "react";
+import { MatchIntro } from "../components/MatchIntro/MatchIntro";
 import { BroadcastOverlay } from "../components/BroadcastOverlay/BroadcastOverlay";
 import { ControlPanel } from "../components/ControlPanel/ControlPanel";
 import { FinalScoreOverlay } from "../components/FinalsScoreOverlay/FinalScoreOverlay";
@@ -29,7 +30,7 @@ import type { Team } from "../types/team";
 
 import "../styles/layout.css";
 
-type AppScreen = "setup" | "match";
+type AppScreen = "setup" | "intro" | "match";
 type MatchEndStage = "none" | "final-score";
 interface TurnAnnouncement {
     team: Team;
@@ -187,7 +188,7 @@ export function MatchLayout() {
             type: "RESET_MATCH",
             state: newMatchState,
         });
-        setScreen("match");
+        setScreen("intro");
     }
 
     function handleStartTurn(side: TeamSide) {
@@ -322,6 +323,16 @@ export function MatchLayout() {
             <MatchSetup
                 teams={teams}
                 onStartMatch={handleStartMatch}
+            />
+        );
+    }
+
+    if (screen === "intro") {
+        return (
+            <MatchIntro
+                homeTeam={state.home.team}
+                awayTeam={state.away.team}
+                onComplete={() => setScreen("match")}
             />
         );
     }
