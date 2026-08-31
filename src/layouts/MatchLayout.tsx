@@ -129,6 +129,7 @@ export function MatchLayout() {
     }
 
     function handleMatchIntroComplete() {
+        setShowMatchBehindIntro(false);
         setScreen("match");
     }
 
@@ -345,7 +346,7 @@ export function MatchLayout() {
                     className={[
                         "match-layout",
                         screen !== "match"
-                            ? "match-layout--intro-background"
+                            ? "match-layout--locked"
                             : "",
                     ]
                         .filter(Boolean)

@@ -385,7 +385,7 @@
         match-intro-background-exit 500ms ease-out forwards;
 }
 
-.match-layout--intro-background {
+.match-layout--locked {
     pointer-events: none;
 }
 
