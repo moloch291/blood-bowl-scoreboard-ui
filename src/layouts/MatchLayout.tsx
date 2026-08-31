@@ -124,6 +124,10 @@ export function MatchLayout() {
         hasShownFullTimeRef.current = false;
     }
 
+    function handleMatchIntroComplete() {
+        setScreen("match");
+    }
+
     useEffect(() => {
         return () => {
             clearTouchdownTimer();
@@ -332,7 +336,7 @@ export function MatchLayout() {
             <MatchIntro
                 homeTeam={state.home.team}
                 awayTeam={state.away.team}
-                onComplete={() => setScreen("match")}
+                onComplete={handleMatchIntroComplete}
             />
         );
     }
