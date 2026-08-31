@@ -1,5 +1,5 @@
 import type { CSSProperties } from "react";
-
+import leagueIcon from "../../assets/league-icon.png";
 import { TeamPanel } from "../TeamPanel/TeamPanel";
 import type {
     TeamMatchState,
@@ -60,7 +60,16 @@ export function Scoreboard({
 
                 <div className="scoreboard__center">
                     <div className="scoreboard__versus">
-                        VS
+                        <img
+                            className="scoreboard__league-icon"
+                            src={leagueIcon}
+                            alt=""
+                            aria-hidden="true"
+                        />
+
+                        <span className="scoreboard__versus-text">
+                            VS
+                        </span>
                     </div>
 
                     <div className="scoreboard__half">
