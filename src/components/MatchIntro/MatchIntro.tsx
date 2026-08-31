@@ -1,5 +1,8 @@
-import { useEffect, useState } from "react";
-import type { CSSProperties } from "react";
+import {
+    useEffect,
+    useState,
+    type CSSProperties,
+} from "react";
 import type { Team } from "../../types/team";
 import leagueIcon from "../../assets/league-logo.png";
 
