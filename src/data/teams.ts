@@ -280,6 +280,7 @@ export const harganethHellcats: Team = {
     },
 };
 
+// Generic away team for guests:
 export const victims: Team = {
     id: "victims",
     name: "Victims",
