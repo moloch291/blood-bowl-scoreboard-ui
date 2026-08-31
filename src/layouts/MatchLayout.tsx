@@ -57,6 +57,9 @@ export function MatchLayout() {
         setTurnAnnouncement,
     ] = useState<TurnAnnouncement | null>(null);
 
+    const [showMatchBehindIntro, setShowMatchBehindIntro] =
+        useState(false);
+
     const touchdownAnimationFrameRef =
         useRef<number | null>(null);
 
@@ -119,6 +122,7 @@ export function MatchLayout() {
         setIsTouchdownVisible(false);
         setIsHalfTimeVisible(false);
         setMatchEndStage("none");
+        setShowMatchBehindIntro(false);
 
         hasShownHalfTimeRef.current = false;
         hasShownFullTimeRef.current = false;
@@ -126,6 +130,10 @@ export function MatchLayout() {
 
     function handleMatchIntroComplete() {
         setScreen("match");
+    }
+
+    function handleMatchIntroExitStart() {
+        setShowMatchBehindIntro(true);
     }
 
     useEffect(() => {
@@ -330,69 +338,89 @@ export function MatchLayout() {
             />
         );
     }
-
-    if (screen === "intro") {
-        return (
-            <MatchIntro
-                homeTeam={state.home.team}
-                awayTeam={state.away.team}
-                onComplete={handleMatchIntroComplete}
-            />
-        );
-    }
-
     return (
-        <main className="match-layout">
-            <Scoreboard
-                home={state.home}
-                away={state.away}
-                half={state.half}
-                activeSide={activeTurnSide}
-            />
-            <ControlPanel
-                state={state}
-                dispatch={dispatch}
-                onStartTurn={handleStartTurn}
-                onTouchdown={handleTouchdown}
-                onResetMatch={handleResetMatch}
-                onOpenHalfTime={() =>
-                    setIsHalfTimeVisible(true)
-                }
-                onOpenFinalScore={handleOpenFinalScore}
-                canStartSecondHalf={canStartSecondHalf}
-            />
-            <TouchdownOverlay
-                team={touchdownTeam}
-                isVisible={isTouchdownVisible}
-            />
-            <HalfTimeOverlay
-                home={state.home}
-                away={state.away}
-                isVisible={isHalfTimeVisible}
-                onStartSecondHalf={handleStartSecondHalf}
-                onClose={() =>
-                    setIsHalfTimeVisible(false)
-                }
-            />
-            <FinalScoreOverlay
-                home={state.home}
-                away={state.away}
-                isVisible={matchEndStage === "final-score"}
-                onNewMatch={handleNewMatch}
-                onReviewScoreboard={handleReviewScoreboard}
-            />
-            <BroadcastOverlay
-                team={turnAnnouncement?.team ?? null}
-                isOpen={turnAnnouncement !== null}
-                eyebrow="Possession"
-                title="Next Turn"
-                subtitle={
-                    turnAnnouncement
-                        ? `${turnAnnouncement.team.name} • Turn ${turnAnnouncement.turn}`
-                        : ""
-                }
-                onExited={() => setTurnAnnouncement(null)}
-            />
-        </main>
+        <>
+            {(screen === "match" || showMatchBehindIntro) && (
+                <main
+                    className={[
+                        "match-layout",
+                        screen !== "match"
+                            ? "match-layout--intro-background"
+                            : "",
+                    ]
+                        .filter(Boolean)
+                        .join(" ")}
+                >
+                    <Scoreboard
+                        home={state.home}
+                        away={state.away}
+                        half={state.half}
+                        activeSide={activeTurnSide}
+                    />
+                    <ControlPanel
+                        state={state}
+                        dispatch={dispatch}
+                        onStartTurn={handleStartTurn}
+                        onTouchdown={handleTouchdown}
+                        onResetMatch={handleResetMatch}
+                        onOpenHalfTime={() =>
+                            setIsHalfTimeVisible(true)
+                        }
+                        onOpenFinalScore={handleOpenFinalScore}
+                        canStartSecondHalf={canStartSecondHalf}
+                    />
+                    {screen === "match" && (
+                        <>
+                            <TouchdownOverlay
+                                team={touchdownTeam}
+                                isVisible={isTouchdownVisible}
+                            />
+
+                            <HalfTimeOverlay
+                                home={state.home}
+                                away={state.away}
+                                isVisible={isHalfTimeVisible}
+                                onStartSecondHalf={handleStartSecondHalf}
+                                onClose={() =>
+                                    setIsHalfTimeVisible(false)
+                                }
+                            />
+
+                            <FinalScoreOverlay
+                                home={state.home}
+                                away={state.away}
+                                isVisible={matchEndStage === "final-score"}
+                                onNewMatch={handleNewMatch}
+                                onReviewScoreboard={handleReviewScoreboard}
+                            />
+
+                            <BroadcastOverlay
+                                team={turnAnnouncement?.team ?? null}
+                                isOpen={turnAnnouncement !== null}
+                                eyebrow="Possession"
+                                title="Next Turn"
+                                subtitle={
+                                    turnAnnouncement
+                                        ? `${turnAnnouncement.team.name} • Turn ${turnAnnouncement.turn}`
+                                        : ""
+                                }
+                                onExited={() =>
+                                    setTurnAnnouncement(null)
+                                }
+                            />
+                        </>
+                    )}
+                </main>
+            )}
+
+            {screen === "intro" && (
+                <MatchIntro
+                    homeTeam={state.home.team}
+                    awayTeam={state.away.team}
+                    onExitStart={handleMatchIntroExitStart}
+                    onComplete={handleMatchIntroComplete}
+                />
+            )}
+        </>
     );
 }

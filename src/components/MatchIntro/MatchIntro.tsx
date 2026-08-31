@@ -11,12 +11,14 @@ import "./match-intro.css";
 interface MatchIntroProps {
     homeTeam: Team;
     awayTeam: Team;
+    onExitStart: () => void;
     onComplete: () => void;
 }
 
 export function MatchIntro({
     homeTeam,
     awayTeam,
+    onExitStart,
     onComplete,
 }: MatchIntroProps) {
 
@@ -34,6 +36,7 @@ export function MatchIntro({
 
     useEffect(() => {
         const exitTimer = window.setTimeout(() => {
+            onExitStart();
             setIsExiting(true);
         }, 2400);
 
@@ -45,7 +48,7 @@ export function MatchIntro({
             window.clearTimeout(exitTimer);
             window.clearTimeout(completeTimer);
         };
-    }, [onComplete]);
+    }, [onExitStart, onComplete]);
 
     return (
         <main
@@ -72,11 +75,6 @@ export function MatchIntro({
                     VS
                 </span>
             </div>
-
-            <div
-                className="match-intro__exit-wipe"
-                aria-hidden="true"
-            />
 
             <section className="match-intro__team match-intro__team--away">
                 <img
