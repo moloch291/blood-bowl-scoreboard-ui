@@ -62,10 +62,13 @@
     z-index: -4;
 
     background:
-        linear-gradient(120deg,
-            var(--broadcast-primary),
-            var(--broadcast-secondary) 65%,
-            var(--broadcast-accent));
+        linear-gradient(115deg,
+            #070809 0%,
+            #090a0c 25%,
+            #111216 48%,
+            #18191d 58%,
+            #0d0e11 78%,
+            #070809 100%);
 
     transform: translateX(-115%) skewX(-12deg);
     transform-origin: center;
