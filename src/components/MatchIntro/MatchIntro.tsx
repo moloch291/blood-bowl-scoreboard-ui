@@ -33,23 +33,13 @@ export function MatchIntro({
     const [isExiting, setIsExiting] = useState(false);
 
     useEffect(() => {
-        const timer = window.setTimeout(() => {
-            onComplete();
-        }, 2800);
-
-        return () => {
-            window.clearTimeout(timer);
-        };
-    }, [onComplete]);
-
-    useEffect(() => {
         const exitTimer = window.setTimeout(() => {
             setIsExiting(true);
-        }, 2100);
+        }, 2400);
 
         const completeTimer = window.setTimeout(() => {
             onComplete();
-        }, 2800);
+        }, 3100);
 
         return () => {
             window.clearTimeout(exitTimer);
