@@ -1,6 +1,7 @@
 import { useState } from "react";
 import type { CSSProperties } from "react";
 import type { Team } from "../../types/team";
+import leagueIcon from "../../assets/league-logo.png";
 
 import "./match-setup.css";
 
@@ -148,6 +149,11 @@ export function MatchSetup({
                 />
 
                 <div className="match-setup__center">
+                    <img
+                        className="match-setup__league-icon"
+                        src={leagueIcon}
+                        alt="League"
+                    />
                     <span
                         className="match-setup__versus"
                         aria-hidden="true"
