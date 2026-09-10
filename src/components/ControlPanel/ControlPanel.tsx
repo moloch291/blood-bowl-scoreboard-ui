@@ -1,12 +1,10 @@
 import type { Dispatch } from "react";
-
 import type {
     MatchState,
     TeamSide,
 } from "../../types/match";
-
 import type { MatchAction } from "../../reducers/matchReducer";
-
+import { getTurnsPerHalf } from "../../utils/getTurnsPerHalf";
 import "../../styles/control-panel.css";
 
 interface ControlPanelProps {
@@ -34,6 +32,9 @@ export function ControlPanel({
         state.half === 2 &&
         state.home.hasFinishedHalf &&
         state.away.hasFinishedHalf;
+
+    const turnsPerHalf =
+        getTurnsPerHalf(state.gameMode);
 
     function removeScore(side: TeamSide) {
         dispatch({
@@ -127,7 +128,7 @@ export function ControlPanel({
                             − Turn
                         </button>
 
-                        {state.home.turn < 8 ? (
+                        {state.home.turn < turnsPerHalf ? (
                             <button
                                 type="button"
                                 className="button button--primary"
@@ -148,7 +149,7 @@ export function ControlPanel({
                             >
                                 {state.home.hasFinishedHalf
                                     ? "✓ Half Finished"
-                                    : "End Turn 8"}
+                                    : `End Turn ${turnsPerHalf}`}
                             </button>
                         )}
                     </div>
@@ -189,6 +190,8 @@ export function ControlPanel({
                     Match
                 </h2>
 
+                <strong>{state.gameMode}</strong>
+
                 <div className="control-panel__group">
                     <h3 className="control-panel__group-title">
                         Current Half
@@ -214,7 +217,7 @@ export function ControlPanel({
 
                         {!canStartSecondHalf && (
                             <p>
-                                Both teams must complete Turn 8.
+                                Both teams must complete Turn {turnsPerHalf}.
                             </p>
                         )}
                     </div>
@@ -293,7 +296,7 @@ export function ControlPanel({
                     </h3>
 
                     <div className="control-panel__buttons">
-                        {state.away.turn < 8 ? (
+                        {state.away.turn < turnsPerHalf ? (
                             <button
                                 type="button"
                                 className="button button--primary"
@@ -314,7 +317,7 @@ export function ControlPanel({
                             >
                                 {state.away.hasFinishedHalf
                                     ? "✓ Half Finished"
-                                    : "End Turn 8"}
+                                    : `End Turn ${turnsPerHalf}`}
                             </button>
                         )}
 

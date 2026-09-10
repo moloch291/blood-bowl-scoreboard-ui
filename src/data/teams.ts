@@ -20,10 +20,10 @@ import owlsIcon from "../assets/oakenbrow-owls/icon.png";
 import owlsWordmark from "../assets/oakenbrow-owls/wordmark.png";
 import owlsTouchdown from "../assets/oakenbrow-owls/touchdown.png";
 
-import cometsLogo from "../assets/lothern-comets/logo.png";
-import cometsIcon from "../assets/lothern-comets/icon.png";
-import cometsWordmark from "../assets/lothern-comets/wordmark.png";
-import cometsTouchdown from "../assets/lothern-comets/touchdown.png";
+import sunscalesLogo from "../assets/caledor-sunscales/logo.png";
+import sunscalesIcon from "../assets/caledor-sunscales/icon.png";
+import sunscalesWordmark from "../assets/caledor-sunscales/wordmark.png";
+import sunscalesTouchdown from "../assets/caledor-sunscales/touchdown.png";
 
 import scarabsLogo from "../assets/khemri-scarabs/logo.png";
 import scarabsIcon from "../assets/khemri-scarabs/icon.png";
@@ -140,23 +140,23 @@ export const oakenbrowOwls: Team = {
     },
 };
 
-export const lothernComets: Team = {
-    id: "lothern-comets",
-    name: "Lothern Comets",
-    shortName: "COMETS",
+export const caledornSunscales: Team = {
+    id: "caledor-sunscales",
+    name: "Caledor Sunscales",
+    shortName: "SUNSCALES",
 
     colors: {
-        primary: "#4B1D7A",
-        secondary: "#F8F1DC",
-        accent: "#D4A635",
-        text: "#FFFFFF",
+        primary: "#344A16",
+        secondary: "#F1E6C7",
+        accent: "#D98212",
+        text: "#D6A72A",
     },
 
     assets: {
-        logo: cometsLogo,
-        icon: cometsIcon,
-        wordmark: cometsWordmark,
-        touchdownImage: cometsTouchdown,
+        logo: sunscalesLogo,
+        icon: sunscalesIcon,
+        wordmark: sunscalesWordmark,
+        touchdownImage: sunscalesTouchdown,
     },
 };
 
@@ -306,7 +306,7 @@ export const teams: Team[] = [
     sylvaniaNightmares,
     mordheimNeonpunks,
     oakenbrowOwls,
-    lothernComets,
+    caledornSunscales,
     khemriScarabs,
     meghbahSaurs,
     parravonTemplars,

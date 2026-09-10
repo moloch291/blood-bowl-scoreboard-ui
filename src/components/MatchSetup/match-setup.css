@@ -262,6 +262,43 @@
     text-shadow: 0 5px 0 rgba(0, 0, 0, 0.5);
 }
 
+.match-setup__game-mode {
+    display: grid;
+    justify-items: center;
+    gap: 0.4rem;
+}
+
+.match-setup__game-mode-label {
+    color: rgba(255, 255, 255, 0.62);
+
+    font-size: 0.75rem;
+    font-weight: 900;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.match-setup__game-mode-options {
+    display: flex;
+    gap: 0.4rem;
+}
+
+.match-setup__game-mode-button {
+    min-width: 58px;
+}
+
+.match-setup__game-mode-button--active {
+    border-color: rgba(255, 255, 255, 0.7);
+
+    background:
+        linear-gradient(145deg,
+            #3b3d45,
+            #202127);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.15),
+        0 0 14px rgba(255, 255, 255, 0.08);
+}
+
 /* Footer */
 
 .match-setup__footer {

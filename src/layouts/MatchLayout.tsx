@@ -13,6 +13,7 @@ import {
     MatchSetup,
     type MatchSetupSelection,
 } from "../components/MatchSetup/MatchSetup";
+import { getTurnsPerHalf } from "../utils/getTurnsPerHalf";
 import { Scoreboard } from "../components/ScoreBoard/Scoreboard";
 import { TouchdownOverlay } from "../components/TouchdownOverlay/TouchdownOverlay";
 
@@ -41,6 +42,7 @@ const defaultInitialState = createInitialMatchState(
     sylvaniaNightmares,
     3,
     3,
+    "11s",
 );
 
 export function MatchLayout() {
@@ -96,6 +98,9 @@ export function MatchLayout() {
         state.half === 2 &&
         state.home.hasFinishedHalf &&
         state.away.hasFinishedHalf;
+
+    const turnsPerHalf =
+        getTurnsPerHalf(state.gameMode);
 
     function clearTouchdownTimer() {
         if (touchdownTimerRef.current) {
@@ -188,12 +193,14 @@ export function MatchLayout() {
         awayTeam,
         homeRerolls,
         awayRerolls,
+        gameMode,
     }: MatchSetupSelection) {
         const newMatchState = createInitialMatchState(
             homeTeam,
             awayTeam,
             homeRerolls,
             awayRerolls,
+            gameMode,
         );
         clearOverlays();
         matchInitialStateRef.current = newMatchState;
@@ -215,7 +222,7 @@ export function MatchLayout() {
                 : state.away;
 
         if (
-            teamState.turn >= 8 ||
+            teamState.turn >= turnsPerHalf ||
             teamState.hasFinishedHalf
         ) {
             return;

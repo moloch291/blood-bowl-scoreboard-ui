@@ -1,4 +1,7 @@
-import type { MatchState } from "../types/match";
+import type {
+    GameMode,
+    MatchState,
+} from "../types/match";
 import type { Team } from "../types/team";
 
 export function createInitialMatchState(
@@ -6,6 +9,7 @@ export function createInitialMatchState(
     awayTeam: Team,
     homeRerolls: number,
     awayRerolls: number,
+    gameMode: GameMode,
 ): MatchState {
     return {
         home: {
@@ -25,5 +29,6 @@ export function createInitialMatchState(
         },
 
         half: 1,
+        gameMode,
     };
 }

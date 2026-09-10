@@ -1,6 +1,7 @@
 import { useState } from "react";
 import type { CSSProperties } from "react";
 import type { Team } from "../../types/team";
+import type { GameMode } from "../../types/match";
 import leagueIcon from "../../assets/league-logo.png";
 
 import "./match-setup.css";
@@ -10,6 +11,7 @@ export interface MatchSetupSelection {
     awayTeam: Team;
     homeRerolls: number;
     awayRerolls: number;
+    gameMode: GameMode;
 }
 
 interface MatchSetupProps {
@@ -33,6 +35,7 @@ export function MatchSetup({
 
     const [homeRerolls, setHomeRerolls] = useState(3);
     const [awayRerolls, setAwayRerolls] = useState(3);
+    const [gameMode, setGameMode] = useState<GameMode>("11s");
 
     const homeTeam =
         teams.find((team) => team.id === homeTeamId) ??
@@ -103,6 +106,7 @@ export function MatchSetup({
             awayTeam,
             homeRerolls,
             awayRerolls,
+            gameMode,
         });
     }
 
@@ -160,7 +164,53 @@ export function MatchSetup({
                     >
                         VS
                     </span>
+                    <div className="match-setup__game-mode">
+                        <span className="match-setup__game-mode-label">
+                            Game Mode
+                        </span>
 
+                        <div
+                            className="match-setup__game-mode-options"
+                            role="group"
+                            aria-label="Game mode"
+                        >
+                            <button
+                                type="button"
+                                className={[
+                                    "button",
+                                    "button--secondary",
+                                    "match-setup__game-mode-button",
+                                    gameMode === "7s"
+                                        ? "match-setup__game-mode-button--active"
+                                        : "",
+                                ]
+                                    .filter(Boolean)
+                                    .join(" ")}
+                                onClick={() => setGameMode("7s")}
+                                aria-pressed={gameMode === "7s"}
+                            >
+                                7s
+                            </button>
+
+                            <button
+                                type="button"
+                                className={[
+                                    "button",
+                                    "button--secondary",
+                                    "match-setup__game-mode-button",
+                                    gameMode === "11s"
+                                        ? "match-setup__game-mode-button--active"
+                                        : "",
+                                ]
+                                    .filter(Boolean)
+                                    .join(" ")}
+                                onClick={() => setGameMode("11s")}
+                                aria-pressed={gameMode === "11s"}
+                            >
+                                11s
+                            </button>
+                        </div>
+                    </div>
                     <button
                         type="button"
                         className="button button--secondary"

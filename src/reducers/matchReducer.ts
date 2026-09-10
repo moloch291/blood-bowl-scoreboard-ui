@@ -2,6 +2,7 @@ import type {
     MatchState,
     TeamSide,
 } from "../types/match";
+import { getTurnsPerHalf } from "../utils/getTurnsPerHalf";
 
 export type MatchAction =
     | {
@@ -48,6 +49,9 @@ export function matchReducer(
     state: MatchState,
     action: MatchAction,
 ): MatchState {
+    const turnsPerHalf =
+        getTurnsPerHalf(state.gameMode);
+
     switch (action.type) {
         case "ADD_SCORE":
             return {
@@ -76,7 +80,7 @@ export function matchReducer(
                 [action.side]: {
                     ...state[action.side],
                     turn: Math.min(
-                        8,
+                        turnsPerHalf,
                         state[action.side].turn + 1,
                     ),
                 },
@@ -138,7 +142,7 @@ export function matchReducer(
             };
 
         case "FINISH_HALF":
-            if (state[action.side].turn !== 8) {
+            if (state[action.side].turn !== turnsPerHalf) {
                 return state;
             }
 
