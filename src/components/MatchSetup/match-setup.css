@@ -286,17 +286,18 @@
     min-width: 58px;
 }
 
-.match-setup__game-mode-button--active {
-    border-color: rgba(255, 255, 255, 0.7);
+.button.match-setup__game-mode-button--active {
+    color: #06110f;
 
-    background:
-        linear-gradient(145deg,
-            #3b3d45,
-            #202127);
+    background: linear-gradient(180deg,
+            #39ddc8,
+            var(--serpents-primary));
+
+    border: 2px solid #ffffff;
 
     box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.15),
-        0 0 14px rgba(255, 255, 255, 0.08);
+        inset 0 1px 0 rgb(255 255 255 / 18%),
+        0 0 14px rgb(0 0 0 / 30%);
 }
 
 /* Footer */
