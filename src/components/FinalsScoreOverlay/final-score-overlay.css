@@ -138,7 +138,7 @@
     display: grid;
     place-items: center;
 
-    overflow: hidden;
+    overflow: visible;
 }
 
 .final-score-overlay__wordmark {
