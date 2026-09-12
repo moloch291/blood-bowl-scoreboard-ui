@@ -286,6 +286,15 @@
     min-width: 58px;
 }
 
+.match-setup__back {
+    margin-top: 0.75rem;
+
+    min-height: 36px;
+    padding: 0.45rem 0.8rem;
+
+    font-size: 0.78rem;
+}
+
 .button.match-setup__game-mode-button--active {
     color: #06110f;
 

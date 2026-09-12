@@ -1,0 +1,68 @@
+.league-placeholder {
+    width: 100%;
+    height: 100dvh;
+
+    display: grid;
+    place-items: center;
+
+    padding: clamp(1rem, 4vw, 3rem);
+
+    color: #fff;
+
+    background:
+        radial-gradient(circle at 50% 20%,
+            rgba(255, 255, 255, 0.08),
+            transparent 32rem),
+        linear-gradient(145deg,
+            #18181d,
+            #09090c);
+}
+
+.league-placeholder__content {
+    width: min(100%, 600px);
+
+    display: grid;
+    justify-items: center;
+    gap: 1rem;
+
+    text-align: center;
+}
+
+.league-placeholder__logo {
+    width: clamp(100px, 15vw, 180px);
+    height: auto;
+
+    object-fit: contain;
+
+    filter:
+        drop-shadow(0 12px 18px rgb(0 0 0 / 50%));
+}
+
+.league-placeholder__eyebrow {
+    margin: 0;
+
+    color: var(--color-gold);
+
+    font-weight: 900;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+.league-placeholder__title {
+    margin: 0;
+
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.league-placeholder__message {
+    margin: 0 0 1rem;
+
+    color: var(--color-text-muted);
+}
+
+.league-placeholder__back {
+    min-width: 220px;
+}

@@ -19,11 +19,13 @@ interface MatchSetupProps {
     onStartMatch: (
         selection: MatchSetupSelection,
     ) => void;
+    onBackToMenu: () => void;
 }
 
 export function MatchSetup({
     teams,
     onStartMatch,
+    onBackToMenu,
 }: MatchSetupProps) {
     const [homeTeamId, setHomeTeamId] = useState(
         teams[0]?.id ?? "",
@@ -139,6 +141,14 @@ export function MatchSetup({
                 <p className="match-setup__subtitle">
                     Prepare the matchup before kickoff.
                 </p>
+
+                <button
+                    type="button"
+                    className="button button--secondary match-setup__back"
+                    onClick={onBackToMenu}
+                >
+                    Back to Main Menu
+                </button>
             </header>
 
             <section className="match-setup__matchup">

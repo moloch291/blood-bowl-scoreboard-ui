@@ -16,27 +16,28 @@ import {
 import { getTurnsPerHalf } from "../utils/getTurnsPerHalf";
 import { Scoreboard } from "../components/ScoreBoard/Scoreboard";
 import { TouchdownOverlay } from "../components/TouchdownOverlay/TouchdownOverlay";
-
 import {
     sylvaniaNightmares,
     teams,
     templeSerpents,
 } from "../data/teams";
-
 import { matchReducer } from "../reducers/matchReducer";
 import { createInitialMatchState } from "../utils/createInitialMatchState";
-
 import type { MatchState, TeamSide } from "../types/match";
 import type { Team } from "../types/team";
-
 import "../styles/layout.css";
 
-type AppScreen = "setup" | "intro" | "match";
+type MatchScreen = "setup" | "intro" | "match";
 type MatchEndStage = "none" | "final-score";
+
 interface TurnAnnouncement {
     team: Team;
     turn: number;
 }
+interface MatchLayoutProps {
+    onBackToMenu: () => void;
+}
+
 const defaultInitialState = createInitialMatchState(
     templeSerpents,
     sylvaniaNightmares,
@@ -45,9 +46,11 @@ const defaultInitialState = createInitialMatchState(
     "11s",
 );
 
-export function MatchLayout() {
+export function MatchLayout({
+    onBackToMenu,
+}: MatchLayoutProps) {
     const [screen, setScreen] =
-        useState<AppScreen>("setup");
+        useState<MatchScreen>("setup");
 
     const [state, dispatch] = useReducer(
         matchReducer,
@@ -343,6 +346,7 @@ export function MatchLayout() {
             <MatchSetup
                 teams={teams}
                 onStartMatch={handleStartMatch}
+                onBackToMenu={onBackToMenu}
             />
         );
     }
