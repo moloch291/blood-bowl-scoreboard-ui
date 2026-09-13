@@ -81,8 +81,16 @@
     min-height: 0;
 
     display: grid;
-    grid-template-rows: auto minmax(0, 1fr);
+    grid-template-rows:
+        auto minmax(0, 1fr) auto;
+
     gap: 0.6rem;
+}
+
+.conference-table__add-result {
+    justify-self: center;
+
+    min-width: 190px;
 }
 
 .conference-table__title {
@@ -124,7 +132,7 @@
 
 .conference-table__table th,
 .conference-table__table td {
-    padding: 0.75rem 0.65rem;
+    padding: 0.5rem 0.55rem;
 
     border-bottom:
         1px solid rgb(255 255 255 / 8%);
@@ -218,4 +226,141 @@
 
     filter:
         drop-shadow(0 8px 12px rgb(0 0 0 / 45%));
+}
+
+.game-result-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+
+    display: grid;
+    place-items: center;
+
+    padding: 1rem;
+
+    background:
+        rgb(5 5 8 / 78%);
+
+    backdrop-filter: blur(8px);
+}
+
+.game-result-overlay__panel {
+    width: min(92vw, 620px);
+
+    display: grid;
+    gap: 1.25rem;
+
+    padding: clamp(1.25rem, 3vw, 2rem);
+
+    border:
+        1px solid var(--color-border);
+
+    border-radius:
+        var(--radius-medium);
+
+    background:
+        radial-gradient(circle at 50% 0%,
+            rgb(255 255 255 / 8%),
+            transparent 45%),
+        linear-gradient(145deg,
+            #202127,
+            #101014);
+
+    box-shadow:
+        0 24px 80px rgb(0 0 0 / 70%);
+}
+
+.game-result-overlay__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    gap: 1rem;
+}
+
+.game-result-overlay__eyebrow {
+    margin: 0 0 0.3rem;
+
+    color: var(--color-text-muted);
+
+    font-size: 0.75rem;
+    font-weight: 900;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.game-result-overlay__title {
+    margin: 0;
+
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3rem);
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.game-result-overlay__stats {
+    display: grid;
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 0.75rem;
+}
+
+.game-result-overlay__field {
+    display: grid;
+    gap: 0.4rem;
+
+    color: var(--color-text-muted);
+
+    font-size: 0.75rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.game-result-overlay__field select,
+.game-result-overlay__field input {
+    width: 100%;
+
+    padding: 0.75rem;
+
+    color: var(--color-text);
+
+    border:
+        1px solid var(--color-border);
+
+    border-radius: 6px;
+
+    background: #111217;
+
+    font: inherit;
+    font-size: 1rem;
+    font-weight: 800;
+}
+
+.game-result-overlay__field input {
+    text-align: center;
+}
+
+.game-result-overlay__games-note {
+    margin: 0;
+
+    color: var(--color-text-muted);
+
+    font-size: 0.85rem;
+    text-align: center;
+}
+
+.game-result-overlay__error {
+    margin: 0;
+
+    color: #ff6b6b;
+
+    font-weight: 800;
+    text-align: center;
+}
+
+.game-result-overlay__submit {
+    justify-self: center;
+
+    min-width: 180px;
 }

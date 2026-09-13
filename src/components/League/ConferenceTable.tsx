@@ -6,12 +6,14 @@ interface ConferenceTableProps {
     title: string;
     logo: string;
     teams: ConferenceTeam[];
+    onAddResult: () => void;
 }
 
 export function ConferenceTable({
     title,
     logo,
     teams,
+    onAddResult,
 }: ConferenceTableProps) {
     return (
         <section className="conference-table">
@@ -93,6 +95,13 @@ export function ConferenceTable({
                     </tbody>
                 </table>
             </div>
+            <button
+                type="button"
+                className="button button--primary conference-table__add-result"
+                onClick={onAddResult}
+            >
+                Add Game Result
+            </button>
         </section>
     );
 }

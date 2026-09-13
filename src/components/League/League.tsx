@@ -6,9 +6,16 @@ import {
 import leagueLogo from "../../assets/league-logo.png";
 import greatOceanLogo from "../../assets/goc-logo.png";
 import oldWorldLogo from "../../assets/owc-logo.png";
-import { getConferenceStandings } from "../../api/leagueApi";
-
+import {
+    getConferenceStandings,
+    addConferenceResult,
+} from "../../api/leagueApi";
+import {
+    GameResultOverlay,
+} from "./GameResultOverlay";
 import type {
+    GameResultInput,
+    ConferenceKey,
     ConferenceStandings,
 } from "../../types/league";
 
@@ -40,6 +47,43 @@ export function League({
         setError,
     ] = useState<string | null>(null);
 
+    const [
+        activeConference,
+        setActiveConference,
+    ] = useState<ConferenceKey | null>(null);
+
+    const activeConferenceTeams =
+        activeConference === "great-ocean"
+            ? standings?.greatOcean ?? []
+            : activeConference === "old-world"
+                ? standings?.oldWorld ?? []
+                : [];
+
+    const activeConferenceTitle =
+        activeConference === "great-ocean"
+            ? "Great Ocean Conference"
+            : "Old World Conference";
+
+    async function handleAddResult(
+        result: GameResultInput,
+    ) {
+        if (!activeConference) {
+            return;
+        }
+
+        await addConferenceResult(
+            activeConference,
+            result,
+        );
+
+        const updatedStandings =
+            await getConferenceStandings();
+
+        setStandings(updatedStandings);
+
+        setActiveConference(null);
+    }
+
     useEffect(() => {
         async function loadStandings() {
             try {
@@ -63,6 +107,16 @@ export function League({
 
     return (
         <main className="league">
+            {activeConference && standings && (
+                <GameResultOverlay
+                    conferenceTitle={activeConferenceTitle}
+                    teams={activeConferenceTeams}
+                    onClose={() =>
+                        setActiveConference(null)
+                    }
+                    onSubmit={handleAddResult}
+                />
+            )}
             <header className="league__header">
                 <button
                     type="button"
@@ -99,12 +153,18 @@ export function League({
                         title="Great Ocean Conference"
                         logo={greatOceanLogo}
                         teams={standings.greatOcean}
+                        onAddResult={() =>
+                            setActiveConference("great-ocean")
+                        }
                     />
 
                     <ConferenceTable
                         title="Old World Conference"
                         logo={oldWorldLogo}
                         teams={standings.oldWorld}
+                        onAddResult={() =>
+                            setActiveConference("old-world")
+                        }
                     />
                 </section>
             )}
