@@ -15,16 +15,18 @@ export function ConferenceTable({
 }: ConferenceTableProps) {
     return (
         <section className="conference-table">
-            <img
-                className="conference-table__logo"
-                src={logo}
-                alt=""
-                aria-hidden="true"
-            />
+            <div className="conference-table__branding">
+                <img
+                    className="conference-table__logo"
+                    src={logo}
+                    alt=""
+                    aria-hidden="true"
+                />
 
-            <h2 className="conference-table__title">
-                {title}
-            </h2>
+                <h2 className="conference-table__title">
+                    {title}
+                </h2>
+            </div>
 
             <div className="conference-table__shell">
                 <table className="conference-table__table">
