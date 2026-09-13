@@ -191,3 +191,23 @@
 
     border: 0;
 }
+
+.conference-table__branding {
+    display: grid;
+    justify-items: center;
+    gap: 0.5rem;
+
+    min-height: 150px;
+}
+
+.conference-table__logo {
+    display: block;
+
+    width: min(100%, 260px);
+    height: 110px;
+
+    object-fit: contain;
+
+    filter:
+        drop-shadow(0 10px 14px rgb(0 0 0 / 45%));
+}

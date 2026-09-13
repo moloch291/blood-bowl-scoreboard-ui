@@ -4,15 +4,24 @@ import type {
 
 interface ConferenceTableProps {
     title: string;
+    logo: string;
     teams: ConferenceTeam[];
 }
 
 export function ConferenceTable({
     title,
+    logo,
     teams,
 }: ConferenceTableProps) {
     return (
         <section className="conference-table">
+            <img
+                className="conference-table__logo"
+                src={logo}
+                alt=""
+                aria-hidden="true"
+            />
+
             <h2 className="conference-table__title">
                 {title}
             </h2>

@@ -4,7 +4,8 @@ import {
 } from "react";
 
 import leagueLogo from "../../assets/league-logo.png";
-
+import greatOceanLogo from "../../assets/goc-logo.png";
+import oldWorldLogo from "../../assets/owc-logo.png";
 import { getConferenceStandings } from "../../api/leagueApi";
 
 import type {
@@ -96,11 +97,13 @@ export function League({
                 <section className="league__conferences">
                     <ConferenceTable
                         title="Great Ocean Conference"
+                        logo={greatOceanLogo}
                         teams={standings.greatOcean}
                     />
 
                     <ConferenceTable
                         title="Old World Conference"
+                        logo={oldWorldLogo}
                         teams={standings.oldWorld}
                     />
                 </section>
