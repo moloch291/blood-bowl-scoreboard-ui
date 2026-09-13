@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { LeaguePlaceholder } from "./components/LeaguePlaceholder/LeaguePlaceholder";
+import { League } from "./components/League/League";
 import { MainMenu } from "./components/MainMenu/MainMenu";
 import { MatchLayout } from "./layouts/MatchLayout";
 
@@ -23,7 +23,7 @@ function App() {
 
   if (screen === "league") {
     return (
-      <LeaguePlaceholder
+      <League
         onBack={() => setScreen("menu")}
       />
     );

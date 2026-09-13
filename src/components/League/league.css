@@ -1,0 +1,193 @@
+.league {
+    width: 100%;
+    min-height: 100dvh;
+
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr);
+    gap: clamp(1rem, 2vw, 2rem);
+
+    padding: clamp(1rem, 2vw, 2rem);
+
+    color: var(--color-text);
+
+    background:
+        radial-gradient(circle at 50% 0%,
+            rgba(255, 255, 255, 0.07),
+            transparent 35%),
+        linear-gradient(145deg,
+            #18181d,
+            #09090c);
+}
+
+.league__header {
+    min-height: 100px;
+
+    display: grid;
+    grid-template-columns:
+        minmax(180px, 1fr) auto minmax(180px, 1fr);
+
+    align-items: center;
+}
+
+.league__back {
+    justify-self: start;
+}
+
+.league__logo {
+    width: clamp(130px, 16vw, 230px);
+    height: auto;
+
+    object-fit: contain;
+
+    filter:
+        drop-shadow(0 12px 20px rgb(0 0 0 / 45%));
+}
+
+.league__header-spacer {
+    width: 100%;
+}
+
+.league__conferences {
+    min-height: 0;
+
+    display: grid;
+    grid-template-columns:
+        minmax(0, 1fr) minmax(0, 1fr);
+
+    gap: clamp(1rem, 2vw, 2rem);
+
+    align-items: start;
+}
+
+.league__status {
+    place-self: center;
+
+    color: var(--color-text-muted);
+
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.league__status--error {
+    color: var(--color-danger);
+}
+
+.conference-table {
+    min-width: 0;
+
+    display: grid;
+    gap: 0.75rem;
+}
+
+.conference-table__title {
+    margin: 0;
+
+    color: var(--color-text);
+
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 2.4vw, 2.5rem);
+    letter-spacing: 0.05em;
+    line-height: 1;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.conference-table__shell {
+    overflow: hidden;
+
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-medium);
+
+    background:
+        linear-gradient(180deg,
+            rgb(255 255 255 / 5%),
+            rgb(255 255 255 / 1%)),
+        var(--color-surface);
+
+    box-shadow: var(--shadow-small);
+}
+
+.conference-table__table {
+    width: 100%;
+
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.conference-table__table th,
+.conference-table__table td {
+    padding: 0.75rem 0.65rem;
+
+    border-bottom:
+        1px solid rgb(255 255 255 / 8%);
+
+    text-align: center;
+}
+
+.conference-table__table thead th {
+    color: var(--color-text-muted);
+
+    background:
+        rgb(255 255 255 / 4%);
+
+    font-size: 0.72rem;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.conference-table__table tbody tr:last-child th,
+.conference-table__table tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.conference-table__table tbody td {
+    color: var(--color-text);
+
+    font-size: clamp(1rem, 1.8vw, 1.4rem);
+    font-weight: 900;
+    font-variant-numeric: tabular-nums;
+}
+
+.conference-table__team-heading,
+.conference-table__team {
+    width: 45%;
+}
+
+.conference-table__team {
+    height: clamp(72px, 9vh, 110px);
+
+    padding:
+        0.45rem 1rem !important;
+}
+
+.conference-table__wordmark {
+    display: block;
+
+    width: 100%;
+    max-width: 220px;
+    max-height: 78px;
+
+    margin: 0 auto;
+
+    object-fit: contain;
+
+    filter:
+        drop-shadow(0 5px 8px rgb(0 0 0 / 40%));
+}
+
+.visually-hidden {
+    position: absolute;
+
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+
+    overflow: hidden;
+
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+
+    border: 0;
+}
