@@ -1,75 +1,80 @@
-# React + TypeScript + Vite
+# Blood Bowl Scoreboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A browser-based Blood Bowl scoreboard built with React, TypeScript, and Vite.
 
-Currently, two official plugins are available:
+The application provides a broadcast-style match experience with team selection, match controls, animated game events, and league standings.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+- Main menu with match and league sections
+- Team selection and match setup
+- Blood Bowl 7s and 11s game modes
+- Score, turn, reroll, half, and game-state controls
+- Match intro and broadcast-style event overlays
+- Touchdown, halftime, and final-score presentations
+- League standings split between the Great Ocean Conference and Old World Conference
+- Team wordmarks and conference branding
+- League data loaded from the scoreboard backend API
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
 
-## Expanding the ESLint configuration
+- React
+- TypeScript
+- Vite
+- CSS
+- REST API integration
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Development
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Install dependencies:
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Start the development server:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+npm run dev
 ```
+
+Create a production build:
+
+```bash
+npm run build
+```
+
+Run ESLint:
+
+```bash
+npm run lint
+```
+
+## League API
+
+The league page expects the backend API to be available through:
+
+```text
+/api/conferences
+```
+
+During local development, make sure the league backend is running alongside the frontend.
+
+## Project Structure
+
+```text
+src/
+├── api/          # Backend API access
+├── assets/       # Team and league artwork
+├── components/   # Scoreboard, league, menu, and overlays
+├── data/         # Team definitions
+├── layouts/      # Match layout
+├── reducers/     # Match state logic
+├── styles/       # Shared styles
+├── types/        # TypeScript types
+└── utils/        # Shared utilities
+```
+
+## Notes
+
+This repository contains the scoreboard frontend. League standings are persisted and managed by the separate backend/database service.
