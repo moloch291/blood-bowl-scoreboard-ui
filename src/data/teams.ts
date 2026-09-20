@@ -1,9 +1,9 @@
 import type { Team } from "../types/team";
 
-import templeLogo from "../assets/temple-serpents/logo.png";
-import templeIcon from "../assets/temple-serpents/icon.png";
-import templeWordmark from "../assets/temple-serpents/wordmark.png";
-import templeTouchdown from "../assets/temple-serpents/touchdown.png";
+import oraclesLogo from "../assets/genaina-oracles/logo.png";
+import oraclesIcon from "../assets/genaina-oracles/icon.png";
+import oraclesWordmark from "../assets/genaina-oracles/wordmark.png";
+import oraclesTouchdown from "../assets/genaina-oracles/touchdown.png";
 
 import nightmaresLogo from "../assets/sylvania-nightmares/logo.png";
 import nightmaresIcon from "../assets/sylvania-nightmares/icon.png";
@@ -60,23 +60,23 @@ import victimsIcon from "../assets/victims/icon.png";
 import victimsWordmark from "../assets/victims/wordmark.png";
 import victimsTouchdown from "../assets/victims/touchdown.png";
 
-export const templeSerpents: Team = {
-    id: "temple-serpents",
-    name: "Temple Serpents",
-    shortName: "SERPENTS",
+export const genainaOracles: Team = {
+    id: "genaina-oracles",
+    name: "Genaina Oracles",
+    shortName: "Oracles",
 
     colors: {
-        primary: "#F1E8D2",
-        secondary: "#D9A514",
-        accent: "#08734F",
-        text: "#ffffff",
+        primary: "#D9A51E",
+        secondary: "#F3E9D2",
+        accent: "#087A46",
+        text: "#087A46",
     },
 
     assets: {
-        logo: templeLogo,
-        icon: templeIcon,
-        wordmark: templeWordmark,
-        touchdownImage: templeTouchdown,
+        logo: oraclesLogo,
+        icon: oraclesIcon,
+        wordmark: oraclesWordmark,
+        touchdownImage: oraclesTouchdown,
     },
 };
 
@@ -302,7 +302,7 @@ export const victims: Team = {
 };
 
 export const teams: Team[] = [
-    templeSerpents,
+    genainaOracles,
     sylvaniaNightmares,
     mordheimNeonpunks,
     oakenbrowOwls,

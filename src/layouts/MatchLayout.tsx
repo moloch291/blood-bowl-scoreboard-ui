@@ -19,7 +19,7 @@ import { TouchdownOverlay } from "../components/TouchdownOverlay/TouchdownOverla
 import {
     sylvaniaNightmares,
     teams,
-    templeSerpents,
+    genainaOracles,
 } from "../data/teams";
 import { matchReducer } from "../reducers/matchReducer";
 import { createInitialMatchState } from "../utils/createInitialMatchState";
@@ -39,7 +39,7 @@ interface MatchLayoutProps {
 }
 
 const defaultInitialState = createInitialMatchState(
-    templeSerpents,
+    genainaOracles,
     sylvaniaNightmares,
     3,
     3,
