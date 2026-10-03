@@ -15,10 +15,10 @@ import neonpunksIcon from "../assets/mordheim-neonpunks/icon.png";
 import neonpunksWordmark from "../assets/mordheim-neonpunks/wordmark.png";
 import neonpunksTouchdown from "../assets/mordheim-neonpunks/touchdown.png";
 
-import owlsLogo from "../assets/oakenbrow-owls/logo.png";
-import owlsIcon from "../assets/oakenbrow-owls/icon.png";
-import owlsWordmark from "../assets/oakenbrow-owls/wordmark.png";
-import owlsTouchdown from "../assets/oakenbrow-owls/touchdown.png";
+import briarsLogo from "../assets/talsyn-briars/logo.png";
+import briarsIcon from "../assets/talsyn-briars/icon.png";
+import briarsWordmark from "../assets/talsyn-briars/wordmark.png";
+import briarsTouchdown from "../assets/talsyn-briars/touchdown.png";
 
 import sunscalesLogo from "../assets/caledor-sunscales/logo.png";
 import sunscalesIcon from "../assets/caledor-sunscales/icon.png";
@@ -120,23 +120,23 @@ export const mordheimNeonpunks: Team = {
     },
 };
 
-export const oakenbrowOwls: Team = {
-    id: "oakenbrow-owls",
-    name: "Oakenbrow Owls",
-    shortName: "OWLS",
+export const talsynBriars: Team = {
+    id: "talsyn-briars",
+    name: "Talsyn Briars",
+    shortName: "BRIARS",
 
     colors: {
-        primary: "#0F5C4A",
-        secondary: "#6F9A61",
-        accent: "#C6A34A",
-        text: "#E8E0CC",
+        primary: "#596B32",
+        secondary: "#9E2F24",
+        accent: "#D96822",
+        text: "#D9A62E",
     },
 
     assets: {
-        logo: owlsLogo,
-        icon: owlsIcon,
-        wordmark: owlsWordmark,
-        touchdownImage: owlsTouchdown,
+        logo: briarsLogo,
+        icon: briarsIcon,
+        wordmark: briarsWordmark,
+        touchdownImage: briarsTouchdown,
     },
 };
 
@@ -305,7 +305,7 @@ export const teams: Team[] = [
     genainaOracles,
     sylvaniaNightmares,
     mordheimNeonpunks,
-    oakenbrowOwls,
+    talsynBriars,
     caledornSunscales,
     khemriScarabs,
     meghbahSaurs,
