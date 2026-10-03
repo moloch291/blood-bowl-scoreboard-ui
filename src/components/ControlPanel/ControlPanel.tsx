@@ -190,7 +190,17 @@ export function ControlPanel({
                     Match
                 </h2>
 
-                <strong>{state.gameMode}</strong>
+                <div className="control-panel__match-info">
+                    <div className="control-panel__match-stat">
+                        <span>Format</span>
+                        <strong>{state.gameMode}</strong>
+                    </div>
+
+                    <div className="control-panel__match-stat">
+                        <span>Weather</span>
+                        <strong>{state.weather}</strong>
+                    </div>
+                </div>
 
                 <div className="control-panel__group">
                     <h3 className="control-panel__group-title">

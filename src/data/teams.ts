@@ -146,8 +146,8 @@ export const caledornSunscales: Team = {
     shortName: "SUNSCALES",
 
     colors: {
-        primary: "#344A16",
-        secondary: "#F1E6C7",
+        primary: "#F1E6C7",
+        secondary: "#344A16",
         accent: "#D98212",
         text: "#D6A72A",
     },

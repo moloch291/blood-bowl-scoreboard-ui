@@ -44,6 +44,7 @@ const defaultInitialState = createInitialMatchState(
     3,
     3,
     "11s",
+    "Perfect Conditions",
 );
 
 export function MatchLayout({
@@ -197,6 +198,7 @@ export function MatchLayout({
         homeRerolls,
         awayRerolls,
         gameMode,
+        weather,
     }: MatchSetupSelection) {
         const newMatchState = createInitialMatchState(
             homeTeam,
@@ -204,6 +206,7 @@ export function MatchLayout({
             homeRerolls,
             awayRerolls,
             gameMode,
+            weather,
         );
         clearOverlays();
         matchInitialStateRef.current = newMatchState;

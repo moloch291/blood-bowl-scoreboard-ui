@@ -1,7 +1,7 @@
 import { useState } from "react";
 import type { CSSProperties } from "react";
 import type { Team } from "../../types/team";
-import type { GameMode } from "../../types/match";
+import type { GameMode, Weather } from "../../types/match";
 import leagueIcon from "../../assets/league-logo.png";
 
 import "./match-setup.css";
@@ -12,6 +12,7 @@ export interface MatchSetupSelection {
     homeRerolls: number;
     awayRerolls: number;
     gameMode: GameMode;
+    weather: Weather;
 }
 
 interface MatchSetupProps {
@@ -38,6 +39,7 @@ export function MatchSetup({
     const [homeRerolls, setHomeRerolls] = useState(3);
     const [awayRerolls, setAwayRerolls] = useState(3);
     const [gameMode, setGameMode] = useState<GameMode>("11s");
+    const [weather, setWeather] = useState<Weather>("Perfect Conditions");
 
     const homeTeam =
         teams.find((team) => team.id === homeTeamId) ??
@@ -109,6 +111,7 @@ export function MatchSetup({
             homeRerolls,
             awayRerolls,
             gameMode,
+            weather,
         });
     }
 
@@ -220,6 +223,45 @@ export function MatchSetup({
                                 11s
                             </button>
                         </div>
+                    </div>
+                    <div className="match-setup__weather">
+                        <label
+                            className="match-setup__weather-label"
+                            htmlFor="match-weather"
+                        >
+                            Weather
+                        </label>
+
+                        <select
+                            id="match-weather"
+                            className="match-setup__weather-select"
+                            value={weather}
+                            onChange={(event) =>
+                                setWeather(
+                                    event.target.value as Weather,
+                                )
+                            }
+                        >
+                            <option value="Sweltering Heat">
+                                Sweltering Heat
+                            </option>
+
+                            <option value="Very Sunny">
+                                Very Sunny
+                            </option>
+
+                            <option value="Perfect Conditions">
+                                Perfect Conditions
+                            </option>
+
+                            <option value="Pouring Rain">
+                                Pouring Rain
+                            </option>
+
+                            <option value="Blizzard">
+                                Blizzard
+                            </option>
+                        </select>
                     </div>
                     <button
                         type="button"

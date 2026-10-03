@@ -2,6 +2,12 @@ import type { Team } from "./team";
 
 export type TeamSide = "home" | "away";
 export type GameMode = "7s" | "11s";
+export type Weather =
+    | "Sweltering Heat"
+    | "Very Sunny"
+    | "Perfect Conditions"
+    | "Pouring Rain"
+    | "Blizzard";
 
 export interface TeamMatchState {
     team: Team;
@@ -16,4 +22,5 @@ export interface MatchState {
     away: TeamMatchState;
     half: 1 | 2;
     gameMode: GameMode;
+    weather: Weather;
 }

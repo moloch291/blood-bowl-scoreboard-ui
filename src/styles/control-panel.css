@@ -3,8 +3,40 @@
     margin: 0 auto;
 
     display: grid;
-    grid-template-columns: 1fr 280px 1fr;
+    grid-template-columns: minmax(0, 1fr) 310px minmax(0, 1fr);
     gap: var(--space-5);
+}
+
+.control-panel__match-info {
+    display: grid;
+    grid-template-columns:
+        minmax(0, 0.7fr) minmax(0, 1.3fr);
+
+    gap: 0.75rem;
+
+    width: 100%;
+}
+
+.control-panel__match-stat {
+    min-width: 0;
+
+    display: grid;
+    align-content: start;
+    gap: 0.25rem;
+}
+
+.control-panel__match-stat span {
+    color: var(--color-text-muted);
+
+    font-size: 0.7rem;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.control-panel__match-stat strong {
+    font-size: 0.95rem;
+    line-height: 1.15;
 }
 
 .control-panel__team,
@@ -48,6 +80,30 @@
     line-height: 1;
     letter-spacing: 0.03em;
     text-transform: uppercase;
+}
+
+.control-panel__match-info {
+    display: grid;
+    gap: var(--space-3);
+}
+
+.control-panel__match-stat {
+    display: grid;
+    gap: 0.25rem;
+}
+
+.control-panel__match-stat span {
+    color: var(--color-text-muted);
+
+    font-size: 0.7rem;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.control-panel__match-stat strong {
+    font-size: 1rem;
+    line-height: 1.2;
 }
 
 .control-panel h2 {
