@@ -61,6 +61,7 @@ export function GameResultOverlay({
                 points,
                 touchdowns,
                 casualties,
+                outcome,
             });
         } catch (error) {
             console.error(error);
@@ -107,6 +108,28 @@ export function GameResultOverlay({
 
                 <label className="game-result-overlay__field">
                     <span>Team</span>
+
+                    <select
+                        value={teamName}
+                        onChange={(event) =>
+                            setTeamName(
+                                event.target.value,
+                            )
+                        }
+                    >
+                        {teams.map((team) => (
+                            <option
+                                key={team.team_name}
+                                value={team.team_name}
+                            >
+                                {team.team_name}
+                            </option>
+                        ))}
+                    </select>
+                </label>
+
+                <label className="game-result-overlay__field">
+                    <span>Result</span>
 
                     <select
                         value={teamName}

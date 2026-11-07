@@ -48,15 +48,27 @@ export function ConferenceTable({
                             </th>
 
                             <th scope="col">
+                                W
+                            </th>
+
+                            <th scope="col">
+                                L
+                            </th>
+
+                            <th scope="col">
+                                D
+                            </th>
+
+                            <th scope="col">
+                                GP
+                            </th>
+
+                            <th scope="col">
                                 TD
                             </th>
 
                             <th scope="col">
                                 CAS
-                            </th>
-
-                            <th scope="col">
-                                GP
                             </th>
                         </tr>
                     </thead>
@@ -80,15 +92,27 @@ export function ConferenceTable({
                                 </td>
 
                                 <td>
+                                    {team.wins}
+                                </td>
+
+                                <td>
+                                    {team.losses}
+                                </td>
+
+                                <td>
+                                    {team.draws}
+                                </td>
+
+                                <td>
+                                    {team.games_played}
+                                </td>
+
+                                <td>
                                     {team.touchdowns}
                                 </td>
 
                                 <td>
                                     {team.casualties}
-                                </td>
-
-                                <td>
-                                    {team.games_played}
                                 </td>
                             </tr>
                         ))}
