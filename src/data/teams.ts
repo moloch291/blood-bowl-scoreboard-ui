@@ -55,10 +55,10 @@ import hellcatsIcon from "../assets/har-ganeth-hell-cats/icon.png";
 import hellcatsWordmark from "../assets/har-ganeth-hell-cats/wordmark.png";
 import hellcatsTouchdown from "../assets/har-ganeth-hell-cats/touchdown.png";
 
-import victimsLogo from "../assets/victims/logo.png";
-import victimsIcon from "../assets/victims/icon.png";
-import victimsWordmark from "../assets/victims/wordmark.png";
-import victimsTouchdown from "../assets/victims/touchdown.png";
+import monksLogo from "../assets/fu-hung-monks/logo.png";
+import monksIcon from "../assets/fu-hung-monks/icon.png";
+import monksWordmark from "../assets/fu-hung-monks/wordmark.png";
+import monksTouchdown from "../assets/fu-hung-monks/touchdown.png";
 
 export const genainaOracles: Team = {
     id: "genaina-oracles",
@@ -280,24 +280,23 @@ export const harganethHellcats: Team = {
     },
 };
 
-// Generic away team for guests:
-export const victims: Team = {
-    id: "victims",
-    name: "Victims",
-    shortName: "VICTIMS",
+export const fuHungMonks: Team = {
+    id: "fu-hung-monks",
+    name: "Fu-Hung Monks",
+    shortName: "MONKS",
 
     colors: {
-        primary: "#241A18",
-        secondary: "#7A1716",
-        accent: "#E7D9BF",
-        text: "#F6F1E7",
+        primary: "#800020",
+        secondary: "#15171D",
+        accent: "#8B7500",
+        text: "#FFFFFF",
     },
 
     assets: {
-        logo: victimsLogo,
-        icon: victimsIcon,
-        wordmark: victimsWordmark,
-        touchdownImage: victimsTouchdown,
+        logo: monksLogo,
+        icon: monksIcon,
+        wordmark: monksWordmark,
+        touchdownImage: monksTouchdown,
     },
 };
 
@@ -313,5 +312,5 @@ export const teams: Team[] = [
     skeggiReavers,
     xlanhuapecAstrals,
     harganethHellcats,
-    victims,
+    fuHungMonks,
 ];
