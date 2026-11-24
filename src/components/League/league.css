@@ -160,14 +160,14 @@
 .conference-table__table tbody td {
     color: var(--color-text);
 
-    font-size: clamp(1rem, 1.8vw, 1.4rem);
+    font-size: clamp(0.85rem, 1.4vw, 1.2rem);
     font-weight: 900;
     font-variant-numeric: tabular-nums;
 }
 
 .conference-table__team-heading,
 .conference-table__team {
-    width: 45%;
+    width: 34%;
 }
 
 .conference-table__team {

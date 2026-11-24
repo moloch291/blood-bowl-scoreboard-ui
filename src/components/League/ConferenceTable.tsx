@@ -43,21 +43,13 @@ export function ConferenceTable({
                                 </span>
                             </th>
 
-                            <th scope="col">
-                                PTS
-                            </th>
-
-                            <th scope="col">
-                                TD
-                            </th>
-
-                            <th scope="col">
-                                CAS
-                            </th>
-
-                            <th scope="col">
-                                GP
-                            </th>
+                            <th scope="col">PTS</th>
+                            <th scope="col">W</th>
+                            <th scope="col">L</th>
+                            <th scope="col">D</th>
+                            <th scope="col">TD</th>
+                            <th scope="col">CAS</th>
+                            <th scope="col">GP</th>
                         </tr>
                     </thead>
 
@@ -75,21 +67,13 @@ export function ConferenceTable({
                                     />
                                 </th>
 
-                                <td>
-                                    {team.points}
-                                </td>
-
-                                <td>
-                                    {team.touchdowns}
-                                </td>
-
-                                <td>
-                                    {team.casualties}
-                                </td>
-
-                                <td>
-                                    {team.games_played}
-                                </td>
+                                <td>{team.points}</td>
+                                <td>{team.wins ?? 0}</td>
+                                <td>{team.losses ?? 0}</td>
+                                <td>{team.draws ?? 0}</td>
+                                <td>{team.touchdowns}</td>
+                                <td>{team.casualties}</td>
+                                <td>{team.games_played}</td>
                             </tr>
                         ))}
                     </tbody>

@@ -6,6 +6,7 @@ import {
 import type {
     ConferenceTeam,
     GameResultInput,
+    GameOutcome,
 } from "../../types/league";
 
 interface GameResultOverlayProps {
@@ -35,6 +36,9 @@ export function GameResultOverlay({
     const [casualties, setCasualties] =
         useState(0);
 
+    const [outcome, setOutcome] =
+        useState<GameOutcome | "">("");
+
     const [isSubmitting, setIsSubmitting] =
         useState(false);
 
@@ -48,7 +52,7 @@ export function GameResultOverlay({
     }, [teams]);
 
     async function handleSubmit() {
-        if (!teamName) {
+        if (!teamName || !outcome) {
             return;
         }
 
@@ -61,6 +65,7 @@ export function GameResultOverlay({
                 points,
                 touchdowns,
                 casualties,
+                outcome,
             });
         } catch (error) {
             console.error(error);
@@ -127,6 +132,24 @@ export function GameResultOverlay({
                     </select>
                 </label>
 
+                <label className="game-result-overlay__field">
+                    <span>Match Outcome</span>
+
+                    <select
+                        value={outcome}
+                        onChange={(event) =>
+                            setOutcome(
+                                event.target.value as GameOutcome | "",
+                            )
+                        }
+                    >
+                        <option value="">Select outcome</option>
+                        <option value="win">Win</option>
+                        <option value="loss">Loss</option>
+                        <option value="draw">Draw</option>
+                    </select>
+                </label>
+
                 <div className="game-result-overlay__stats">
                     <NumberField
                         label="League Points"
@@ -161,7 +184,7 @@ export function GameResultOverlay({
                     type="button"
                     className="button button--primary game-result-overlay__submit"
                     onClick={handleSubmit}
-                    disabled={isSubmitting}
+                    disabled={isSubmitting || !teamName || !outcome}
                 >
                     {isSubmitting
                         ? "Saving..."
